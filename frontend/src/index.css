@@ -66,3 +66,48 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 } */
+@import "tailwindcss";
+
+@layer utilities {
+    @keyframes scroll-right-to-left {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+    
+    .infinite-scroll {
+        animation: scroll-right-to-left 20s linear infinite;
+    }
+    
+}
+
+@font-face {
+  font-family: 'Satoshi'; 
+  src: url('./assets/fonts/Satoshi/Satoshi-Regular.woff2') format('woff2'),
+       url('./assets/fonts/Satoshi/Satoshi-Regular.woff') format('woff');
+  font-weight: 500; 
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Departure Mono';
+  src: url('./assets/fonts/DepartureMono/DepartureMono-Regular.woff2') format('woff2'),
+       url('./assets/fonts/DepartureMono/DepartureMono-Regular.woff') format('woff');
+  
+  font-weight: normal; 
+  font-style: normal;
+  font-display: swap; 
+}
+.font-departure-mono {
+  font-family: 'Departure Mono', monospace;
+  @apply text-[25px] md:text-[25px] lg:text-[30px]; 
+}
+.font-satoshi {
+  font-family: 'Satoshi', Verdana, sans-serif;
+  @apply text-[25px] md:text-[25px] lg:text-[30px]; 
+}
+
