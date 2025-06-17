@@ -2,6 +2,7 @@ import React from 'react'
 import MiddleInfo from '../components/MiddleInfo'
 import Navigation from '../components/Navigation'
 import HeroSection from '../components/HeroSection'
+import CompanyCarousel from '../components/CompanyCarousel'
 
 const Home = () => {
   return (
@@ -11,6 +12,8 @@ const Home = () => {
       <HeroSection />
     </div>
         <MiddleInfo />
+        <CompanyCarousel />
+    
     </section>
   )
 }
