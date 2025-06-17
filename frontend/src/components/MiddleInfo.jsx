@@ -99,7 +99,7 @@ const MiddleInfo = () => {
                                 <img 
                                     src={company.src} 
                                     alt={company.alt} 
-                                    className="h-14 w-25 max-h-16 object-contain filter grayscale brightness-125 opacity-75 hover:brightness-0 hover:opacity-100 hover:-translate-y-1 transition-all duration-300"
+                                    className="h-14 w-25 max-h-6 object-contain filter grayscale brightness-125 opacity-75 hover:brightness-0 hover:opacity-100 hover:-translate-y-1 transition-all duration-300"
                                 />
                             </li>
                         )
@@ -107,9 +107,9 @@ const MiddleInfo = () => {
                 </ul>
             </div>
             <div className="h-48 w-full bg-[url('/gradient1.png')] bg-cover bg-center"></div>
-            <div className="min-h-98 text-[20px] md:text-[24px] lg:text-[30px] font-satoshi w-full bg-[url('/Bg_space.jpg')] text-white py-30 gap-10 px-5 lg:px-30 bg-cover bg-center flex flex-col justify-center relative before:absolute before:inset-0 before:bg-black before:opacity-60 before:z-0">
+            <div className="min-h-108 text-[20px] md:text-[24px] lg:text-[32px] font-satoshi w-full bg-[url('/Bg_space.jpg')] text-white py-[9rem] gap-10 px-5 lg:px-[15rem] bg-cover bg-center flex flex-col items-start justify-center relative before:absolute before:inset-0 before:bg-black before:opacity-60 before:z-0">
                 <div ref={textRef} className="relative z-10 space-y-20">
-                    <div className='flex flex-col justify-center'>
+                    <div className='flex flex-col justify-center items-start'>
                         <h1 className='text-green-400'>
                             {wrapWordsWithAnimation("The future is human plus AI.", 0, 'text-green-400')}
                         </h1>
@@ -122,7 +122,7 @@ const MiddleInfo = () => {
                     </h1>
                 </div>
             </div>
-            <div className="h-45 w-full bg-[url('/gradient2.png')] bg-cover bg-center"></div>
+            <div className="min-h-35 w-full bg-[url('/gradient2.png')] py-40 bg-cover bg-center"></div>
         </section>
     )
 }

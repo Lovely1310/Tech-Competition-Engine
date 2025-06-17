@@ -23,7 +23,7 @@
   .btn-primary {
     @apply bg-black hover:bg-gray-800 text-white font-medium px-6 py-3 rounded-lg transition-all duration-200 text-base;
   }
-<<<<<<< HEAD
+/* <<<<<<< HEAD */
   
   .btn-secondary {
     @apply bg-transparent hover:bg-gray-50 text-gray-700 font-medium px-6 py-3 rounded-lg border border-gray-300 transition-all duration-200 text-base;
@@ -43,6 +43,7 @@
     animation: float 60s ease-in-out infinite forwards;
     z-index: 10;
     border: 1px solid rgba(0, 0, 0, 0.05);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
   }
   
@@ -119,8 +120,8 @@
   50% { opacity: 0 }
   100% { opacity: 1 }
 }
-=======
-} */
+/* ======= */
+
 @import "tailwindcss";
 
 @layer utilities {
@@ -166,4 +167,4 @@
   @apply text-[25px] md:text-[25px] lg:text-[30px]; 
 }
 
->>>>>>> b0d65ac9fd0779aa7073ae8feee8bb9f48e38122
+/* >>>>>>> b0d65ac9fd0779aa7073ae8feee8bb9f48e38122 */
