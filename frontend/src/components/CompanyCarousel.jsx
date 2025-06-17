@@ -48,8 +48,6 @@ const CompanyCarousel = () => {
         }
     ];
 
-    // Create the expanded slides array for infinite looping
-    // [last_original, ...original, first_original]
     const slides = [
         originalSlides[originalSlides.length - 1],
         ...originalSlides,
@@ -58,18 +56,17 @@ const CompanyCarousel = () => {
 
     const slideCount = originalSlides.length;
 
-    const [current, setCurrent] = useState(1); // Start at index 1 (the first actual slide)
-    const [isTransitioning, setIsTransitioning] = useState(true); // To control transition speed
-    const autoplayRef = useRef(null); // Ref to store the interval ID
+    const [current, setCurrent] = useState(1);
+    const [isTransitioning, setIsTransitioning] = useState(true);
+    const autoplayRef = useRef(null);
 
     const startAutoplay = () => {
-        // Clear any existing interval to prevent multiple intervals running
         if (autoplayRef.current) {
             clearInterval(autoplayRef.current);
         }
         autoplayRef.current = setInterval(() => {
             setCurrent(prevCurrent => prevCurrent + 1);
-        }, 5000); // Change slide every 5 seconds
+        }, 5000);
     };
 
     const stopAutoplay = () => {
@@ -79,54 +76,49 @@ const CompanyCarousel = () => {
     };
 
     useEffect(() => {
-        startAutoplay(); // Start autoplay when the component mounts
-
-        // Cleanup: clear the interval when the component unmounts
+        startAutoplay();
         return () => {
             stopAutoplay();
         };
-    }, []); // Empty dependency array means this effect runs once on mount and cleans up on unmount
+    }, []);
 
     useEffect(() => {
-        // This effect handles the transition logic for infinite looping
         if (current === 0) {
-            // If we've landed on the cloned last slide (index 0)
-            setIsTransitioning(false); // Disable transition for the jump
-            setCurrent(slideCount); // Jump to the real last slide
+            setIsTransitioning(false);
+            setCurrent(slideCount);
         } else if (current === slideCount + 1) {
-            // If we've landed on the cloned first slide (index slideCount + 1)
-            setIsTransitioning(false); // Disable transition for the jump
-            setCurrent(1); // Jump to the real first slide
+            setIsTransitioning(false);
+            setCurrent(1);
         }
 
-        // Re-enable transition after a brief moment if it was disabled
         if (!isTransitioning) {
             const timeoutId = setTimeout(() => {
                 setIsTransitioning(true);
-            }, 50); // A small delay to allow the browser to apply the non-transition style
+            }, 50);
             return () => clearTimeout(timeoutId);
         }
     }, [current, slideCount, isTransitioning]);
 
     const previousSlide = () => {
-        stopAutoplay(); // Stop autoplay on manual interaction
+        stopAutoplay();
         setCurrent((prevCurrent) => prevCurrent - 1);
-        startAutoplay(); // Restart autoplay after a manual move
+        startAutoplay();
     };
 
     const nextSlide = () => {
-        stopAutoplay(); // Stop autoplay on manual interaction
+        stopAutoplay();
         setCurrent((prevCurrent) => prevCurrent + 1);
-        startAutoplay(); // Restart autoplay after a manual move
+        startAutoplay();
     };
 
     const goToDot = (index) => {
-        stopAutoplay(); // Stop autoplay on manual interaction
-        setCurrent(index + 1); // +1 because dots correspond to original slides (0 to N-1), but our array starts at index 1 for originals
-        startAutoplay(); // Restart autoplay after a manual move
+        stopAutoplay();
+        setCurrent(index + 1);
+        startAutoplay();
     };
 
-    const navOverlayWidthClasses = "w-40 md:w-56 lg:w-72 xl:w-80";
+    // Responsive widths for the side navigation overlays
+    const navOverlayClasses = "hidden min-[760px]:flex min-[760px]:w-16 md:min-[760px]:w-24 lg:min-[760px]:w-32 xl:min-[760px]:w-40";
 
     return (
         <div className='bg-slate-900 text-white py-12 md:py-[9rem] font-satoshi w-full overflow-hidden'>
@@ -136,23 +128,31 @@ const CompanyCarousel = () => {
                 </h2>
             </div>
 
-            <div className='relative min-h-[300px] md:min-h-[400px] w-full overflow-hidden'>
-                <div className="relative z-10 max-w-4xl mx-auto">
+            {/* Main Carousel Container - Flex container for left overlay, slides, right overlay */}
+            <div className='relative min-h-[300px] md:min-h-[400px] w-full max-w-4xl mx-auto flex items-center'>
+
+                {/* Left Navigation Overlay */}
+                <div className={`h-full items-center justify-end pr-4 bg-slate-900 flex-shrink-0 ${navOverlayClasses}`}>
+                    <button
+                        onClick={previousSlide}
+                        className="text-white hover:text-gray-300 transition-colors text-3xl md:text-4xl lg:text-5xl"
+                    >
+                        <MdOutlineArrowBackIos />
+                    </button>
+                </div>
+
+                {/* Central Slide Area - This will take up all available remaining space */}
+                <div className='flex-grow overflow-hidden relative px-6'> {/* px-6 provides overall padding for the slide content */}
                     <div
                         className={`flex ${isTransitioning ? 'transition-transform ease-out duration-500' : ''}`}
                         style={{
                             transform: `translateX(-${current * 100}%)`
                         }}
-                        onTransitionEnd={() => {
-                            // This handleTransitionEnd is for when a transition *finishes*
-                            // The logic for jumping to the real slide is now in a separate useEffect
-                            // to ensure it runs precisely when current changes.
-                        }}
                     >
                         {slides.map((slide, index) => (
                             <div
                                 key={index}
-                                className="w-full flex-shrink-0 flex flex-col items-center justify-center text-center px-4 md:px-8 py-12 md:py-16 min-h-[500px] md:min-h-[600px]"
+                                className="w-full flex-shrink-0 flex flex-col items-center justify-center text-center py-12 md:py-16 min-h-[500px] md:min-h-[600px]"
                             >
                                 <div className="mb-12 md:mb-16">
                                     <img
@@ -162,7 +162,9 @@ const CompanyCarousel = () => {
                                     />
                                 </div>
 
-                                <div className="mb-8 md:mb-9 max-w-xl md:max-w-2xl mx-auto">
+                                {/* THIS IS THE SECTION FOR THE QUOTE PARAGRAPH */}
+                                {/* Reintroduced responsive max-width classes for better control of text line length */}
+                                <div className="mb-8 md:mb-9 mx-auto max-w-sm sm:max-w-md md:max-w-xl lg:max-w-lg">
                                     <p className="text-[20px] md:text-2xl font-normal leading-relaxed text-white">
                                         {slide.quote}
                                     </p>
@@ -185,19 +187,11 @@ const CompanyCarousel = () => {
                     </div>
                 </div>
 
-                <div className={`absolute left-0 top-1/2 transform -translate-y-1/2 ${navOverlayWidthClasses} bg-slate-900 z-30 h-full flex items-center justify-end pr-4 md:pr-6`}>
-                    <button
-                        onClick={previousSlide}
-                        className="text-white hover:text-gray-300 transition-colors text-3xl md:text-4xl lg:text-5xl hidden min-[760px]:block"
-                    >
-                        <MdOutlineArrowBackIos />
-                    </button>
-                </div>
-
-                <div className={`absolute right-0 top-1/2 transform -translate-y-1/2 ${navOverlayWidthClasses} bg-slate-900 z-30 h-full flex items-center justify-start pl-4 md:pl-6`}>
+                {/* Right Navigation Overlay */}
+                <div className={`h-full items-center justify-start pl-4 bg-slate-900 flex-shrink-0 ${navOverlayClasses}`}>
                     <button
                         onClick={nextSlide}
-                        className="text-white hover:text-gray-300 transition-colors text-3xl md:text-4xl lg:text-5xl hidden min-[760px]:block"
+                        className="text-white hover:text-gray-300 transition-colors text-3xl md:text-4xl lg:text-5xl"
                     >
                         <MdOutlineArrowForwardIos />
                     </button>
@@ -209,10 +203,9 @@ const CompanyCarousel = () => {
                             key={index}
                             onClick={() => goToDot(index)}
                             className={`w-3.5 h-3.5 md:w-4 md:h-4 rounded-full transition-colors ${
-                                // The active dot needs to map to the original slide index
                                 current === index + 1 ||
-                                (current === 0 && index === slideCount - 1) || // If on cloned last, highlight real last
-                                (current === slideCount + 1 && index === 0) // If on cloned first, highlight real first
+                                (current === 0 && index === slideCount - 1) ||
+                                (current === slideCount + 1 && index === 0)
                                 ? 'bg-white' : 'bg-gray-500'
                             }`}
                         />
