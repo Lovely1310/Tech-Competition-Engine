@@ -2,13 +2,13 @@ import React from 'react';
 import './index.css';
 import { Routes,Route,BrowserRouter } from 'react-router-dom'
 import './App.css'
-import Home from './Pages/Home'
+import LandingPage from './Pages/LandingPage'
 
 function App() {
   return (
     <BrowserRouter>
         <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<LandingPage />} />
         </Routes>
     </BrowserRouter>
     
