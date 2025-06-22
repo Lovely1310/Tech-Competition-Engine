@@ -166,5 +166,9 @@
   font-family: 'Satoshi', Verdana, sans-serif;
   @apply text-[25px] md:text-[25px] lg:text-[30px]; 
 }
-
+.dev-button {
+    font-size:15px;
+    color:white;
+    padding:5px;
+}
 /* >>>>>>> b0d65ac9fd0779aa7073ae8feee8bb9f48e38122 */
