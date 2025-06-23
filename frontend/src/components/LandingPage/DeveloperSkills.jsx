@@ -1,5 +1,78 @@
-
+import React, { useState, useEffect, useRef } from 'react';
 import { FaLongArrowAltRight } from "react-icons/fa";
+
+const ScrambleButton = ({ children, className, ...props }) => {
+  const [displayText, setDisplayText] = useState(children);
+  const [isScrambling, setIsScrambling] = useState(false);
+  const intervalRef = useRef(null);
+  const timeoutRef = useRef(null);
+
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  
+  const scrambleText = (originalText, iteration = 0) => {
+    return originalText
+      .split('')
+      .map((char, index) => {
+        if (char === ' ') return ' ';
+        
+        if (index < iteration) {
+          return originalText[index];
+        }
+        
+        return characters[Math.floor(Math.random() * characters.length)];
+      })
+      .join('');
+  };
+
+  const startScrambling = () => {
+    if (isScrambling) return;
+    
+    setIsScrambling(true);
+    const originalText = children;
+    let iteration = 0;
+
+    // Clear any existing intervals/timeouts
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+
+    // Start scrambling
+    intervalRef.current = setInterval(() => {
+      setDisplayText(scrambleText(originalText, iteration));
+      
+      if (iteration >= originalText.length) {
+        clearInterval(intervalRef.current);
+        setDisplayText(originalText);
+        setIsScrambling(false);
+      }
+      
+      iteration += 1/3; // Slower reveal
+    }, 30);
+  };
+
+  const stopScrambling = () => {
+    // Don't stop the scrambling animation if it's currently running
+    // Let it complete naturally
+    return;
+  };
+
+  useEffect(() => {
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
+  return (
+    <button
+      {...props}
+      className={className}
+      onMouseEnter={startScrambling}
+      onMouseLeave={stopScrambling}
+    >
+      {displayText}
+    </button>
+  );
+};
 
 const DeveloperSkills = () => {
     const contents = [
@@ -48,7 +121,12 @@ const DeveloperSkills = () => {
         const isEven = key%2===0
     return <div key={key} className={`w-full flex ${isEven ? '' : 'lg:flex-row-reverse'} flex-col lg:flex-row items-center`}>
     <div className='w-[50%] flex flex-col gap-2 px-10'>
-        <button className="font-departure-mono bg-black rounded-3xl" id="dev-button" >{content.buttonContent}</button>
+        <ScrambleButton 
+          className="font-departure-mono bg-black rounded-3xl" 
+          id="dev-button"
+        >
+          {content.buttonContent}
+        </ScrambleButton>
         <h2 className="text-[32px]">{content.headLine}</h2>
         <p className="text-[18px]">{content.mainContent}</p>
         <div className="flex items-center gap-2 text-[16px]"><p>Learn More</p>{" "}<FaLongArrowAltRight /></div>
@@ -64,4 +142,4 @@ const DeveloperSkills = () => {
   )
 }
 
-export default DeveloperSkills
+export default DeveloperSkills;
