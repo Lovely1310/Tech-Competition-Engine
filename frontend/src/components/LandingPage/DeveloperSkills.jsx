@@ -78,6 +78,7 @@ const ScrambleButton = ({ children, className, ...props }) => {
     if (intervalRef.current) clearInterval(intervalRef.current);
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
+    //sample comment
     // Start scrambling
     intervalRef.current = setInterval(() => {
       setDisplayText(scrambleText(originalText, iteration));
