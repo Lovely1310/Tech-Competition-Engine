@@ -45,8 +45,8 @@ const ScrambleButton = ({ children, className, ...props }) => {
         setIsScrambling(false);
       }
       
-      iteration += 1/3; // Slower reveal
-    }, 30);
+      iteration += 0.75; // Slower reveal
+    }, 15);
   };
 
   const stopScrambling = () => {
@@ -113,23 +113,23 @@ const DeveloperSkills = () => {
     ]
 
   return (
-    <section className='min-h-screen w-full'>
-    <div className="min-h-screen w-full flex flex-col py-10 px-10 gap-32 font-satoshi items-center justify-center">
-    <h1 className="text-6xl">The Developer Skills Platform</h1>
+    <section className='min-h-screen w-full bg-gradient-to-b from-white via-fuchsia-100 via-fuchsia-50 via-orange-50 via-yellow-50 to-cyan-100'>
+    <div className="min-h-screen w-full flex flex-col py-20 px-10 gap-32 font-satoshi items-center justify-center">
+    <h1 className="text-6xl text-black">The Developer Skills Platform</h1>
     <div className="w-full flex flex-col gap-60 items-center justify-center">
     { contents.map((content,key)=>{
         const isEven = key%2===0
     return <div key={key} className={`w-full flex ${isEven ? '' : 'lg:flex-row-reverse'} flex-col lg:flex-row items-center`}>
     <div className='w-[50%] flex flex-col gap-2 px-10'>
         <ScrambleButton 
-          className="font-departure-mono bg-black rounded-3xl" 
+          className="font-departure-mono bg-black rounded-3xl text-white" 
           id="dev-button"
         >
           {content.buttonContent}
         </ScrambleButton>
-        <h2 className="text-[32px]">{content.headLine}</h2>
-        <p className="text-[18px]">{content.mainContent}</p>
-        <div className="flex items-center gap-2 text-[16px]"><p>Learn More</p>{" "}<FaLongArrowAltRight /></div>
+        <h2 className="text-[32px] text-black">{content.headLine}</h2>
+        <p className="text-[18px] text-black">{content.mainContent}</p>
+        <div className="flex items-center gap-2 text-[16px] text-black"><p>Learn More</p>{" "}<FaLongArrowAltRight /></div>
     </div>
             <div className="w-[50%] px-10"><video autoPlay loop muted playsInline src={content.videoSrc} className="w-full">Your Browser doesnot support videos</video></div>
     </div>
