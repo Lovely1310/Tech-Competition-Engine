@@ -7,7 +7,7 @@ const CompanyCarousel = () => {
         {
             src: "/company_logos/Akamai.png",
             alt: "Akamai_logo",
-            quote: "The proctoring features of HackerRank have a profound impact on the candidate experience. It reassures them that theirskills and potential are what truly matter to us.",
+            quote: "HackerRank's proctoring features significantly enhance the candidate experience by ensuring that their skills and potential are the primary focus of the evaluation process.",
             author: "K. Thomas",
             position: "Head of Talent Acquisition"
         },
@@ -21,28 +21,28 @@ const CompanyCarousel = () => {
         {
             src: "/company_logos/Vanguard.png",
             alt: "Vanguard_logo",
-            quote: "We have seen a significant reduction in the number of interviews needed in order to hire the same number of high-quality candidates.",
+            quote: "We've significantly reduced the number of interviews required to hire the same number of high-quality candidates.",
             author: "N. Alexandro",
             position: "IT Director"
         },
         {
             src: "/company_logos/ukg.png",
             alt: "UKG_logo",
-            quote: "The platform effectively replicates a real-world office environment, providing candidates with a glimpse of what theywould encounter on the job.",
+            quote: "The platform accurately simulates a real-world office setting, giving candidates a preview of on-the-job experiences.",
             author: "M. Teolis",
             position: "Talent Acquisition Manager"
         },
         {
             src: "/company_logos/Doordash.png",
             alt: "Doordash_logo",
-            quote: "We cut down hiring time by months, which was huge for us. We owe that to HackerRank.",
+            quote: "We reduced hiring time by months, a major win, thanks to HackerRank.",
             author: "M. Patino",
             position: "University Recruiting"
         },
         {
             src: "/company_logos/deliveroo.png",
             alt: "Deliveroo_logo",
-            quote: "HackerRank SkillUp received rave reviews. We started with our junior team and have now extended it to our mid-level.",
+            quote: "HackerRank SkillUp has earned glowing feedback. We initially implemented it with our junior team and have since expanded it to our mid-level developers.",
             author: "A. Coleman",
             position: "Senior Recruiting Manager"
         }
@@ -118,7 +118,7 @@ const CompanyCarousel = () => {
     };
 
     // Responsive widths for the side navigation overlays
-    const navOverlayClasses = "hidden min-[760px]:flex min-[760px]:w-16 md:min-[760px]:w-24 lg:min-[760px]:w-32 xl:min-[760px]:w-40";
+    const navOverlayClasses = "hidden min-[760px]:flex min-[760px]:w-12 md:min-[760px]:w-16 lg:min-[760px]:w-20 xl:min-[760px]:w-24";
 
     return (
         <div className='bg-slate-900 text-white py-12 md:py-[9rem] font-satoshi w-full overflow-hidden'>
@@ -142,7 +142,7 @@ const CompanyCarousel = () => {
                 </div>
 
                 {/* Central Slide Area - This will take up all available remaining space */}
-                <div className='flex-grow overflow-hidden relative px-6'> {/* px-6 provides overall padding for the slide content */}
+                <div className='flex-grow overflow-hidden relative px-4'> {/* px-4 provides overall padding for the slide content */}
                     <div
                         className={`flex ${isTransitioning ? 'transition-transform ease-out duration-500' : ''}`}
                         style={{
@@ -197,16 +197,16 @@ const CompanyCarousel = () => {
                     </button>
                 </div>
 
-                <div className="absolute bottom-8 md:bottom-28 left-1/2 transform -translate-x-1/2 flex space-x-2 md:space-x-2 z-20">
+                <div className="absolute bottom-8 md:bottom-12 left-1/2 transform -translate-x-1/2 flex space-x-3 md:space-x-4 z-20 mt-6">
                     {originalSlides.map((_, index) => (
                         <button
-                            key={index}
-                            onClick={() => goToDot(index)}
-                            className={`w-3.5 h-3.5 md:w-4 md:h-4 rounded-full transition-colors ${
-                                current === index + 1 ||
-                                (current === 0 && index === slideCount - 1) ||
-                                (current === slideCount + 1 && index === 0)
-                                ? 'bg-white' : 'bg-gray-500'
+                        key={index}
+                        onClick={() => goToDot(index)}
+                        className={`w-3 h-3 md:w-4 md:h-4 rounded-full transition-colors ${
+                            current === index + 1 ||
+                            (current === 0 && index === slideCount - 1) ||
+                            (current === slideCount + 1 && index === 0)
+                            ? 'bg-white' : 'bg-gray-500'
                             }`}
                         />
                     ))}
