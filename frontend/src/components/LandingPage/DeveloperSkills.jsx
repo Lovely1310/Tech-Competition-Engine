@@ -1,6 +1,49 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FaLongArrowAltRight } from "react-icons/fa";
 
+const RevealText = ({ children, className, delay = 0 }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const elementRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              setIsVisible(true);
+            }, delay);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => {
+      if (elementRef.current) {
+        observer.unobserve(elementRef.current);
+      }
+    };
+  }, [delay]);
+
+  return (
+    <div
+      ref={elementRef}
+      className={`transition-all duration-700 ease-out ${
+        isVisible 
+          ? 'opacity-100 translate-y-0' 
+          : 'opacity-0 translate-y-8'
+      } ${className}`}
+    >
+      {children}
+    </div>
+  );
+};
+
 const ScrambleButton = ({ children, className, ...props }) => {
   const [displayText, setDisplayText] = useState(children);
   const [isScrambling, setIsScrambling] = useState(false);
@@ -119,19 +162,27 @@ const DeveloperSkills = () => {
     <div className="w-full flex flex-col gap-60 items-center justify-center">
     { contents.map((content,key)=>{
         const isEven = key%2===0
-    return <div key={key} className={`w-full flex ${isEven ? '' : 'lg:flex-row-reverse'} flex-col lg:flex-row items-center`}>
-    <div className='w-[50%] flex flex-col gap-2 px-10'>
+    return <div key={key} className={`w-full flex ${isEven ? '' : 'lg:flex-row-reverse'} flex-col lg:flex-row items-center gap-8 lg:gap-0`}>
+    <div className='w-full lg:w-[50%] flex flex-col gap-2 px-10'>
         <ScrambleButton 
           className="font-departure-mono bg-black rounded-3xl text-white" 
           id="dev-button"
         >
           {content.buttonContent}
         </ScrambleButton>
-        <h2 className="text-[32px] text-black">{content.headLine}</h2>
-        <p className="text-[18px] text-black">{content.mainContent}</p>
-        <div className="flex items-center gap-2 text-[16px] text-black"><p>Learn More</p>{" "}<FaLongArrowAltRight /></div>
+        <RevealText delay={100}>
+          <h2 className="text-[32px] text-black">{content.headLine}</h2>
+        </RevealText>
+        <RevealText delay={200}>
+          <p className="text-[18px] text-black">{content.mainContent}</p>
+        </RevealText>
+        <RevealText delay={300}>
+          <div className="flex items-center gap-2 text-[16px] text-black font-bold cursor-pointer transition-all duration-300 ease-out hover:scale-105 hover:text-green-500 hover:drop-shadow-[0_0_8px_rgba(34,197,94,0.6)] w-fit">
+            <p>Learn More</p>{" "}<FaLongArrowAltRight />
+          </div>
+        </RevealText>
     </div>
-            <div className="w-[50%] px-10"><video autoPlay loop muted playsInline src={content.videoSrc} className="w-full">Your Browser doesnot support videos</video></div>
+            <div className="w-full lg:w-[50%] px-10"><video autoPlay loop muted playsInline src={content.videoSrc} className="w-full">Your Browser doesnot support videos</video></div>
     </div>
     })
     }
