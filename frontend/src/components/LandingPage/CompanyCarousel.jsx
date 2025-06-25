@@ -121,7 +121,7 @@ const CompanyCarousel = () => {
     const navOverlayClasses = "hidden min-[760px]:flex min-[760px]:w-16 md:min-[760px]:w-24 lg:min-[760px]:w-32 xl:min-[760px]:w-40";
 
     return (
-        <div className='bg-slate-900 text-white py-12 md:py-[9rem] font-satoshi w-full overflow-hidden'>
+        <div className='bg-black text-white py-12 md:py-[9rem] font-satoshi w-full overflow-hidden'>
             <div className="text-center mb-4 md:mb-0 px-6">
                 <h2 className="text-2xl md:text-4xl lg:text-5xl font-normal leading-tight max-w-4xl mx-auto">
                     Loved by companies of all sizes and developers from all backgrounds
@@ -132,7 +132,7 @@ const CompanyCarousel = () => {
             <div className='relative min-h-[300px] md:min-h-[400px] w-full max-w-4xl mx-auto flex items-center'>
 
                 {/* Left Navigation Overlay */}
-                <div className={`h-full items-center justify-end pr-4 bg-slate-900 flex-shrink-0 ${navOverlayClasses}`}>
+                <div className={`h-full items-center justify-end pr-4 bg-black flex-shrink-0 ${navOverlayClasses}`}>
                     <button
                         onClick={previousSlide}
                         className="text-white hover:text-gray-300 transition-colors text-3xl md:text-4xl lg:text-5xl"
@@ -188,7 +188,7 @@ const CompanyCarousel = () => {
                 </div>
 
                 {/* Right Navigation Overlay */}
-                <div className={`h-full items-center justify-start pl-4 bg-slate-900 flex-shrink-0 ${navOverlayClasses}`}>
+                <div className={`h-full items-center justify-start pl-4 bg-black flex-shrink-0 ${navOverlayClasses}`}>
                     <button
                         onClick={nextSlide}
                         className="text-white hover:text-gray-300 transition-colors text-3xl md:text-4xl lg:text-5xl"
