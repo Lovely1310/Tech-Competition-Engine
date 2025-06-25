@@ -91,7 +91,7 @@ const MiddleInfo = () => {
 
     return (
         <section className="min-h-screen flex flex-col items-center relative">
-            <div className="w-full relative overflow-hidden py-4">
+            <div className="w-full relative overflow-hidden py-4 bg-white">
                 <ul className="flex gap-20 py-4 infinite-scroll whitespace-nowrap">
                     {[...companies, ...companies].map((company, index) => {
                         return (
