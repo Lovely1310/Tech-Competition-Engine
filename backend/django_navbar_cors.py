@@ -1,5 +1,6 @@
-# Django Single File Application for HackerRank-style Navbar
+# Django Single File Application for HackerRank-style Navbar with CORS
 # Run with: python manage.py runserver (after setting up Django project)
+# Install first: pip install django-cors-headers
 
 from django.conf import settings
 from django.urls import path, include
@@ -8,6 +9,8 @@ from django.shortcuts import render
 from django.template import Template, Context
 from django.views.decorators.csrf import csrf_exempt
 import json
+import django
+from django.core.management import execute_from_command_line
 
 # Configure Django settings
 if not settings.configured:
@@ -22,8 +25,10 @@ if not settings.configured:
             'django.contrib.sessions',
             'django.contrib.messages',
             'django.contrib.staticfiles',
+            'corsheaders',  # Add CORS headers support
         ],
         MIDDLEWARE=[
+            'corsheaders.middleware.CorsMiddleware',  # Add CORS middleware first
             'django.middleware.security.SecurityMiddleware',
             'django.contrib.sessions.middleware.SessionMiddleware',
             'django.middleware.common.CommonMiddleware',
@@ -46,6 +51,26 @@ if not settings.configured:
             },
         }],
         STATIC_URL='/static/',
+        
+        # CORS Configuration
+        CORS_ALLOW_ALL_ORIGINS=True,  # Allow all origins for development
+        # For production, replace with:
+        # CORS_ALLOWED_ORIGINS = [
+        #     "http://localhost:3000",  # React development server
+        #     "https://your-frontend-domain.com",
+        # ],
+        CORS_ALLOW_CREDENTIALS=True,
+        CORS_ALLOWED_HEADERS=[
+            'accept',
+            'accept-encoding',
+            'authorization',
+            'content-type',
+            'dnt',
+            'origin',
+            'user-agent',
+            'x-csrftoken',
+            'x-requested-with',
+        ],
     )
 
 # Navbar configuration data
@@ -325,8 +350,6 @@ urlpatterns = [
 
 # Django application entry point
 if __name__ == '__main__':
-    import django
-    from django.core.management import execute_from_command_line
     import sys
     
     django.setup()
