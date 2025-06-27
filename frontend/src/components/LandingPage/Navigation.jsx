@@ -21,6 +21,7 @@ const Navigation = () => {
                 d="M4 6h16M4 12h8m-8 6h16"
               />{" "}
             </svg>
+
           </div>
           <ul
             tabIndex={0}
@@ -68,7 +69,10 @@ const Navigation = () => {
             </li>
           </ul>
         </div>
-        <a className=" font-bold text-2xl hidden sm:inline">
+
+        
+        <a className=" font-bold ml-3 text-2xl hidden sm:inline">
+          
           TechCompetitionEngine
         </a>
       </div>
@@ -131,7 +135,7 @@ const Navigation = () => {
             href="#"
             className="text-gray-300 hover:text-gray-300 px-3 py-2 text-sm font-medium"
           >
-            Sign Up
+            Sign In
           </a>
         </button>
       </div>
