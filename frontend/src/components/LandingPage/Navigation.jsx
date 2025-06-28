@@ -73,7 +73,7 @@ const Navigation = () => {
         
         <a className=" font-bold ml-3 text-2xl hidden sm:inline">
           
-          TechCompetitionEngine
+          Ten Competition Engine
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
