@@ -9,6 +9,7 @@ const BusinessLogin = () => {
     console.log('Form submitted', { email, rememberMe });
   };
 
+  //returning the JSX for the login page
   return (
     <div className="min-h-screen bg-gray-50 flex">
       {/* Left side - Login Form */}
