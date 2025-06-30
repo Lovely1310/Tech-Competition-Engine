@@ -1,6 +1,76 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const Navigation = () => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [displayText, setDisplayText] = useState("Tech Competition Engine");
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  const fullText = "Tech Competition Engine";
+  const shortText = "TCE";
+
+  useEffect(() => {
+    if (isAnimating) return;
+
+    let timeoutId;
+    
+    if (isHovered && displayText === fullText) {
+      // Start backspace animation
+      setIsAnimating(true);
+      let currentText = fullText;
+      
+      const backspaceInterval = setInterval(() => {
+        currentText = currentText.slice(0, -1);
+        setDisplayText(currentText);
+        
+        if (currentText === "") {
+          clearInterval(backspaceInterval);
+          
+          // Type TCE
+          let index = 0;
+          const typeInterval = setInterval(() => {
+            setDisplayText(shortText.slice(0, index + 1));
+            index++;
+            
+            if (index === shortText.length) {
+              clearInterval(typeInterval);
+              setIsAnimating(false);
+            }
+          }, 100);
+        }
+      }, 50);
+      
+    } else if (!isHovered && displayText === shortText) {
+      // Start backspace animation for TCE
+      setIsAnimating(true);
+      let currentText = shortText;
+      
+      const backspaceInterval = setInterval(() => {
+        currentText = currentText.slice(0, -1);
+        setDisplayText(currentText);
+        
+        if (currentText === "") {
+          clearInterval(backspaceInterval);
+          
+          // Type full text
+          let index = 0;
+          const typeInterval = setInterval(() => {
+            setDisplayText(fullText.slice(0, index + 1));
+            index++;
+            
+            if (index === fullText.length) {
+              clearInterval(typeInterval);
+              setIsAnimating(false);
+            }
+          }, 80);
+        }
+      }, 50);
+    }
+
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, [isHovered, displayText, isAnimating]);
+
   return (
     <div className="navbar bg-base-300 ">
       <div className="navbar-start">
@@ -71,9 +141,13 @@ const Navigation = () => {
         </div>
 
         
-        <a className=" font-bold ml-3 text-2xl hidden sm:inline">
-          
-          Ten Competition Engine
+        <a 
+          className=" font-bold ml-3 text-2xl hidden sm:inline"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          {displayText}
+          {(isHovered || isAnimating) && <span className="animate-pulse">|</span>}
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -101,7 +175,7 @@ const Navigation = () => {
             >
               Resources
             </a>
-          </li>
+            </li>
           <li>
             <a
               href="#"
