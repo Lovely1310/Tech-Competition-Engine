@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react'
 import logo from '../../../public/logo.svg'
 import { Link } from "react-router-dom";
 
-const Navigation = () => {
+const LoginNav = () => {
   return (
     <div className="navbar bg-base-300 pl-6 pr-6">
       <div className="navbar-start">
@@ -139,17 +139,10 @@ const Navigation = () => {
           </a>
         </button>
 
-        <button className="btn btn-neutral ml-5">
-          <Link
-            to="/login"
-            className="text-gray-300 hover:text-gray-300 px-3 py-2 text-sm font-medium"
-          >
-            Log In
-          </Link>
-        </button>
+        
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Navigation;
+export default LoginNav
