@@ -7,6 +7,7 @@ import BusinessLogin from './Pages/BusinessLogin'
 import LoginPage from './components/loginpage/LoginPage';
 import Footer from './components/Footer';
 import PageAfterLogin from './Pages/PageAfterLogin';
+import DeveloperLogin from './components/LoginPage/Developerlogin';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/work/login" element={<BusinessLogin />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/dashboard" element={<PageAfterLogin />} />
+            <Route path="/login/developerlogin" element={<DeveloperLogin />} />
         </Routes>
         <Footer />
     </BrowserRouter>

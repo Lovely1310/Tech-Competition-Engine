@@ -31,7 +31,7 @@ const Loginmiddle = () => {
           <h2 className='text-[2rem] font-bold'>For Coders</h2>
           <p className=' w-[70%]'>Connect with a global community of 26+ million developers. Sharpen your coding skills, ace technical interviews, and unlock new career opportunities.
           </p>
-          <button className="btn btn-neutral btn-outline">Log In</button>
+          <button className="btn btn-neutral btn-outline" onClick={()=>navigate("/login/developerlogin")}>Log In</button>
           <div className='flex flex-col text-sm items-center justify-center'>
             <p>Don't have an account?</p>
             <Link className='text-green-700 font-semibold' to='#'>Sign up</Link>
