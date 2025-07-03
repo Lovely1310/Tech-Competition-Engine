@@ -1,7 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 
 const Loginmiddle = () => {
+    const navigate = useNavigate();
   return (
     <div className='flex items-center justify-center w-full  p-17'>
       <div className=' w-full flex items-center justify-center flex-col md:flex-row '>
@@ -11,7 +12,7 @@ const Loginmiddle = () => {
           <p className='p-3 bg-black text-base text-white rounded-2xl '>Organisation</p>
           <h2 className='text-[2rem] font-bold'>For Business</h2>
           <p>Thousands of forward-thinking companies use our platform to recruit top talent and continuously grow their tech teams.</p>
-          <button className="btn btn-neutral">Log In</button>
+          <button className="btn btn-neutral" onClick={()=>navigate("/work/login")}>Log In</button>
 
           <div className='flex flex-col text-sm items-center justify-center'>
             <p>Don't have an account ?</p>

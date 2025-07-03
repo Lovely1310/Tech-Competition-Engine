@@ -126,44 +126,13 @@ const BusinessLogin = () => {
         </div>
       </div>
 
-      {/* Right side - Info Section */}
-      <div className="hidden lg:flex lg:flex-1 bg-gradient-to-br from-blue-50 to-indigo-100 items-center justify-center p-12">
-        <div className="max-w-md text-center">
-          {/* Illustration placeholder */}
-          <div className="mb-8 flex justify-center space-x-4">
-            <div className="w-16 h-16 bg-blue-200 rounded-full flex items-center justify-center">
-              <div className="w-8 h-8 bg-blue-400 rounded-full flex items-center justify-center">
-                <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                </svg>
-              </div>
-            </div>
-            <div className="w-16 h-16 bg-green-200 rounded-full flex items-center justify-center">
-              <div className="w-8 h-8 bg-green-400 rounded-full flex items-center justify-center">
-                <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                </svg>
-              </div>
-            </div>
-            <div className="w-16 h-16 bg-purple-200 rounded-full flex items-center justify-center">
-              <div className="w-8 h-8 bg-purple-400 rounded-full flex items-center justify-center">
-                <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                </svg>
-              </div>
-            </div>
-          </div>
-
-          <div className="space-y-4">
-            <p className="text-gray-600 text-sm">Did you know?</p>
-            <h3 className="text-3xl font-bold text-gray-900 leading-tight">
-              TECH Competition Engine powers one assessment every 8 seconds.
-            </h3>
-            <p className="text-gray-600">
-              Thank you for being our customer!
-            </p>
-          </div>
-        </div>
+      {/* Right side - Background Image */}
+      <div className="hidden lg:flex lg:flex-1">
+        <img 
+          src="/Poster.png" 
+          alt="TECH Competition Engine" 
+          className="w-full h-full object-cover"
+        />
       </div>
     </div>
   );
