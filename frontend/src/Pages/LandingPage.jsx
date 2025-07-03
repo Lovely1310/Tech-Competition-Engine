@@ -5,6 +5,7 @@ import HeroSection from '../components/LandingPage/HeroSection'
 import CompanyCarousel from '../components/LandingPage/CompanyCarousel'
 import DeveloperSkills from '../components/LandingPage/DeveloperSkills'
 
+
 const LandingPage = () => {
   return (
     <section>
