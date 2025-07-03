@@ -5,7 +5,7 @@ import './App.css'
 import LandingPage from './Pages/LandingPage'
 import BusinessLogin from './Pages/BusinessLogin'
 import LoginPage from './components/loginpage/LoginPage';
-import Footer from './components/LandingPage/Footer';
+import Footer from './components/Footer';
 
 function App() {
   return (
