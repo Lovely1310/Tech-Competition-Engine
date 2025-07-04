@@ -41,7 +41,7 @@ const DeveloperNavbar = () => {
             </svg>
           </button>
 
-          {/* Tabs (visible on desktop) */}
+          {/* Tabs (visible on desktop and lap) */}
           <div className='hidden md:flex space-x-6'>
             {links.map(link => (
               <div key={link.name} className='relative'>
