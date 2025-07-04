@@ -2,9 +2,9 @@ import React from 'react';
 
 function DeveloperLogin() {
   return (
-    <div className="flex flex-col md:flex-row h-screen">
+    <div className="flex flex-col md:flex-row min-h-screen bg-black">
       <div
-        className="w-full bg-cover bg-center h-48 md:h-full md:flex flex-2"
+        className="w-full bg-cover bg-center h-48 md:h-full md:flex flex-2 lg:h-screen"
          style={{ backgroundImage: "url('/Developerlogin_images/Earth.jpg')" }} //,backgroundPosition: 'right 20% center'
       >
         <div className="text-white text-center p-4 md:p-8 flex flex-col items-center justify-center h-full space-y-4 ml-16">
