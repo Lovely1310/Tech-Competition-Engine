@@ -9,6 +9,8 @@ import Footer from './components/Footer';
 import PageAfterLogin from './Pages/PageAfterLogin';
 import DeveloperLogin from './components/LoginPage/Developerlogin';
 import Apply from './Pages/Apply';
+import CertifySection from './components/pageAfterlogin/CertifySection';
+
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
             <Route path="/dashboard" element={<PageAfterLogin />} />
             <Route path="/login/developerlogin" element={<DeveloperLogin />} />
             <Route path='/apply' element={<Apply />}></Route>
+            <Route path="/skills-verification" element={<CertifySection />} />
         </Routes>
         <Footer />
     </BrowserRouter>
