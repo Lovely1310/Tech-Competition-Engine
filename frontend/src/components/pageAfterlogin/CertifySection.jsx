@@ -1,10 +1,10 @@
 import React from 'react'
-import Navbar from './Navbar'
+import DeveloperNavbar from './DeveloperNavbar'
 
 const CertifySection = () => {
   return (
     <>
-    <Navbar />
+    <DeveloperNavbar />
     <div></div>
     </>
   )
