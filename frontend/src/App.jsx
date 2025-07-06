@@ -8,6 +8,7 @@ import LoginPage from './components/loginpage/LoginPage';
 import Footer from './components/Footer';
 import PageAfterLogin from './Pages/PageAfterLogin';
 import DeveloperLogin from './components/LoginPage/Developerlogin';
+import Apply from './Pages/Apply';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/dashboard" element={<PageAfterLogin />} />
             <Route path="/login/developerlogin" element={<DeveloperLogin />} />
+            <Route path='/apply' element={<Apply />}></Route>
         </Routes>
         <Footer />
     </BrowserRouter>
