@@ -1,114 +1,162 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import Navigation from '../../components/LandingPage/Navigation'; // ✅ Adjust path as needed
 
 function DeveloperLogin() {
   return (
-    <div className="flex flex-col md:flex-row min-h-screen bg-black">
-      <div
-        className="w-full bg-cover bg-center h-48 md:h-full md:flex flex-2 lg:h-screen"
-         style={{ backgroundImage: "url('/Developerlogin_images/Earth.jpg')" }} //,backgroundPosition: 'right 20% center'
+    <div className="relative w-full">
+      {/* 🔝 Top Navbar */}
+      <div className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+        <Navigation />
+      </div>
+
+      {/* 🔐 Page Content */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.98 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        className="flex flex-col md:flex-row min-h-screen pt-16 bg-black text-white"
       >
-        <div className="text-white text-center p-4 md:p-8 flex flex-col items-center justify-center h-full space-y-4 ml-16">
-          <h2 className="text-xl md:text-4xl font-semibold">
-            Welcome to Tech competition Engine Community
-          </h2>
-          <p className="text-sm md:text-xl">Home to 20 Million developers worldwide</p>
-          <a
-            href="#"
-            className="text-white underline text-sm md:text-lg hover:text-black transition duration-300"
-          >
-            Know more
-          </a>
-        </div>
-      </div>
-      <div className="flex-1 w-full h-full md:h-full flex items-center justify-center p-4 bg-black">
-        <div className="bg-white p-4 md:p-6 rounded-lg shadow-lg w-full max-w-md space-y-3 md:space-y-6">
-          <h3 className="text-black text-center text-2xl md:text-3xl font-bold">Welcome back!</h3>
-          <h4 className="text-base md:text-xl text-center text-gray-600">Login to your account</h4>
-          <p className="text-black text-base md:text-base">It's nice to see you again. Ready to code?</p>
-          <form className="space-y-4 md:space-y-4 w-full">
-            <input
-              type="text"
-              placeholder="Your username or email"
-              className="w-full p-3 md:p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 text-black"
-            />
-            <input
-              type="password"
-              placeholder="Your password"
-              className="w-full p-3 md:p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 text-black"
-            />
-            <button
-              type="submit"
-              className="w-full p-3 md:p-3 bg-black text-white rounded-lg hover:bg-gray-800 transition duration-300"
+        {/* 🌍 Left Earth Section */}
+        <motion.div
+          initial={{ x: -60, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.7 }}
+          className="w-full md:w-1/2 bg-cover bg-center relative h-64 md:h-auto"
+          style={{ backgroundImage: "url('/Developerlogin_images/Earth.jpg')" }}
+        >
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 md:px-10 space-y-4 z-10">
+            <motion.h2
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="text-2xl md:text-4xl font-semibold"
             >
-              Log in
-            </button>
-            <div className="flex items-center justify-between text-sm md:text-sm">
-              <label className="flex items-center text-black">
-                <input type="checkbox" className="mr-2 md:mr-2" /> Remember me
-              </label>
-              <a
-                href="#"
-                className="text-blue-600 hover:text-blue-800 transition duration-300"
-              >
-                Forgot password?
-              </a>
-            </div>
-          </form>
-          <div className="mt-6 md:mt-6 w-full space-y-3 md:space-y-3">
-            <button
-              className="w-full p-3 md:p-3 border border-gray-300 rounded-lg flex items-center justify-center space-x-3 md:space-x-3 hover:bg-gray-50 transition duration-300 text-black"
+              Welcome to Tech Competition Engine Community
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="text-sm md:text-lg text-gray-200"
             >
-              <img
-                className="w-6 h-6 md:w-6 md:h-6"
-                src="/Developerlogin_images/Google logo.png"
-                alt="Google logo"
-              />
-              <span>Continue with Google</span>
-            </button>
-            <div className="flex flex-row md:flex-col space-x-3 md:space-y-3 md:space-x-0">
-              <button
-                className="w-1/3 md:w-full p-2 md:p-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition duration-300 text-black"
-              >
-                <img
-                  className="w-5 h-5 md:w-6 md:h-6 inline-block mr-1 md:mr-2"
-                  src="/Developerlogin_images/LinkedIn_logo.png"
-                  alt="LinkedIn logo"
-                />
-                LinkedIn
-              </button>
-              <button
-                className="w-1/3 md:w-full p-2 md:p-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition duration-300 text-black"
-              >
-                <img
-                  className="w-5 h-5 md:w-6 md:h-6 inline-block mr-1 md:mr-2"
-                  src="/Developerlogin_images/GitHub_Logo.png"
-                  alt="GitHub logo"
-                />
-                GitHub
-              </button>
-              <button
-                className="w-1/3 md:w-full p-2 md:p-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition duration-300 text-black"
-              >
-                <img
-                  className="w-5 h-5 md:w-6 md:h-6 inline-block mr-1 md:mr-2"
-                  src="/Developerlogin_images/Facebook_logo.png"
-                  alt="Facebook logo"
-                />
-                Facebook
-              </button>
-            </div>
-          </div>
-          <p className="mt-6 md:mt-6 text-sm text-gray-600 text-center">
-            Don't have an account?{' '}
-            <a
+              Home to 20 Million developers worldwide
+            </motion.p>
+            <motion.a
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
               href="#"
-              className="text-blue-600 hover:text-blue-800 transition duration-300"
+              className="underline text-indigo-300 hover:text-indigo-100 text-sm md:text-base transition duration-300"
             >
-              Sign up
-            </a>
-          </p>
-        </div>
-      </div>
+              Know more
+            </motion.a>
+          </div>
+        </motion.div>
+
+        {/* 🧩 Right Form Section */}
+        <motion.div
+          initial={{ x: 60, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.7 }}
+          className="w-full md:w-1/2 flex items-center justify-center px-4 sm:px-6 md:px-10 py-12"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="bg-white text-black rounded-lg shadow-lg w-full max-w-md px-6 py-8 space-y-6"
+          >
+            <div className="space-y-1 text-center">
+              <h3 className="text-2xl md:text-3xl font-bold">Welcome back!</h3>
+              <h4 className="text-base text-gray-600">Login to your account</h4>
+              <p className="text-sm text-gray-800">It's nice to see you again. Ready to code?</p>
+            </div>
+
+            <form className="space-y-4">
+              <motion.input
+                type="text"
+                placeholder="Your username or email"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+              />
+              <motion.input
+                type="password"
+                placeholder="Your password"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7 }}
+              />
+              <motion.button
+                type="submit"
+                className="w-full p-3 bg-black text-white rounded-lg hover:bg-gray-800 transition duration-300"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8 }}
+              >
+                Log in
+              </motion.button>
+              <motion.div
+                className="flex items-center justify-between text-sm"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9 }}
+              >
+                <label className="flex items-center">
+                  <input type="checkbox" className="mr-2" /> Remember me
+                </label>
+                <a href="#" className="text-indigo-600 hover:text-indigo-800 transition">
+                  Forgot password?
+                </a>
+              </motion.div>
+            </form>
+
+            {/* 🌐 Social Auth */}
+            <motion.div
+              className="space-y-3"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.0 }}
+            >
+              <button className="w-full flex items-center justify-center p-3 border border-gray-300 rounded-lg hover:bg-gray-100 transition">
+                <img src="/Developerlogin_images/Google logo.png" alt="Google" className="w-5 h-5 mr-2" />
+                Continue with Google
+              </button>
+              <div className="flex justify-between space-x-3">
+                {[
+                  { label: 'LinkedIn', icon: 'LinkedIn_logo.png' },
+                  { label: 'GitHub', icon: 'GitHub_Logo.png' },
+                  { label: 'Facebook', icon: 'Facebook_logo.png' },
+                ].map(({ label, icon }, i) => (
+                  <motion.button
+                    key={label}
+                    className="w-1/3 p-2 border border-gray-300 rounded-lg flex items-center justify-center hover:bg-gray-100 transition text-sm"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.1 + i * 0.1 }}
+                  >
+                    <img src={`/Developerlogin_images/${icon}`} alt={`${label} logo`} className="w-5 h-5 mr-2" />
+                    {label}
+                  </motion.button>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.p
+              className="text-center text-sm text-gray-600"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.5 }}
+            >
+              Don't have an account?{' '}
+              <a href="#" className="text-indigo-600 hover:text-indigo-800 transition">Sign up</a>
+            </motion.p>
+          </motion.div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }
