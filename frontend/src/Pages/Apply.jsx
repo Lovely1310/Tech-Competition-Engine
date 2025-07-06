@@ -3,7 +3,12 @@ import Navbar from '../components/pageAfterlogin/Navbar'
 
 const Apply = () => {
   return (
+    <>
     <Navbar />
+    <div>
+        
+    </div>
+    </>
   )
 }
 
