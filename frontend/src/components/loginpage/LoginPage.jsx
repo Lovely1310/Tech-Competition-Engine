@@ -1,11 +1,11 @@
 import React from 'react'
 import Loginmiddle from './Loginmiddle'
-import LoginNav from './LoginNav'
+import Navigation from '../../components/LandingPage/Navigation'
 
 const LoginPage = () => {
   return (
     <>
-    <LoginNav />
+    <Navigation />
     <Loginmiddle />
     </>
   )

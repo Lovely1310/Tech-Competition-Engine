@@ -1,45 +1,81 @@
-import React from 'react'
-import { Link,useNavigate } from 'react-router-dom'
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Loginmiddle = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+
   return (
-    <div className='flex items-center justify-center w-full  p-17'>
-      <div className=' w-full flex items-center justify-center flex-col md:flex-row '>
+    <>
+      {/* 🌈 Gradient Background */}
+      <style>{`
+        @layer utilities {
+          @keyframes gradientBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+          .animate-gradient {
+            animation: gradientBackground 20s ease infinite;
+            background: linear-gradient(270deg, #1E3A8A, #4F46E5, #0F172A);
+            background-size: 400% 400%;
+          }
+        }
+      `}</style>
 
-        <div className='p-10 flex flex-col gap-8 items-center justify-center md-w-1/2 lg-w-1/3 '>
+      <div className="w-full min-h-screen animate-gradient flex items-center justify-center px-4 py-10 text-white relative">
+        <div className="absolute inset-0 bg-black/60 z-0" />
 
-          <p className='p-3 bg-black text-base text-white rounded-2xl '>Organisation</p>
-          <h2 className='text-[2rem] font-bold'>For Business</h2>
-          <p>Thousands of forward-thinking companies use our platform to recruit top talent and continuously grow their tech teams.</p>
-          <button className="btn btn-neutral" onClick={()=>navigate("/work/login")}>Log In</button>
+        {/* Unified Container */}
+        <div className="relative z-10 max-w-6xl w-full flex flex-col md:flex-row items-stretch justify-center bg-white/5 backdrop-blur-md rounded-xl shadow-xl border border-white/10 overflow-hidden">
 
-          <div className='flex flex-col text-sm items-center justify-center'>
-            <p>Don't have an account ?</p>
-            <div className='flex gap-3'>
-              <Link className='text-green-700 font-semibold' to="#">Contact sales</Link>
-              <p>Or</p>
-              <Link className='text-green-700 font-semibold' to='#'>Get free trial</Link>
+          {/* Business Side */}
+          <div className="w-full md:w-1/2 flex flex-col items-center justify-center text-center gap-5 px-8 py-12">
+            <p className="bg-white text-black text-sm px-4 py-1 rounded-full">Organisation</p>
+            <h2 className="text-3xl font-bold text-indigo-300">For Business</h2>
+            <p className="text-gray-200 max-w-sm">
+              Thousands of forward-thinking companies use our platform to recruit top talent and grow their tech teams.
+            </p>
+            <button
+              className="bg-indigo-400 text-black font-semibold px-6 py-2 rounded-md hover:bg-indigo-300 transition"
+              onClick={() => navigate("/work/login")}
+            >
+              Log In
+            </button>
+            <div className="text-sm text-gray-300 flex flex-col gap-1">
+              <p>Don't have an account?</p>
+              <div className="flex gap-3 justify-center">
+                <Link className="text-white underline" to="#">Contact sales</Link>
+                <span>or</span>
+                <Link className="text-white underline" to="#">Get free trial</Link>
+              </div>
             </div>
           </div>
-        </div>
 
-       <div className="hidden md:block h-[300px] w-px bg-gray-300 mx-6"></div>
-       <div className=" md:block h-[1px] w-[80%] bg-gray-300 mx-6 md:hidden lg:hidden"></div>
-        
-        <div className=' flex flex-col  gap-7 items-center justify-center p-5 pt-22 lg-w-1/2  lg-w-1/2'>
-          <h2 className='text-[2rem] font-bold'>For Coders</h2>
-          <p className=' w-[70%]'>Connect with a global community of 26+ million developers. Sharpen your coding skills, ace technical interviews, and unlock new career opportunities.
-          </p>
-          <button className="btn btn-neutral btn-outline" onClick={()=>navigate("/login/developerlogin")}>Log In</button>
-          <div className='flex flex-col text-sm items-center justify-center'>
-            <p>Don't have an account?</p>
-            <Link className='text-green-700 font-semibold' to='#'>Sign up</Link>
+          {/* Divider */}
+          <div className="hidden md:block w-px bg-white/20" />
+
+          {/* Coders Side */}
+          <div className="w-full md:w-1/2 flex flex-col items-center justify-center text-center gap-5 px-8 py-12">
+            <h2 className="text-3xl font-bold text-indigo-300">For Coders</h2>
+            <p className="text-gray-200 max-w-sm">
+              Connect with 26+ million developers. Sharpen your skills and unlock career opportunities.
+            </p>
+            <button
+              className="border border-indigo-300 text-indigo-200 font-semibold px-6 py-2 rounded-md hover:bg-indigo-300 hover:text-black transition"
+              onClick={() => navigate("/login/developerlogin")}
+            >
+              Log In
+            </button>
+            <div className="text-sm text-gray-300 flex flex-col gap-1">
+              <p>Don't have an account?</p>
+              <Link className="text-white underline" to="#">Sign up</Link>
+            </div>
           </div>
+
         </div>
       </div>
-    </div>
-  )
-}
+    </>
+  );
+};
 
-export default Loginmiddle
+export default Loginmiddle;
