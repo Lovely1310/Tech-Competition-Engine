@@ -3,7 +3,10 @@ import Navbar from './Navbar'
 
 const CertifySection = () => {
   return (
+    <>
     <Navbar />
+    <div></div>
+    </>
   )
 }
 

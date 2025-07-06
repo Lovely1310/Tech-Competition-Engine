@@ -1,23 +1,43 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { FiSearch } from 'react-icons/fi';
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState('Prepare');
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const links = [
-    { name: 'Prepare', path: '#' },
-    { name: 'Certify', path: '#' },
+    { name: 'Prepare', path: '/dashboard' },
+    { name: 'Certify', path: '/skills-verification' },
     { name: 'Compete', path: '#' },
-    { name: 'Apply', path: '#' }
+    { name: 'Apply', path: '/apply' }
   ];
 
+  // Update active tab based on current location
+  useEffect(() => {
+    const currentLink = links.find(link => link.path === location.pathname);
+    if (currentLink) {
+      setActiveTab(currentLink.name);
+    }
+  }, [location.pathname]);
+
   const handleClick = (name, path) => {
-    setActiveTab(name);
     navigate(path);
     setMenuOpen(false);
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleSearchKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      // Handle search functionality here
+      console.log('Searching for:', searchQuery);
+    }
   };
 
   return (
@@ -27,7 +47,10 @@ const Navbar = () => {
         {/* Left Section: Logo + Tabs */}
         <div className='flex items-center space-x-6'>
           {/* Logo (desktop) */}
-          <img src='/logo.png' alt='Logo' className='h-5 hidden max-[766px]:hidden md:block' />
+          <div className='flex items-center space-x-3 hidden max-[766px]:hidden md:flex'>
+            <img src='/logo.png' alt='Logo' className='h-5' />
+            <span className='text-sm font-medium'>TECH COMPETITION ENGINE</span>
+          </div>
 
           {/* Hamburger (mobile only) */}
           <button
@@ -41,7 +64,7 @@ const Navbar = () => {
             </svg>
           </button>
 
-          {/* Tabs (visible on desktop) */}
+          {/* Tabs (visible on desktop and lap) */}
           <div className='hidden md:flex space-x-6'>
             {links.map(link => (
               <div key={link.name} className='relative'>
@@ -61,7 +84,10 @@ const Navbar = () => {
 
         {/* Center: Logo (only on mobile) */}
         <div className='absolute left-1/2 transform -translate-x-1/2 md:hidden'>
-          <img src='/logo.png' alt='Logo' className='h-5' />
+          <div className='flex items-center space-x-2'>
+            <img src='/logo.png' alt='Logo' className='h-5' />
+            <span className='text-xs font-medium'>TECH COMPETITION ENGINE</span>
+          </div>
         </div>
 
         {/* Right section (search + auth) */}
@@ -70,17 +96,28 @@ const Navbar = () => {
           {/* Search */}
           <div className="flex items-center bg-[#2d2f36] text-white px-3 py-1 rounded border border-gray-600">
             <FiSearch className="mr-2 text-white" />
-            <span className="text-sm">Search</span>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={handleSearchChange}
+              onKeyDown={handleSearchKeyDown}
+              placeholder="Search"
+              className="bg-transparent text-white text-sm placeholder-gray-400 focus:outline-none w-32"
+            />
           </div>
 
           {/* Hiring developers: hide below 1059px */}
           <button className='text-sm underline underline-offset-4 text-white hover:text-green-400 hidden [@media(min-width:1060px)]:inline'>
-  Hiring developers?
-</button>
-
+            Hiring developers?
+          </button>
 
           {/* Login / Signup */}
-          <button className='bg-white text-black px-4 py-1 rounded'>Log In</button>
+          <button 
+            onClick={() => navigate('/login')}
+            className='bg-white text-black px-4 py-1 rounded'
+          >
+            Log In
+          </button>
           <button className='bg-green-600 hover:bg-green-700 text-white px-4 py-1 rounded'>Sign Up</button>
         </div>
       </div>
@@ -98,9 +135,27 @@ const Navbar = () => {
             </button>
           ))}
 
+          {/* Search bar in mobile dropdown */}
+          <div className="flex items-center bg-[#2d2f36] text-white px-3 py-2 rounded border border-gray-600 mt-2">
+            <FiSearch className="mr-2 text-white" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={handleSearchChange}
+              onKeyDown={handleSearchKeyDown}
+              placeholder="Search"
+              className="bg-transparent text-white text-sm placeholder-gray-400 focus:outline-none w-full"
+            />
+          </div>
+
           {/* Log In / Sign Up in mobile dropdown */}
           <div className="pt-2 border-t border-gray-700 mt-2 space-y-2">
-            <button className='block w-full text-left px-2 py-1 text-white hover:bg-gray-800'>Log In</button>
+            <button 
+              onClick={() => navigate('/login')}
+              className='block w-full text-left px-2 py-1 text-white hover:bg-gray-800'
+            >
+              Log In
+            </button>
             <button className='block w-full text-left px-2 py-1 text-white hover:bg-gray-800'>Sign Up</button>
           </div>
         </div>
