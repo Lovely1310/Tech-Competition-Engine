@@ -47,7 +47,8 @@ const Navbar = () => {
         {/* Left Section: Logo + Tabs */}
         <div className='flex items-center space-x-6'>
           {/* Logo (desktop) */}
-          <div className='flex items-center space-x-3 hidden max-[766px]:hidden md:flex'>
+          <div className='hidden md:flex items-center space-x-3'>
+
             <img src='/logo.png' alt='Logo' className='h-5' />
             <span className='text-sm font-medium'>TECH COMPETITION ENGINE</span>
           </div>

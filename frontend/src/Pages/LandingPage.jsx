@@ -5,18 +5,19 @@ import HeroSection from '../components/LandingPage/HeroSection'
 import CompanyCarousel from '../components/LandingPage/CompanyCarousel'
 import DeveloperSkills from '../components/LandingPage/DeveloperSkills'
 
-
 const LandingPage = () => {
   return (
     <section>
-    <div className="bg-white">
-      <Navigation />
-      <HeroSection />
-    </div>
-        <MiddleInfo />
-        <DeveloperSkills />
-        <CompanyCarousel />
-    
+      {/* First full-screen section */}
+      <div className="bg-black">
+        <Navigation />
+        <HeroSection />
+      </div>
+
+      {/* Remaining sections */}
+      <MiddleInfo />
+      <DeveloperSkills />
+      <CompanyCarousel />
     </section>
   )
 }

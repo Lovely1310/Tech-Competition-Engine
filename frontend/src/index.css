@@ -1,9 +1,16 @@
-@tailwind base;
+/* Fonts remain unchanged */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Tailwind Preflight replaces @tailwind base */
+@import "tailwindcss/preflight";
+@import "tailwindcss/utilities";
+/* DaisyUI should NOT be imported here anymore */
+
 @tailwind components;
 @tailwind utilities;
 @plugin "daisyui";
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
 
 @layer base {
   * {

@@ -1,86 +1,113 @@
-import React from 'react'
-import logo from '../../public/logo.svg'
+import React from 'react';
+import { motion } from 'framer-motion';
+import logo from '../../public/logo.svg';
 
 const Footer = () => {
   return (
-   <footer className='flex flex-col pb-10 bg-neutral items-center   text-neutral-content '>
-  <div className="footer sm:footer-horizontal  grid-rows-2 border-t border-gray-700  p-10 ">
-    <nav>
-    <h6 className="footer-title ">Services</h6>
-    <a className="link link-hover">Branding</a>
-    <a className="link link-hover">Design</a>
-    <a className="link link-hover">Marketing</a>
-    <a className="link link-hover">Advertisement</a>
-  </nav>
-  <nav>
-    <h6 className="footer-title">Company</h6>
-    <a className="link link-hover">About us</a>
-    <a className="link link-hover">Contact</a>
-    <a className="link link-hover">Jobs</a>
-    <a className="link link-hover">Press kit</a>
-  </nav>
-  <nav>
-    <h6 className="footer-title">Social</h6>
-    <a className="link link-hover">Twitter</a>
-    <a className="link link-hover">Instagram</a>
-    <a className="link link-hover">Facebook</a>
-    <a className="link link-hover">GitHub</a>
-  </nav>
-  <nav>
-    <h6 className="footer-title">Explore</h6>
-    <a className="link link-hover">Features</a>
-    <a className="link link-hover">Enterprise</a>
-    <a className="link link-hover">Security</a>
-    <a className="link link-hover">Pricing</a>
-  </nav>
-  <nav>
-    <h6 className="footer-title">Legal</h6>
-    <a className="link link-hover">Terms of use</a>
-    <a className="link link-hover">Privacy policy</a>
-    <a className="link link-hover">Cookie policy</a>
-  </nav>
-  <nav>
-    <h6 className="footer-title">Social</h6>
-    <a className="link link-hover">Twitter</a>
-    <a className="link link-hover">Instagram</a>
-    <a className="link link-hover">Facebook</a>
-    <a className="link link-hover">GitHub</a>
-  </nav>
-  <nav>
-    <h6 className="footer-title">Explore</h6>
-    <a className="link link-hover">Features</a>
-    <a className="link link-hover">Enterprise</a>
-    <a className="link link-hover">Security</a>
-    <a className="link link-hover">Pricing</a>
-  </nav>
-  <nav>
-    <h6 className="footer-title">Apps</h6>
-    <a className="link link-hover">Mac</a>
-    <a className="link link-hover">Windows</a>
-    <a className="link link-hover">iPhone</a>
-    <a className="link link-hover">Android</a>
-  </nav>
-  </div>
+    <footer className="relative text-gray-800 overflow-hidden">
+      <style>{`
+        @layer utilities {
+          @keyframes footerGradient {
+            0%   { background-position: 0% 50%; }
+            25%  { background-position: 50% 100%; }
+            50%  { background-position: 100% 50%; }
+            75%  { background-position: 50% 0%; }
+            100% { background-position: 0% 50%; }
+          }
+          .light-gradient-shuffle {
+            animation: footerGradient 20s ease-in-out infinite;
+            background: linear-gradient(270deg, #F8FAFC, #E0F2FE, #FDE68A, #CFFAFE, #FEF9C3);
+            background-size: 500% 500%;
+          }
+        }
+      `}</style>
 
-  <div className='flex flex-col gap-3 pt-5 items-center'>
-    <svg preserveAspectRatio="xMidYMid meet" data-bbox="0.36 0.279 243.208 201.268" viewBox="0 0 243.913 201.792" height="70.792" width="243.913" xmlns="http://www.w3.org/2000/svg" data-type="ugc" role="presentation" aria-hidden="true">
-    <g>
-        <g opacity=".86">
-            <path strokeWidth=".5" strokeMiterlimit="10" stroke="#fff" fill="#fff" d="M139.358 159.816s5.42-26.187 27.014-38.576a13.973 13.973 0 0 0 4.065-3.52l23.864-30.639a11.721 11.721 0 0 1 12.02-4.417c4 1 7.321 4.083 4.681 12.319-5.28 16.6-22.368 36.711-22.368 36.711s.51 6.036 4.769 1.513 18.549-27.665 18.549-27.665l7.515-14.255a11.879 11.879 0 0 0 1.32-4.417l2.534-26.574 2.816-17.282a9.292 9.292 0 0 1 2.851-5.4c3.52-3.238 10.066-7.039 13.445 5.086 3.8 13.6-2.921 53.87-5.808 69.691a29.2 29.2 0 0 1-5.086 11.862c-8.06 11.087-27.208 36.8-42.659 52.444v21.858a2.992 2.992 0 0 1-2.992 2.992h-42.8a1.531 1.531 0 0 1-1.549-1.426z"></path>
-            <path strokeWidth=".5" strokeMiterlimit="10" stroke="#fff" fill="#fff" d="M214.522 76.345s2.517-29.671 4.277-34.951-10.804 5.28-9.556 32.188z"></path>
-            <path strokeWidth=".5" strokeMiterlimit="10" stroke="#fff" fill="#fff" d="M202.713 73.071s3.114-18.936 4.523-21.611-7.8-2.27-10.049 21.611z"></path>
-            <path strokeWidth=".5" strokeMiterlimit="10" stroke="#fff" fill="#fff" d="M104.568 159.816s-5.438-26.187-27.032-38.576a13.9 13.9 0 0 1-4.048-3.52L49.625 86.991a11.738 11.738 0 0 0-12.038-4.417c-3.977 1-7.321 4.083-4.681 12.319 5.28 16.6 22.386 36.711 22.386 36.711s-.51 6.089-4.787 1.549-18.532-27.647-18.532-27.647l-7.519-14.255a11.879 11.879 0 0 1-1.32-4.417L20.587 60.26l-2.8-17.282a9.38 9.38 0 0 0-2.851-5.4c-3.52-3.238-10.066-7.039-13.445 5.086-3.784 13.6 2.9 53.87 5.808 69.691a28.967 28.967 0 0 0 5.086 11.862c8.06 11.087 27.208 36.8 42.642 52.444v21.858a3.009 3.009 0 0 0 3.009 2.992h42.783a1.531 1.531 0 0 0 1.566-1.426z"></path>
-            <path strokeWidth=".5" strokeMiterlimit="10" stroke="#fff" fill="#fff" d="M29.387 76.345s-2.52-29.671-4.277-34.951 10.823 5.28 9.556 32.188z"></path>
-            <path strokeWidth=".5" strokeMiterlimit="10" stroke="#fff" fill="#fff" d="M41.213 73.071S38.186 54.135 36.69 51.46s7.78-2.27 10.049 21.611z"></path>
-            <path strokeWidth=".5" strokeMiterlimit="10" stroke="#fff" fill="#fff" d="M131.695 13.481l10.313 10.93c8.623-9.169 22-9.609 29.407-2.745a18.567 18.567 0 0 1 3.52 22.368c-4.8 8.166-16.367 11.4-26.011 6.16a196.508 196.508 0 0 1-28.915-27.278 110.45 110.45 0 0 0-18.478-17.477c-2.165-1.619-3.96-2.165-8.923-3.766-8.5-2.728-19.587-.9-28.281 5.28a34.757 34.757 0 0 0-13.586 36.711 34.687 34.687 0 0 0 26.521 24.638c11.07 2.217 23.723-1.021 30.939-9.063a28.172 28.172 0 0 0 1.883-2.393L99.257 45.529c-.422.581-6.776 8.9-16.842 8.166a18.954 18.954 0 0 1-17.331-17.722 18.831 18.831 0 0 1 13.2-18.6 19.851 19.851 0 0 1 20.1 5.913c5.192 5.385 8.553 7.884 23.142 23 5.86 6.089 5.614 5.79 6.916 7.039 5.438 5.28 10.348 9.943 16.719 12.565 12.618 5.28 25.272-.141 26.644-.757a34.969 34.969 0 0 0 17.352-16.6c.6-1.267 7.48-16.3-.757-31.044A34.7 34.7 0 0 0 151.811.916a35.391 35.391 0 0 0-20.116 12.565z"></path>
-        </g>
-    </g>
-</svg>
-    <p className='text-2xl font-bold'>Tech Competition Engine</p>
-  </div>
-</footer>
+      {/* 🌈 Gradient Background + Soft Glass Effect */}
+      <div className="absolute inset-0 light-gradient-shuffle z-0" />
+      <div className="absolute inset-0 bg-white/70 backdrop-blur-sm z-0" />
 
-  )
-}
+      {/* 🌐 Footer Content */}
+      <motion.div
+        className="relative z-10 flex flex-col pb-10 items-center"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        <div className="footer sm:footer-horizontal grid-rows-2 border-t border-gray-300 p-10 text-gray-700">
+          {/* YOUR NAVIGATION GROUPS */}
+          <nav>
+            <h6 className="footer-title">Services</h6>
+            <a className="link link-hover">Branding</a>
+            <a className="link link-hover">Design</a>
+            <a className="link link-hover">Marketing</a>
+            <a className="link link-hover">Advertisement</a>
+          </nav>
+          <nav>
+            <h6 className="footer-title">Company</h6>
+            <a className="link link-hover">About us</a>
+            <a className="link link-hover">Contact</a>
+            <a className="link link-hover">Jobs</a>
+            <a className="link link-hover">Press kit</a>
+          </nav>
+          <nav>
+            <h6 className="footer-title">Social</h6>
+            <a className="link link-hover">Twitter</a>
+            <a className="link link-hover">Instagram</a>
+            <a className="link link-hover">Facebook</a>
+            <a className="link link-hover">GitHub</a>
+          </nav>
+          <nav>
+            <h6 className="footer-title">Explore</h6>
+            <a className="link link-hover">Features</a>
+            <a className="link link-hover">Enterprise</a>
+            <a className="link link-hover">Security</a>
+            <a className="link link-hover">Pricing</a>
+          </nav>
+          <nav>
+            <h6 className="footer-title">Legal</h6>
+            <a className="link link-hover">Terms of use</a>
+            <a className="link link-hover">Privacy policy</a>
+            <a className="link link-hover">Cookie policy</a>
+          </nav>
+          <nav>
+            <h6 className="footer-title">Social</h6>
+            <a className="link link-hover">Twitter</a>
+            <a className="link link-hover">Instagram</a>
+            <a className="link link-hover">Facebook</a>
+            <a className="link link-hover">GitHub</a>
+          </nav>
+          <nav>
+            <h6 className="footer-title">Explore</h6>
+            <a className="link link-hover">Features</a>
+            <a className="link link-hover">Enterprise</a>
+            <a className="link link-hover">Security</a>
+            <a className="link link-hover">Pricing</a>
+          </nav>
+          <nav>
+            <h6 className="footer-title">Apps</h6>
+            <a className="link link-hover">Mac</a>
+            <a className="link link-hover">Windows</a>
+            <a className="link link-hover">iPhone</a>
+            <a className="link link-hover">Android</a>
+          </nav>
+        </div>
 
-export default Footer
+        {/* 🔥 LOGO + TAGLINE */}
+        <motion.div
+          className="flex flex-col gap-3 pt-10 items-center"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          {/* SVG LOGO */}
+          <img src={logo} alt="Tech Competition Engine Logo" className="h-16 w-auto" />
+          <p className="text-2xl font-bold text-gray-800 pt-2">Tech Competition Engine</p>
+        </motion.div>
+      </motion.div>
+    </footer>
+  );
+};
+
+export default Footer;

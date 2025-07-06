@@ -1,166 +1,161 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from "react";
 
 const Globe = () => {
   const canvasRef = useRef(null);
-  const wrapperRef = useRef(null);
+  const [shapeIndex, setShapeIndex] = useState(0);
+
+  const STATES = ["globe", "gear", "face", "spiral"];
+  const CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789<>/{}[]!@#$%^&*".split("");
+  const TOTAL_POINTS = 700;
 
   useEffect(() => {
-    const CONFIG = {
-      MIN_FONT_SIZE: 12,
-      MAX_FONT_SIZE: 16,
-      FONT_SCALE: 0.008,
-      GLOBE_RADIUS_SCALE: 0.75,
-      LAT_STEP: 15,
-      LNG_STEP: 12,
-      LAT_POINTS_SCALE: 120,
-      LNG_POINTS_SCALE: 50,
-      ROTATION_SPEED: 0.06,
-      CHANGE_INTERVAL: 2500,
-      TRANSITION_DURATION: 600,
-      CHARS: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*+=<>?[]{}|~'
-    };
-
     const canvas = canvasRef.current;
-    const wrapper = wrapperRef.current;
-    
-    if (!canvas || !wrapper) return;
+    const ctx = canvas.getContext("2d");
+    let animationId;
 
-    const ctx = canvas.getContext('2d');
-    
-    function resizeCanvas() {
-      const size = Math.min(500, window.innerWidth * 0.9);
-      canvas.width = size;
-      canvas.height = size;
-      canvas.style.width = `${size}px`;
-      canvas.style.height = `${size}px`;
-      return size;
-    }
+    const size = Math.min(500, window.innerWidth * 0.9);
+    canvas.width = size;
+    canvas.height = size;
+    const centerX = size / 2;
+    const centerY = size / 2;
+    const fontSize = size < 400 ? 12 : 14;
+    ctx.font = `${fontSize}px monospace`;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
 
-    const canvasSize = resizeCanvas();
-    const centerX = canvasSize / 2;
-    const centerY = canvasSize / 2;
-    const radius = (canvasSize / 2) * CONFIG.GLOBE_RADIUS_SCALE;
-    const tilt = 0;
-    let rotation = 0;
-    
-    function getFontSize() {
-      return Math.min(CONFIG.MAX_FONT_SIZE, 
-             Math.max(CONFIG.MIN_FONT_SIZE, window.innerWidth * CONFIG.FONT_SCALE));
-    }
-    
-    const globePoints = [];
+    let points = [];
 
-    function generatePoints() {
-      globePoints.length = 0;
-      
-      for (let lat = -90; lat <= 90; lat += CONFIG.LAT_STEP) {
-        const cosLat = Math.abs(Math.cos(lat * Math.PI / 180));
-        const pointsAtThisLat = Math.floor(CONFIG.LAT_POINTS_SCALE * Math.pow(cosLat, 2.5));
-        const lngStep = pointsAtThisLat > 0 ? 360 / pointsAtThisLat : 360;
-        
-        for (let lng = -180; lng <= 180; lng += lngStep) {
-          if (pointsAtThisLat > 0) {
-            globePoints.push({
-              lat,
-              lng,
-              char: CONFIG.CHARS[Math.floor(Math.random() * CONFIG.CHARS.length)],
-              nextChar: CONFIG.CHARS[Math.floor(Math.random() * CONFIG.CHARS.length)],
-              transitionStart: Math.random() * CONFIG.CHANGE_INTERVAL,
-              transitionProgress: 0
-            });
-          }
-        }
+    const getGlobePoints = () => {
+      const coords = [];
+      for (let i = 0; i < TOTAL_POINTS; i++) {
+        const lat = Math.acos(2 * Math.random() - 1) - Math.PI / 2;
+        const lon = 2 * Math.PI * Math.random();
+        const r = (size / 2) * 0.75;
+        const x = centerX + r * Math.cos(lat) * Math.cos(lon);
+        const y = centerY + r * Math.cos(lat) * Math.sin(lon);
+        coords.push({ x, y });
       }
-      
-      for (let lng = -180; lng < 180; lng += CONFIG.LNG_STEP) {
-        const cosLng = Math.abs(Math.cos(lng * Math.PI / 180));
-        const pointsAtThisLng = Math.floor(CONFIG.LNG_POINTS_SCALE * (1 + cosLng * 0.5));
-        const latStep = pointsAtThisLng > 0 ? 180 / pointsAtThisLng : 180;
-        
-        for (let lat = -90; lat <= 90; lat += latStep) {
-          if (pointsAtThisLng > 0) {
-            globePoints.push({
-              lat,
-              lng,
-              char: CONFIG.CHARS[Math.floor(Math.random() * CONFIG.CHARS.length)],
-              nextChar: CONFIG.CHARS[Math.floor(Math.random() * CONFIG.CHARS.length)],
-              transitionStart: Math.random() * CONFIG.CHANGE_INTERVAL,
-              transitionProgress: 0
-            });
-          }
-        }
-      }
-    }
-
-    function drawGlobe(rotation) {
-      ctx.clearRect(0, 0, canvasSize, canvasSize);
-      ctx.font = `${getFontSize()}px 'Inter', monospace`;
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      
-      const currentTime = Date.now();
-
-      globePoints.forEach(point => {
-        if (currentTime - point.transitionStart >= CONFIG.CHANGE_INTERVAL) {
-          point.char = point.nextChar;
-          point.nextChar = CONFIG.CHARS[Math.floor(Math.random() * CONFIG.CHARS.length)];
-          point.transitionStart = currentTime + Math.random() * 1000;
-          point.transitionProgress = 0;
-        }
-
-        const phi = (90 - point.lat) * (Math.PI / 180);
-        const theta = (point.lng + rotation) * (Math.PI / 180);
-        
-        const x = radius * Math.sin(phi) * Math.cos(theta);
-        const y = radius * Math.cos(phi);
-        const z = radius * Math.sin(phi) * Math.sin(theta);
-        
-        const tiltedY = y * Math.cos(tilt) - z * Math.sin(tilt);
-        const tiltedZ = y * Math.sin(tilt) + z * Math.cos(tilt);
-        
-        if (tiltedZ > -radius * 0.3) {
-          const projX = centerX + x;
-          const projY = centerY + tiltedY;
-          
-          const depthOpacity = 0.3 + (tiltedZ / radius) * 0.7;
-          
-          const timeSinceTransition = currentTime - point.transitionStart;
-          point.transitionProgress = Math.min(1, timeSinceTransition / CONFIG.TRANSITION_DURATION);
-          const transitionOpacity = Math.sin(point.transitionProgress * Math.PI);
-          
-          // Use blue color similar to the screenshot
-          ctx.fillStyle = `rgba(59, 130, 246, ${depthOpacity * (1 - transitionOpacity)})`;
-          ctx.fillText(point.char, projX, projY);
-          
-          ctx.fillStyle = `rgba(59, 130, 246, ${depthOpacity * transitionOpacity})`;
-          ctx.fillText(point.nextChar, projX, projY);
-        }
-      });
-    }
-
-    function animate() {
-      rotation += CONFIG.ROTATION_SPEED;
-      drawGlobe(rotation);
-      requestAnimationFrame(animate);
-    }
-
-    const handleResize = () => {
-      resizeCanvas();
-      generatePoints();
+      return coords;
     };
 
-    window.addEventListener('resize', handleResize);
-    generatePoints();
+    const getGearShape = () => {
+      const coords = [];
+      const teeth = 12;
+      const inner = 100;
+      const outer = 130;
+      for (let i = 0; i < TOTAL_POINTS; i++) {
+        const t = (i / TOTAL_POINTS) * 2 * Math.PI;
+        const r = i % 2 === 0 ? outer : inner;
+        const x = centerX + r * Math.cos(t);
+        const y = centerY + r * Math.sin(t);
+        coords.push({ x, y });
+      }
+      return coords;
+    };
+
+    const getFaceShape = () => {
+      const coords = [];
+
+      // Eyes
+      for (let a = 0; a < Math.PI * 2; a += 0.15) {
+        coords.push({ x: centerX - 60 + 10 * Math.cos(a), y: centerY - 30 + 10 * Math.sin(a) });
+        coords.push({ x: centerX + 60 + 10 * Math.cos(a), y: centerY - 30 + 10 * Math.sin(a) });
+      }
+
+      // Smile
+      for (let a = 0; a < Math.PI; a += 0.1) {
+        coords.push({ x: centerX + 40 * Math.cos(a), y: centerY + 40 * Math.sin(a) });
+      }
+
+      // Brackets as glasses
+      for (let y = -20; y <= 20; y += 5) {
+        coords.push({ x: centerX - 80, y: centerY + y });
+        coords.push({ x: centerX + 80, y: centerY + y });
+      }
+
+      return coords;
+    };
+
+    const getSpiral = () => {
+      const coords = [];
+      const spiralTurns = 4;
+      for (let i = 0; i < TOTAL_POINTS; i++) {
+        const angle = 0.2 * i;
+        const radius = 5 + i * 0.5;
+        const x = centerX + radius * Math.cos(angle);
+        const y = centerY + radius * Math.sin(angle);
+        coords.push({ x, y });
+      }
+      return coords;
+    };
+
+    function getShapeCoords(type) {
+      if (type === "globe") return getGlobePoints();
+      if (type === "gear") return getGearShape();
+      if (type === "face") return getFaceShape();
+      if (type === "spiral") return getSpiral();
+      return [];
+    }
+
+    points = Array.from({ length: TOTAL_POINTS }, () => ({
+      x: Math.random() * size,
+      y: Math.random() * size,
+      tx: 0,
+      ty: 0,
+      vx: 0,
+      vy: 0,
+      char: CHARACTERS[Math.floor(Math.random() * CHARACTERS.length)],
+    }));
+
+    function updateTargets() {
+      const shape = STATES[shapeIndex];
+      const targetPoints = getShapeCoords(shape);
+      for (let i = 0; i < points.length; i++) {
+        const p = points[i];
+        const target = targetPoints[i % targetPoints.length];
+        p.tx = target.x;
+        p.ty = target.y;
+      }
+    }
+
+    updateTargets();
+
+    const animate = () => {
+      ctx.clearRect(0, 0, size, size);
+
+      points.forEach((p) => {
+        const dx = p.tx - p.x;
+        const dy = p.ty - p.y;
+        p.vx += dx * 0.04;
+        p.vy += dy * 0.04;
+        p.vx *= 0.7;
+        p.vy *= 0.7;
+        p.x += p.vx;
+        p.y += p.vy;
+
+        ctx.fillStyle = "rgba(59,130,246,0.85)";
+        ctx.fillText(p.char, p.x, p.y);
+      });
+
+      animationId = requestAnimationFrame(animate);
+    };
+
     animate();
 
-    return () => {
-      window.removeEventListener('resize', handleResize);
+    const handleClick = () => {
+      setShapeIndex((prev) => (prev + 1) % STATES.length);
     };
-  }, []);
+
+    canvas.addEventListener("click", handleClick);
+    return () => {
+      cancelAnimationFrame(animationId);
+      canvas.removeEventListener("click", handleClick);
+    };
+  }, [shapeIndex]);
 
   return (
-    <div ref={wrapperRef} className="header-globe-wrapper">
-      <canvas ref={canvasRef} id="globe" />
+    <div className="w-full h-full flex items-center justify-center">
+      <canvas ref={canvasRef} className="block cursor-pointer" />
     </div>
   );
 };

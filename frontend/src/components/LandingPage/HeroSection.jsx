@@ -1,57 +1,112 @@
 import React from "react";
+import { motion } from "framer-motion";
+import Typewriter from "typewriter-effect";
 import Globe from "./Globe";
 import ProfilePopups from "./ProfilePopups";
-import DynamicText from "./DynamicText";
 
 const HeroSection = () => {
   return (
-    <section className="relative bg-black text-[#0f172a] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-13">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 min-h-[600px]">
-          {/* Left Content - pushed further down */}
-          <div className="space-y-4 text-center lg:text-left max-w-2xl mx-auto lg:mx-0 mt-10">
-            <h1 className="text-5xl sm:text-5xl lg:text-5xl font-bold leading-tight tracking-tight">
-              <span className="flex flex-wrap items-center justify-center lg:justify-start gap-x-3">
-                <span className="relative inline-flex items-center font-semibold text-green-600 whitespace-nowrap">
-                  <DynamicText />
-                  <span className="ml-1 w-4 h-8 bg-green-100 inline-block rounded-sm"></span>
-                </span>
-                <span className="font-light text-white">the next</span>
-              </span>
+    <motion.section
+      initial={{ opacity: 0, scale: 0.98 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 1.2, ease: "easeOut" }}
+      className="relative bg-black text-white overflow-hidden h-screen flex items-center"
+    >
+      {/* 🌈 Animated Gradient Background */}
+      <div className="absolute inset-0 animate-gradient z-0"></div>
+      <div className="absolute inset-0 bg-black/60 z-0" />
 
-              <div className="mt-1 font-light text-white">
-                generation developer
+      {/* 🧩 Content Wrapper */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+          {/* 👈 Left Side */}
+          <motion.div
+            initial={{ x: -40, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 1 }}
+            className="space-y-6 text-center lg:text-left max-w-2xl mx-auto lg:mx-0"
+          >
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
+              {/* Line 1: Typewriter */}
+              <div className="flex justify-center lg:justify-start">
+                <span className="relative inline-flex font-semibold text-green-400 w-[120px] min-w-[120px] text-left">
+                  <Typewriter
+                    options={{
+                      strings: ["Forge", "Build", "Empower"],
+                      autoStart: true,
+                      loop: true,
+                      delay: 60,
+                      deleteSpeed: 30,
+                    }}
+                  />
+                  <span className="ml-1 w-4 h-8 bg-green-200 inline-block rounded-sm animate-pulse"></span>
+                </span>
+              </div>
+
+              {/* Line 2: Static */}
+              <div className="mt-2 text-white font-light text-center lg:text-left">
+                the next generation developer
               </div>
             </h1>
 
-            <p className="text-base text-gray-500 leading-relaxed">
-              We help thousands of companies hire and upskill the next
-              generation of developers, and millions of developers to become
-              one.
-            </p>
+            <motion.p
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.6 }}
+              className="text-base text-gray-300 leading-relaxed"
+            >
+              We help thousands of companies hire and upskill the next generation of developers, and millions of developers to become one.
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3 pt-3">
-              <button className="bg-slate-300 hover:bg-gray-800 text-black font-semibold px-6 py-3 rounded-md text-base transition duration-200">
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                className="bg-green-400 text-black font-semibold px-6 py-3 rounded-md text-base shadow-md"
+              >
                 Start a free trial
-              </button>
-              <button className="bg-white border border-gray-300 hover:bg-gray-50 text-black font-semibold px-6 py-3 rounded-md text-base transition duration-200">
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                className="bg-transparent border border-gray-400 text-white font-semibold px-6 py-3 rounded-md text-base"
+              >
                 For developers
-              </button>
+              </motion.button>
             </div>
-          </div>
-          {/* Right Content - Globe pulled up */}
-         
-          {/* Right Content - Globe pulled up */}
-          <div className="relative -mt-13 h-[500px] lg:h-[500px] items-center justify-center hidden md:flex ml-[-30px]">
-            <div className="relative w-full h-full max-w-[400px] max-h-[400px]">
+          </motion.div>
+
+          {/* 👉 Right Side: Globe + Profiles */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.5, duration: 1 }}
+            className="relative h-[480px] hidden md:flex items-center justify-center"
+          >
+            <div className="relative w-full h-full max-w-[420px] max-h-[420px]">
               <Globe />
               <ProfilePopups />
             </div>
-          </div>
-          
+          </motion.div>
         </div>
       </div>
-    </section>
+
+      {/* 🎨 Inject Tailwind-style Keyframe Utility */}
+      <style>{`
+        @layer utilities {
+          @keyframes gradientBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+          .animate-gradient {
+            animation: gradientBackground 16s ease infinite;
+            background: linear-gradient(270deg, #6EE7B7, #3B82F6, #9333EA);
+            background-size: 400% 400%;
+          }
+        }
+      `}</style>
+    </motion.section>
   );
 };
 
