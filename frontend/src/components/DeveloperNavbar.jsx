@@ -8,7 +8,7 @@ const DeveloperNavbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   // Toggle this to false to see the Sign Up / Log In buttons
-  const isLoggedIn = true;
+  const isLoggedIn = false;
 
   // Hide/show navbar on scroll
   useEffect(() => {
@@ -33,7 +33,7 @@ const DeveloperNavbar = () => {
         >
           {/* LEFT SIDE */}
           <div className="navbar-start flex items-center gap-6">
-            <Link to="/DeveloperDashboard" className="flex items-center">
+            <Link to="/" className="flex items-center">
               <img src="/logo.svg" alt="Logo" className="h-10 md:h-12" />
               <span className="hidden lg:inline ml-2 text-white font-mono italic tracking-widest">
                 TEN Tech Engine
