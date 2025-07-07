@@ -1,5 +1,5 @@
 import React from 'react';
-import MainContent from './components/MainContent';
+import MainContent from '../components/Dashboard/MainContent';
 
 function Dashboard() {
   return (

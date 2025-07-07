@@ -10,7 +10,7 @@ const HeroSection = () => {
       initial={{ opacity: 0, scale: 0.98 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 1.2, ease: "easeOut" }}
-      className="relative bg-black text-white overflow-hidden h-screen flex items-center"
+      className="relative bg-black text-white overflow-hidden min-h-[calc(100vh-64px)] pt-20 flex items-center"
     >
       {/* 🌈 Animated Gradient Background */}
       <div className="absolute inset-0 animate-gradient z-0"></div>
@@ -18,17 +18,15 @@ const HeroSection = () => {
 
       {/* 🧩 Content Wrapper */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 min-h-[calc(100vh-64px)] lg:min-h-0 items-center">
           {/* 👈 Left Side */}
           <motion.div
             initial={{ x: -40, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.2, duration: 1 }}
-            className="space-y-6 text-center lg:text-left max-w-2xl mx-auto lg:mx-0"
+            className="space-y-6 text-center lg:text-left max-w-2xl mx-auto lg:mx-0 flex flex-col justify-center"
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
-              {/* Line 1: Typewriter */}
               <div className="flex justify-center lg:justify-start">
                 <span className="relative inline-flex font-semibold text-green-400 w-[120px] min-w-[120px] text-left">
                   <Typewriter
@@ -43,8 +41,6 @@ const HeroSection = () => {
                   <span className="ml-1 w-4 h-8 bg-green-200 inline-block rounded-sm animate-pulse"></span>
                 </span>
               </div>
-
-              {/* Line 2: Static */}
               <div className="mt-2 text-white font-light text-center lg:text-left">
                 the next generation developer
               </div>
@@ -59,7 +55,6 @@ const HeroSection = () => {
               We help thousands of companies hire and upskill the next generation of developers, and millions of developers to become one.
             </motion.p>
 
-            {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4">
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -76,7 +71,7 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* 👉 Right Side: Globe + Profiles */}
+          {/* 👉 Right Side */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
@@ -91,7 +86,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* 🎨 Inject Tailwind-style Keyframe Utility */}
+      {/* 🎨 Tailwind Keyframes for Gradient Background */}
       <style>{`
         @layer utilities {
           @keyframes gradientBackground {

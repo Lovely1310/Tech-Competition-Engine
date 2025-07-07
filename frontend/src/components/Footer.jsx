@@ -1,7 +1,21 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import logo from '../../public/logo.svg';
 
 const Footer = () => {
+  const sections = [
+    { title: 'Services', links: ['Branding', 'Design', 'Marketing', 'Advertisement'] },
+    { title: 'Company', links: ['About us', 'Contact', 'Jobs', 'Press kit'] },
+    { title: 'Social', links: ['Twitter', 'Instagram', 'Facebook', 'GitHub'] },
+    { title: 'Explore', links: ['Features', 'Enterprise', 'Security', 'Pricing'] },
+    { title: 'Legal', links: ['Terms of use', 'Privacy policy', 'Cookie policy'] },
+    { title: 'Social', links: ['Twitter', 'Instagram', 'Facebook', 'GitHub'] },
+    { title: 'Explore', links: ['Features', 'Enterprise', 'Security', 'Pricing'] },
+    { title: 'Apps', links: ['Mac', 'Windows', 'iPhone', 'Android'] }
+  ];
+
+  const [openIndex, setOpenIndex] = useState(null);
+
   return (
     <footer className="relative text-gray-800 overflow-hidden">
       <style>{`
@@ -21,88 +35,60 @@ const Footer = () => {
         }
       `}</style>
 
-      {/* 🌈 Gradient Background + Soft Glass Effect */}
+      {/* Background Layers */}
       <div className="absolute inset-0 light-gradient-shuffle z-0" />
       <div className="absolute inset-0 bg-white/70 backdrop-blur-sm z-0" />
 
-      {/* 🌐 Footer Content */}
+      {/* Footer Content */}
       <motion.div
-        className="relative z-10 flex flex-col pb-10 items-center"
+        className="relative z-10 flex flex-col items-center w-full pb-10"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <div className="footer sm:footer-horizontal grid-rows-2 border-t border-gray-300 p-10 text-gray-700">
-          {/* YOUR NAVIGATION GROUPS */}
-          <nav>
-            <h6 className="footer-title">Services</h6>
-            <a className="link link-hover">Branding</a>
-            <a className="link link-hover">Design</a>
-            <a className="link link-hover">Marketing</a>
-            <a className="link link-hover">Advertisement</a>
-          </nav>
-          <nav>
-            <h6 className="footer-title">Company</h6>
-            <a className="link link-hover">About us</a>
-            <a className="link link-hover">Contact</a>
-            <a className="link link-hover">Jobs</a>
-            <a className="link link-hover">Press kit</a>
-          </nav>
-          <nav>
-            <h6 className="footer-title">Social</h6>
-            <a className="link link-hover">Twitter</a>
-            <a className="link link-hover">Instagram</a>
-            <a className="link link-hover">Facebook</a>
-            <a className="link link-hover">GitHub</a>
-          </nav>
-          <nav>
-            <h6 className="footer-title">Explore</h6>
-            <a className="link link-hover">Features</a>
-            <a className="link link-hover">Enterprise</a>
-            <a className="link link-hover">Security</a>
-            <a className="link link-hover">Pricing</a>
-          </nav>
-          <nav>
-            <h6 className="footer-title">Legal</h6>
-            <a className="link link-hover">Terms of use</a>
-            <a className="link link-hover">Privacy policy</a>
-            <a className="link link-hover">Cookie policy</a>
-          </nav>
-          <nav>
-            <h6 className="footer-title">Social</h6>
-            <a className="link link-hover">Twitter</a>
-            <a className="link link-hover">Instagram</a>
-            <a className="link link-hover">Facebook</a>
-            <a className="link link-hover">GitHub</a>
-          </nav>
-          <nav>
-            <h6 className="footer-title">Explore</h6>
-            <a className="link link-hover">Features</a>
-            <a className="link link-hover">Enterprise</a>
-            <a className="link link-hover">Security</a>
-            <a className="link link-hover">Pricing</a>
-          </nav>
-          <nav>
-            <h6 className="footer-title">Apps</h6>
-            <a className="link link-hover">Mac</a>
-            <a className="link link-hover">Windows</a>
-            <a className="link link-hover">iPhone</a>
-            <a className="link link-hover">Android</a>
-          </nav>
+        {/* Grid Sections */}
+        <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-y-10 gap-x-8 px-6 py-10 text-center sm:text-left">
+          {sections.map((section, index) => (
+            <div key={index} className="flex flex-col items-center sm:items-start">
+              <button
+                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                className="w-full sm:w-auto flex justify-between sm:block text-base font-semibold text-gray-900 mb-2 sm:mb-3"
+              >
+                {section.title}
+                <span className="sm:hidden">{openIndex === index ? '−' : '+'}</span>
+              </button>
+              <ul
+                className={`space-y-1 text-sm transition-all duration-300 ease-in-out ${
+                  openIndex === index || typeof window !== 'undefined' && window.innerWidth >= 640
+                    ? 'block'
+                    : 'hidden sm:block'
+                }`}
+              >
+                {section.links.map((link, i) => (
+                  <li key={i}>
+                    <a href="#" className="text-gray-700 hover:text-blue-600 hover:underline">
+                      {link}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
-        {/* 🔥 LOGO + TAGLINE */}
+        {/* Brand - moved below dropdowns */}
         <motion.div
-          className="flex flex-col gap-3 pt-10 items-center"
+          className="flex flex-col gap-3 pt-6 sm:pt-10 items-center"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, duration: 0.8 }}
           viewport={{ once: true }}
         >
-          {/* SVG LOGO */}
           <img src={logo} alt="Tech Competition Engine Logo" className="h-16 w-auto" />
-          <p className="text-2xl font-bold text-gray-800 pt-2">Tech Competition Engine</p>
+          <p className="text-2xl font-bold text-gray-800 pt-2 text-center">
+            Tech Competition Engine
+          </p>
         </motion.div>
       </motion.div>
     </footer>
