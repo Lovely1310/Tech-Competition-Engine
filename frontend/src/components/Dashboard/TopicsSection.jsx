@@ -248,22 +248,6 @@ const topics = [
             <circle cx="96" cy="528" r="12" fill="#ffb340"/>
             <circle cx="64" cy="544" r="12" fill="#ff5e5b"/>
           </g>
-          <g>
-            <circle cx="416" cy="464" r="12" fill="#ff5e5b"/>
-            <circle cx="448" cy="480" r="12" fill="#ffb340"/>
-            <circle cx="416" cy="496" r="12" fill="#43d675"/>
-            <circle cx="448" cy="512" r="12" fill="#43d675"/>
-            <circle cx="416" cy="528" r="12" fill="#ffb340"/>
-            <circle cx="448" cy="544" r="12" fill="#ff5e5b"/>
-          </g>
-          <g>
-            <circle cx="96" cy="464" r="12" fill="#ff5e5b"/>
-            <circle cx="64" cy="480" r="12" fill="#ffb340"/>
-            <circle cx="96" cy="496" r="12" fill="#43d675"/>
-            <circle cx="64" cy="512" r="12" fill="#43d675"/>
-            <circle cx="96" cy="528" r="12" fill="#ffb340"/>
-            <circle cx="64" cy="544" r="12" fill="#ff5e5b"/>
-          </g>
         </svg>
       </span>
     ),
@@ -279,12 +263,13 @@ const TopicsSection = () => {
   return (
     <>
       <section>
-        <h2 className="text-xl font-semibold text-black italic mb-6 text-center sm:text-left">Prepare By Topics</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <h2 className="text-xl font-extrabold italic font-serif text-black mb-6 text-center">Prepare By Topics</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-5xl mx-auto">
           {topics.map((topic, index) => (
             <div
               key={index}
-              className="animated-card-bg rounded-lg shadow-sm p-4 border border-gray-200 hover:shadow-md hover:border-primary-300 transition-all cursor-pointer group"
+              className="bg-gradient-to-br from-green-200 via-blue-200 to-purple-200 shadow-lg rounded-xl p-6 transition-transform transition-shadow transition-filter duration-200 animated-topic-card hover:scale-105 hover:shadow-2xl hover:brightness-150"
+              style={{ animationDelay: `${index * 0.15}s` }}
             >
               <div className="text-center">
                 {typeof topic.icon === 'string' ? (
@@ -312,6 +297,20 @@ const TopicsSection = () => {
           0% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }
           100% { background-position: 0% 50%; }
+        }
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animated-topic-card {
+          opacity: 0;
+          animation: fadeInUp 0.7s forwards;
         }
       `}</style>
     </>
