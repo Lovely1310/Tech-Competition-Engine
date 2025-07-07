@@ -8,7 +8,7 @@ const DeveloperNavbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   // Toggle this to false to see the Sign Up / Log In buttons
-  const isLoggedIn = false;
+  const isLoggedIn = true;
 
   // Hide/show navbar on scroll
   useEffect(() => {
