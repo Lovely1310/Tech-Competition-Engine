@@ -262,8 +262,8 @@ const topics = [
 const TopicsSection = () => {
   return (
     <>
-      <section>
-        <h2 className="text-xl font-extrabold italic font-serif text-black mb-6 text-center">Prepare By Topics</h2>
+      <section className="pb-10">
+        <h2 style={{ fontFamily: '"Press Start 2P", cursive' }} className="text-2xl text-black mb-8 text-center">PREPARE THE TOPICS</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-5xl mx-auto">
           {topics.map((topic, index) => (
             <div
