@@ -95,7 +95,7 @@ function DeveloperLogin() {
               />
               <motion.button
                 type="button"
-                onClick={() => navigate('/DeveloperLanding')}
+                onClick={() => navigate('/DeveloperDashboard')}
                 className="w-full p-3 bg-black text-white rounded-lg hover:bg-gray-800 transition duration-300"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}

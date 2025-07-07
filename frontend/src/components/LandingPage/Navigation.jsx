@@ -28,20 +28,20 @@ const Navigation = () => {
           exit={{ opacity: 0, y: -30 }}
           transition={{ duration: 0.4, ease: 'easeInOut' }}
         >
-          {/* LEFT: Logo */}
+          {/* LEFT: Logo with link */}
           <div className="navbar-start">
-            <div className="flex items-center">
+            <Link to="/" className="flex items-center">
               <img src={logo} alt="TechCompetitionEngine Logo" className="h-10 md:h-12" />
               <span className="text-white font-mono italic text-base tracking-widest hidden lg:inline ml-2">
                 TEN Tech Engine
               </span>
-            </div>
+            </Link>
           </div>
 
           {/* CENTER: Main Nav (Only for large screens) */}
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
-              {['Products', 'Solutions', 'Resources', 'Pricing', 'For Developers'].map((item, i) => (
+              {['Products', 'Solutions', 'Resources', 'Pricing'].map((item, i) => (
                 <li key={i}>
                   <a
                     href="#"
@@ -51,6 +51,14 @@ const Navigation = () => {
                   </a>
                 </li>
               ))}
+              <li>
+                <Link
+                  to="/DeveloperDashboard"
+                  className="text-white hover:text-blue-200 px-3 py-2 text-sm font-medium"
+                >
+                  For Developers
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -61,9 +69,11 @@ const Navigation = () => {
               <button className="btn btn-primary text-white hover:brightness-110">
                 <span className="px-3 py-2 text-sm font-semibold">Create a free account</span>
               </button>
-              <button className="btn btn-outline border-white text-white hover:bg-white/10 hover:border-blue-300">
-                <Link to="/login" className="px-3 py-2 text-sm font-semibold">Log In</Link>
-              </button>
+              <Link to="/login">
+                <button className="btn btn-outline border-white text-white hover:bg-white/10 hover:border-blue-300">
+                  <span className="px-3 py-2 text-sm font-semibold">Log In</span>
+                </button>
+              </Link>
             </div>
 
             {/* Hamburger (Small screens) */}
@@ -84,13 +94,18 @@ const Navigation = () => {
                 tabIndex={0}
                 className="menu dropdown-content mt-3 z-[1] p-4 shadow bg-white/90 backdrop-blur-md rounded-box w-60 text-center items-center gap-2"
               >
-                {['Products', 'Solutions', 'Resources', 'Pricing', 'For Developers'].map((item, i) => (
+                {['Products', 'Solutions', 'Resources', 'Pricing'].map((item, i) => (
                   <li key={i}>
                     <a className="text-gray-800 hover:text-blue-600 text-sm font-medium px-2 py-1">
                       {item}
                     </a>
                   </li>
                 ))}
+                <li>
+                  <Link to="/DeveloperLogin" className="text-gray-800 hover:text-blue-600 text-sm font-medium px-2 py-1">
+                    For Developers
+                  </Link>
+                </li>
                 <hr className="my-2 w-full" />
                 <li>
                   <Link to="/login" className="text-black text-sm font-semibold px-2 py-1">

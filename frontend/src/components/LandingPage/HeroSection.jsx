@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Typewriter from "typewriter-effect";
 import Globe from "./Globe";
 import ProfilePopups from "./ProfilePopups";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
@@ -56,18 +57,23 @@ const HeroSection = () => {
             </motion.p>
 
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4">
+              <Link to="/DeveloperDashboard">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 className="bg-green-400 text-black font-semibold px-6 py-3 rounded-md text-base shadow-md"
               >
                 Start a free trial
               </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                className="bg-transparent border border-gray-400 text-white font-semibold px-6 py-3 rounded-md text-base"
-              >
-                For developers
-              </motion.button>
+              </Link>
+
+              <Link to="/DeveloperDashboard">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  className="bg-transparent border border-gray-400 text-white font-semibold px-6 py-3 rounded-md text-base"
+                >
+                  For developers
+                </motion.button>
+              </Link>
             </div>
           </motion.div>
 

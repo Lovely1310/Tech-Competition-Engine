@@ -7,7 +7,7 @@ import BusinessLogin from './Pages/BusinessLogin'
 import LoginPage from './components/LoginPageComponents/LoginPage';
 import Footer from './components/Footer';
 import PageAfterLogin from './Pages/PageAfterLogin';
-import DeveloperLogin from './components/LoginPageComponents/Developerlogin';
+import DeveloperLogin from './components/LoginPageComponents/DeveloperLogin';
 import Apply from './Pages/Apply';
 import CertifySection from './components/pageAfterlogin/CertifySection';
 import DeveloperDashboard from  './Pages/Dashboard'
