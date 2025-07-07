@@ -6,7 +6,7 @@
 // Databases icon from user provided image
 // Data Structures icon from user provided image
 // Algorithms icon from user provided image
-import React from 'react';
+
 
 const topics = [
   {
@@ -264,94 +264,6 @@ const topics = [
             <circle cx="96" cy="528" r="12" fill="#ffb340"/>
             <circle cx="64" cy="544" r="12" fill="#ff5e5b"/>
           </g>
-          <g>
-            <circle cx="416" cy="464" r="12" fill="#ff5e5b"/>
-            <circle cx="448" cy="480" r="12" fill="#ffb340"/>
-            <circle cx="416" cy="496" r="12" fill="#43d675"/>
-            <circle cx="448" cy="512" r="12" fill="#43d675"/>
-            <circle cx="416" cy="528" r="12" fill="#ffb340"/>
-            <circle cx="448" cy="544" r="12" fill="#ff5e5b"/>
-          </g>
-          <g>
-            <circle cx="96" cy="464" r="12" fill="#ff5e5b"/>
-            <circle cx="64" cy="480" r="12" fill="#ffb340"/>
-            <circle cx="96" cy="496" r="12" fill="#43d675"/>
-            <circle cx="64" cy="512" r="12" fill="#43d675"/>
-            <circle cx="96" cy="528" r="12" fill="#ffb340"/>
-            <circle cx="64" cy="544" r="12" fill="#ff5e5b"/>
-          </g>
-          <g>
-            <circle cx="416" cy="464" r="12" fill="#ff5e5b"/>
-            <circle cx="448" cy="480" r="12" fill="#ffb340"/>
-            <circle cx="416" cy="496" r="12" fill="#43d675"/>
-            <circle cx="448" cy="512" r="12" fill="#43d675"/>
-            <circle cx="416" cy="528" r="12" fill="#ffb340"/>
-            <circle cx="448" cy="544" r="12" fill="#ff5e5b"/>
-          </g>
-          <g>
-            <circle cx="96" cy="464" r="12" fill="#ff5e5b"/>
-            <circle cx="64" cy="480" r="12" fill="#ffb340"/>
-            <circle cx="96" cy="496" r="12" fill="#43d675"/>
-            <circle cx="64" cy="512" r="12" fill="#43d675"/>
-            <circle cx="96" cy="528" r="12" fill="#ffb340"/>
-            <circle cx="64" cy="544" r="12" fill="#ff5e5b"/>
-          </g>
-          <g>
-            <circle cx="416" cy="464" r="12" fill="#ff5e5b"/>
-            <circle cx="448" cy="480" r="12" fill="#ffb340"/>
-            <circle cx="416" cy="496" r="12" fill="#43d675"/>
-            <circle cx="448" cy="512" r="12" fill="#43d675"/>
-            <circle cx="416" cy="528" r="12" fill="#ffb340"/>
-            <circle cx="448" cy="544" r="12" fill="#ff5e5b"/>
-          </g>
-          <g>
-            <circle cx="96" cy="464" r="12" fill="#ff5e5b"/>
-            <circle cx="64" cy="480" r="12" fill="#ffb340"/>
-            <circle cx="96" cy="496" r="12" fill="#43d675"/>
-            <circle cx="64" cy="512" r="12" fill="#43d675"/>
-            <circle cx="96" cy="528" r="12" fill="#ffb340"/>
-            <circle cx="64" cy="544" r="12" fill="#ff5e5b"/>
-          </g>
-          <g>
-            <circle cx="416" cy="464" r="12" fill="#ff5e5b"/>
-            <circle cx="448" cy="480" r="12" fill="#ffb340"/>
-            <circle cx="416" cy="496" r="12" fill="#43d675"/>
-            <circle cx="448" cy="512" r="12" fill="#43d675"/>
-            <circle cx="416" cy="528" r="12" fill="#ffb340"/>
-            <circle cx="448" cy="544" r="12" fill="#ff5e5b"/>
-          </g>
-          <g>
-            <circle cx="96" cy="464" r="12" fill="#ff5e5b"/>
-            <circle cx="64" cy="480" r="12" fill="#ffb340"/>
-            <circle cx="96" cy="496" r="12" fill="#43d675"/>
-            <circle cx="64" cy="512" r="12" fill="#43d675"/>
-            <circle cx="96" cy="528" r="12" fill="#ffb340"/>
-            <circle cx="64" cy="544" r="12" fill="#ff5e5b"/>
-          </g>
-          <g>
-            <circle cx="416" cy="464" r="12" fill="#ff5e5b"/>
-            <circle cx="448" cy="480" r="12" fill="#ffb340"/>
-            <circle cx="416" cy="496" r="12" fill="#43d675"/>
-            <circle cx="448" cy="512" r="12" fill="#43d675"/>
-            <circle cx="416" cy="528" r="12" fill="#ffb340"/>
-            <circle cx="448" cy="544" r="12" fill="#ff5e5b"/>
-          </g>
-          <g>
-            <circle cx="96" cy="464" r="12" fill="#ff5e5b"/>
-            <circle cx="64" cy="480" r="12" fill="#ffb340"/>
-            <circle cx="96" cy="496" r="12" fill="#43d675"/>
-            <circle cx="64" cy="512" r="12" fill="#43d675"/>
-            <circle cx="96" cy="528" r="12" fill="#ffb340"/>
-            <circle cx="64" cy="544" r="12" fill="#ff5e5b"/>
-          </g>
-          <g>
-            <circle cx="416" cy="464" r="12" fill="#ff5e5b"/>
-            <circle cx="448" cy="480" r="12" fill="#ffb340"/>
-            <circle cx="416" cy="496" r="12" fill="#43d675"/>
-            <circle cx="448" cy="512" r="12" fill="#43d675"/>
-            <circle cx="416" cy="528" r="12" fill="#ffb340"/>
-            <circle cx="448" cy="544" r="12" fill="#ff5e5b"/>
-          </g>
         </svg>
       </span>
     ),
@@ -365,30 +277,44 @@ const topics = [
 
 const TopicsSection = () => {
   return (
-    <section>
-      <h2 className="text-xl font-semibold text-gray-800 mb-6 text-center sm:text-left">Prepare By Topics</h2>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-        {topics.map((topic, index) => (
-          <div
-            key={index}
-            className="bg-white rounded-lg shadow-sm p-4 border border-gray-200 hover:shadow-md hover:border-primary-300 transition-all cursor-pointer group"
-          >
-            <div className="text-center">
-              {typeof topic.icon === 'string' ? (
-                <div className={`text-2xl flex justify-center items-center mb-2 group-hover:scale-110 transition-transform ${topic.color}`} style={{height: '2.25rem'}}>
-                  {topic.icon}
-                </div>
-              ) : (
-                topic.icon
-              )}
-              <span className="text-sm font-medium text-gray-700 group-hover:text-primary-600">
-                {topic.name}
-              </span>
+    <>
+      <section>
+        <h2 className="text-xl font-semibold text-black italic mb-6 text-center sm:text-left">Prepare By Topics</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+          {topics.map((topic, index) => (
+            <div
+              key={index}
+              className="animated-card-bg rounded-lg shadow-sm p-4 border border-gray-200 hover:shadow-md hover:border-primary-300 transition-all cursor-pointer group"
+            >
+              <div className="text-center">
+                {typeof topic.icon === 'string' ? (
+                  <div className={`text-2xl flex justify-center items-center mb-2 group-hover:scale-110 transition-transform ${topic.color}`} style={{height: '2.25rem'}}>
+                    {topic.icon}
+                  </div>
+                ) : (
+                  topic.icon
+                )}
+                <span className="text-sm font-medium text-gray-700 group-hover:text-primary-600">
+                  {topic.name}
+                </span>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
-    </section>
+          ))}
+        </div>
+      </section>
+      <style>{`
+        .animated-card-bg {
+          background: linear-gradient(120deg, #f3e7fa 0%, #e0eafc 50%, #f9f9f9 100%);
+          background-size: 200% 200%;
+          animation: cardGradientMove 8s ease-in-out infinite;
+        }
+        @keyframes cardGradientMove {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+      `}</style>
+    </>
   );
 };
 

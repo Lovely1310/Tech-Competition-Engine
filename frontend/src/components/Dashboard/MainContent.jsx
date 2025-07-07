@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { FaRobot, FaCode, FaBrain, FaTrophy } from 'react-icons/fa';
 import PreparationSection from './PreparationSection';
 import CertificationSection from './CertificationSection';
@@ -6,31 +5,31 @@ import TopicsSection from './TopicsSection';
 import PreparationKits from './PreparationKits';
 
 const MainContent = () => {
-  const [activeTab, setActiveTab] = useState('ai');
+  const [activeTab, setActiveTab] =('practice');
 
   const tabClass = (tab) =>
-    `px-4 py-2 rounded-t-lg font-semibold transition-colors duration-200 focus:outline-none ${
+    `px-4 py-2 font-semibold transition-colors duration-200 focus:outline-none ${
       activeTab === tab
-        ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg'
-        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+        ? 'text-blue-600 underline'
+        : 'text-black hover:text-green-500'
     }`;
 
   return (
-    <div className="w-full px-4 sm:px-6 lg:px-8 py-8">
+    <div className="w-full min-h-screen px-4 sm:px-6 lg:px-8 py-8 animated-gradient-bg">
       {/* Tabs */}
-      <div className="flex space-x-2 mb-6">
-        <button className={tabClass('ai')} onClick={() => setActiveTab('ai')}>
-          <FaRobot className="inline mr-2" /> AI Tools
-        </button>
+      <div className="flex justify-center space-x-2 mb-6 bg-transparent shadow-none p-0">
         <button className={tabClass('practice')} onClick={() => setActiveTab('practice')}>
           <FaCode className="inline mr-2" /> Practice
+        </button>
+        <button className={tabClass('ai')} onClick={() => setActiveTab('ai')}>
+          <FaRobot className="inline mr-2" /> AI Tools
         </button>
         <button className={tabClass('leaderboard')} onClick={() => setActiveTab('leaderboard')}>
           <FaTrophy className="inline mr-2" /> Leaderboard
         </button>
       </div>
       {/* Tab Content */}
-      <div className="bg-white rounded-lg shadow p-6 mb-8 min-h-[200px]">
+      <div>
         {activeTab === 'ai' && (
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             <button className="flex flex-col items-center justify-center p-6 rounded-xl bg-gradient-to-br from-green-400 to-blue-500 text-white shadow-lg hover:scale-105 transition-transform">
@@ -104,6 +103,19 @@ const MainContent = () => {
           </div>
         )}
       </div>
+      {/* Add animated gradient background style */}
+      <style>{`
+        .animated-gradient-bg {
+          background: linear-gradient(270deg,rgb(73, 35, 101),rgb(38, 73, 90),rgb(44, 120, 85),rgb(27, 38, 79), #a4508b);
+          background-size: 600% 600%;
+          animation: gradientBG 16s ease infinite;
+        }
+        @keyframes gradientBG {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+      `}</style>
     </div>
   );
 };
