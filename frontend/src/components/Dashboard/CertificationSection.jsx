@@ -1,3 +1,5 @@
+import React from 'react';
+
 const CertificationSection = () => {
   return (
     <>
@@ -73,4 +75,4 @@ const CertificationSection = () => {
   );
 };
 
-export default CertificationSection
+export default CertificationSection;
