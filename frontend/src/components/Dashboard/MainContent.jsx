@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { FaRobot, FaCode, FaBrain, FaTrophy } from 'react-icons/fa';
 import PreparationSection from './PreparationSection';
 import CertificationSection from './CertificationSection';
@@ -5,7 +6,7 @@ import TopicsSection from './TopicsSection';
 import PreparationKits from './PreparationKits';
 
 const MainContent = () => {
-  const [activeTab, setActiveTab] =('practice');
+  const [activeTab, setActiveTab] = useState('practice');
 
   const tabClass = (tab) =>
     `px-4 py-2 font-semibold transition-colors duration-200 focus:outline-none ${
