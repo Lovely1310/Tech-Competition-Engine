@@ -9,114 +9,112 @@ const MainContent = () => {
   const [activeTab, setActiveTab] = useState('practice');
 
   const tabClass = (tab) =>
-    `px-4 py-2 font-semibold transition-colors duration-200 focus:outline-none ${
+    `text-base sm:text-lg px-4 py-2 font-semibold tracking-wide border-b-2 transition-colors duration-300 ${
       activeTab === tab
-        ? 'text-blue-600 underline'
-        : 'text-black hover:text-green-500'
+        ? 'border-cyan-400 text-white'
+        : 'border-transparent text-slate-200 hover:text-cyan-300 hover:border-cyan-300'
     }`;
 
   return (
-    <div className="w-full min-h-screen px-4 sm:px-6 lg:px-8 py-24 animated-gradient-bg">
-      {/* Tabs */}
-      <div className="flex justify-center space-x-2 mb-6 bg-transparent shadow-none p-0">
-        <button className={tabClass('practice')} onClick={() => setActiveTab('practice')}>
-          <FaCode className="inline mr-2" /> Practice
-        </button>
-        <button className={tabClass('ai')} onClick={() => setActiveTab('ai')}>
-          <FaRobot className="inline mr-2" /> AI Tools
-        </button>
-        <button className={tabClass('leaderboard')} onClick={() => setActiveTab('leaderboard')}>
-          <FaTrophy className="inline mr-2" /> Leaderboard
-        </button>
+    <div className="w-full min-h-screen font-sans text-gray-900 relative overflow-hidden bg-white">
+
+      {/* 🌌 Wave Header */}
+      <div className="relative w-full h-80 bg-gradient-to-br from-[#0f172a] via-[#1e1e2f] to-[#1a1a40] z-0">
+        <svg
+          className="absolute bottom-0 left-0 w-full"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 180"
+          preserveAspectRatio="none"
+        >
+          <path
+            fill="#f8fafc"
+            d="M0,160 C480,80 960,240 1440,160 L1440,320 L0,320 Z"
+          />
+        </svg>
       </div>
-      {/* Tab Content */}
-      <div>
-        {activeTab === 'ai' && (
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <button className="flex flex-col items-center justify-center p-6 rounded-xl bg-gradient-to-br from-green-400 to-blue-500 text-white shadow-lg hover:scale-105 transition-transform">
-              <FaBrain className="text-3xl mb-2" />
-              <span className="font-bold">AI Code Helper</span>
-              <span className="text-xs mt-1 opacity-80">Get instant code suggestions</span>
-            </button>
-            <button className="flex flex-col items-center justify-center p-6 rounded-xl bg-gradient-to-br from-pink-400 to-purple-500 text-white shadow-lg hover:scale-105 transition-transform">
-              <FaRobot className="text-3xl mb-2" />
-              <span className="font-bold">AI Quiz Generator</span>
-              <span className="text-xs mt-1 opacity-80">Generate quizzes on any topic</span>
-            </button>
-            <button className="flex flex-col items-center justify-center p-6 rounded-xl bg-gradient-to-br from-yellow-400 to-orange-500 text-white shadow-lg hover:scale-105 transition-transform">
-              <FaCode className="text-3xl mb-2" />
-              <span className="font-bold">AI Interview Simulator</span>
-              <span className="text-xs mt-1 opacity-80">Practice mock interviews</span>
-            </button>
-          </div>
-        )}
+
+      {/* 🧭 Tabs */}
+      <div className="relative z-10 -mt-36 px-4 sm:px-6 lg:px-12">
+        <div className="flex justify-center space-x-6 pb-4 mb-16">
+          <button className={tabClass('practice')} onClick={() => setActiveTab('practice')}>
+            <FaCode className="inline mr-2" /> Practice
+          </button>
+          <button className={tabClass('ai')} onClick={() => setActiveTab('ai')}>
+            <FaRobot className="inline mr-2" /> AI Tools
+          </button>
+          <button className={tabClass('leaderboard')} onClick={() => setActiveTab('leaderboard')}>
+            <FaTrophy className="inline mr-2" /> Leaderboard
+          </button>
+        </div>
+      </div>
+
+      {/* 🔧 Tab Content */}
+      <div className="relative z-10">
         {activeTab === 'practice' && (
-          <div className="w-full space-y-8">
-            <PreparationSection />
-            <CertificationSection />
-            <TopicsSection />
-            <PreparationKits />
+          <div className="w-full">
+
+            {/* 🔹 Preparation Section */}
+            <div className="w-full bg-gradient-to-b from-[#f8fafc] to-[#1c2232]">
+              <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 py-20">
+                <PreparationSection />
+              </div>
+            </div>
+
+            {/* 🟣 Certification Section */}
+            <div className="w-full bg-gradient-to-b from-[#1c2232] to-[#2b1f37]">
+              <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 py-20">
+                <CertificationSection />
+              </div>
+            </div>
+
+            {/* 🟢 Topics Section */}
+            <div className="w-full bg-gradient-to-b from-[#2b1f37] to-[#172830]">
+              <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 py-20">
+                <TopicsSection />
+              </div>
+            </div>
+
+            {/* 🟠 Preparation Kits Section */}
+            <div className="w-full bg-gradient-to-b from-[#172830] to-[#2b2e1f]">
+              <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 py-20">
+                <PreparationKits />
+              </div>
+            </div>
           </div>
         )}
+
+        {/* 🤖 AI Tools Section */}
+        {activeTab === 'ai' && (
+          <div className="w-full bg-gradient-to-b from-[#101010] via-[#0e0e14] to-[#1a1a1a] py-20">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 text-white">
+              <div className="bg-[#0f172a] p-8 rounded-md hover:shadow-lg hover:scale-105 transition">
+                <FaBrain className="text-4xl mb-2 mx-auto text-teal-400" />
+                <h3 className="text-lg font-semibold">AI Code Helper</h3>
+                <p className="text-sm mt-1 text-slate-300">Get instant code suggestions</p>
+              </div>
+              <div className="bg-[#1e293b] p-8 rounded-md hover:shadow-lg hover:scale-105 transition">
+                <FaRobot className="text-4xl mb-2 mx-auto text-fuchsia-400" />
+                <h3 className="text-lg font-semibold">AI Quiz Generator</h3>
+                <p className="text-sm mt-1 text-slate-300">Generate quizzes on any topic</p>
+              </div>
+              <div className="bg-[#0f172a] p-8 rounded-md hover:shadow-lg hover:scale-105 transition">
+                <FaCode className="text-4xl mb-2 mx-auto text-amber-400" />
+                <h3 className="text-lg font-semibold">AI Interview Simulator</h3>
+                <p className="text-sm mt-1 text-slate-300">Practice mock interviews</p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* 🏆 Leaderboard Section */}
         {activeTab === 'leaderboard' && (
-          <div className="relative flex flex-col items-center justify-center h-40 text-gray-500 overflow-hidden">
-            {/* Animated Background */}
-            <div className="absolute inset-0 z-0 animate-gradient-move bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 opacity-60 blur-2xl" style={{backgroundSize: '200% 200%'}} />
-            {/* Floating shapes */}
-            <div className="absolute left-10 top-4 w-16 h-16 bg-pink-300 rounded-full opacity-30 animate-float-slow" />
-            <div className="absolute right-16 bottom-2 w-20 h-20 bg-blue-300 rounded-full opacity-30 animate-float-medium" />
-            <div className="absolute left-1/2 top-1/2 w-12 h-12 bg-purple-300 rounded-full opacity-30 animate-float-fast" style={{transform: 'translate(-50%, -50%)'}} />
-            {/* Leaderboard Content */}
-            <FaTrophy className="relative z-10 text-5xl mb-2 text-yellow-400" />
-            <span className="relative z-10 font-bold text-lg">Leaderboard coming soon!</span>
-            {/* Animations */}
-            <style>{`
-              @keyframes gradient-move {
-                0% { background-position: 0% 50%; }
-                50% { background-position: 100% 50%; }
-                100% { background-position: 0% 50%; }
-              }
-              .animate-gradient-move {
-                animation: gradient-move 8s ease-in-out infinite;
-              }
-              @keyframes float-slow {
-                0%, 100% { transform: translateY(0); }
-                50% { transform: translateY(-20px); }
-              }
-              .animate-float-slow {
-                animation: float-slow 7s ease-in-out infinite;
-              }
-              @keyframes float-medium {
-                0%, 100% { transform: translateY(0); }
-                50% { transform: translateY(-30px); }
-              }
-              .animate-float-medium {
-                animation: float-medium 5s ease-in-out infinite;
-              }
-              @keyframes float-fast {
-                0%, 100% { transform: translateY(0); }
-                50% { transform: translateY(-15px); }
-              }
-              .animate-float-fast {
-                animation: float-fast 3s ease-in-out infinite;
-              }
-            `}</style>
+          <div className="w-full bg-gradient-to-b from-[#101010] to-[#1a1a25] text-white text-center py-24 px-4 sm:px-6 lg:px-12">
+            <FaTrophy className="text-6xl text-yellow-400 mb-6 mx-auto" />
+            <h2 className="text-2xl font-bold mb-2">Leaderboard Coming Soon</h2>
+            <p className="text-slate-400">Stay tuned for exciting competitions and top performers</p>
           </div>
         )}
       </div>
-      {/* Add animated gradient background style */}
-      <style>{`
-        .animated-gradient-bg {
-          background: linear-gradient(270deg,rgb(73, 35, 101),rgb(38, 73, 90),rgb(44, 120, 85),rgb(27, 38, 79), #a4508b);
-          background-size: 600% 600%;
-          animation: gradientBG 16s ease infinite;
-        }
-        @keyframes gradientBG {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-      `}</style>
     </div>
   );
 };
