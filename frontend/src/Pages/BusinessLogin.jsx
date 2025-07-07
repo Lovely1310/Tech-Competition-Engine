@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const BusinessLogin = () => {
   const [email, setEmail] = useState('');
@@ -9,48 +10,65 @@ const BusinessLogin = () => {
     console.log('Form submitted', { email, rememberMe });
   };
 
-  //returning the JSX for the login page
   return (
-    <div className="min-h-screen bg-gray-50 flex">
-      {/* Left side - Login Form */}
-      <div className="flex-1 flex items-start justify-center px-4 sm:px-6 lg:px-8 pt-12 sm:pt-12 lg:pt-12">
-        <div className="max-w-md w-full space-y-28">
-          {/* Logo with increased spacing */}
-          <div className="text-left">
+    <div className="min-h-screen bg-gray-50 flex flex-col lg:flex-row">
+      {/* Left - Login Form */}
+      <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-10 pb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="w-full max-w-md space-y-20"
+        >
+          {/* Logo */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-center lg:text-left"
+          >
             <h1 className="text-2xl font-bold text-gray-900">
               TECH Competition Engine<span className="text-green-600">/Work</span>
             </h1>
-          </div>
+          </motion.div>
 
-          {/* Login Form */}
-          <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-200">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-8">
+          {/* Login Card */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3 }}
+            className="bg-white p-8 rounded-lg shadow-sm border border-gray-200"
+          >
+            <h2 className="text-2xl font-semibold text-gray-900 mb-8 text-center">
               Login to TECH Competition Engine for Work
             </h2>
 
-            <div className="space-y-6">
-              {/* Email Input */}
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Email */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Email
-                </label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    <svg className="h-5 w-5 text-gray-400" viewBox="0 0 24 24" stroke="currentColor">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                      />
                     </svg>
                   </div>
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-900"
+                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-md bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-900"
                     placeholder="Your work email"
                   />
                 </div>
               </div>
 
-              {/* Remember Me Checkbox */}
+              {/* Remember Me */}
               <div className="flex items-center">
                 <input
                   type="checkbox"
@@ -58,79 +76,82 @@ const BusinessLogin = () => {
                   onChange={(e) => setRememberMe(e.target.checked)}
                   className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
                 />
-                <label className="ml-2 block text-sm text-gray-700">
-                  Remember me
-                </label>
+                <label className="ml-2 text-sm text-gray-700">Remember me</label>
               </div>
 
-              {/* Next Button */}
-              <button
-                onClick={handleSubmit}
-                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-200"
+              {/* Submit */}
+              <motion.button
+                type="submit"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className="w-full py-3 px-4 rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition"
               >
                 Next
-              </button>
+              </motion.button>
 
-              {/* Divider with increased spacing */}
+              {/* Divider */}
               <div className="relative my-8">
                 <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-gray-300"></div>
+                  <div className="w-full border-t border-gray-300" />
                 </div>
                 <div className="relative flex justify-center text-sm">
                   <span className="px-2 bg-white text-gray-500">or</span>
                 </div>
               </div>
 
-              {/* Social Login Buttons */}
+              {/* Social Buttons */}
               <div className="space-y-3">
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   type="button"
-                  className="w-full flex justify-center items-center py-3 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-200"
+                  className="w-full flex justify-center items-center py-3 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
                 >
-                  <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24">
-                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                  <svg className="w-5 h-5 mr-3" viewBox="0 0 533.5 544.3" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#4285F4" d="M533.5 278.4c0-17.4-1.6-34-4.7-50.1H272v95h146.9c-6.3 33.6-25 61.9-53.3 81l86.1 67.1c50.2-46.3 81.8-114.7 81.8-193z" />
+                    <path fill="#34A853" d="M272 544.3c71.6 0 131.8-23.7 175.7-64.2l-86.1-67.1c-23.9 16-54.6 25.5-89.6 25.5-68.9 0-127.3-46.5-148.2-109.1H35.3v68.7C78.9 486.6 168.7 544.3 272 544.3z" />
+                    <path fill="#FBBC05" d="M123.8 329.4c-10.1-30.1-10.1-62.5 0-92.6V168h-88.5c-38.9 77.8-38.9 169.4 0 247.1l88.5-85.7z" />
+                    <path fill="#EA4335" d="M272 107.7c37.9 0 71.9 13 98.6 38.5l73.9-73.9C397.8 27.3 337.6 0 272 0 169.3 0 79.5 59.6 35.3 146.2l88.5 68.7C144.7 154.2 203.1 107.7 272 107.7z" />
                   </svg>
                   Continue with Google
-                </button>
+                </motion.button>
 
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   type="button"
-                  className="w-full flex justify-center items-center py-3 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-200"
+                  className="w-full flex justify-center items-center py-3 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
                 >
-                  {/* Microsoft logo as square grid */}
                   <div className="w-5 h-5 mr-3 grid grid-cols-2 gap-0.5">
-                    <div className="bg-red-500 w-full h-full"></div>
-                    <div className="bg-green-500 w-full h-full"></div>
-                    <div className="bg-blue-500 w-full h-full"></div>
-                    <div className="bg-yellow-500 w-full h-full"></div>
+                    <div className="bg-red-500 w-full h-full" />
+                    <div className="bg-green-500 w-full h-full" />
+                    <div className="bg-blue-500 w-full h-full" />
+                    <div className="bg-yellow-500 w-full h-full" />
                   </div>
                   Continue with Microsoft
-                </button>
+                </motion.button>
               </div>
 
-              {/* Sign up link */}
+              {/* Sign Up Prompt */}
               <div className="text-center text-sm text-gray-600 mt-6">
-                <div>Don't have an account?</div>
-                <div>
+                <p>Don't have an account?</p>
+                <p>
                   Contact your administrator or{' '}
                   <button className="text-blue-600 hover:text-blue-500 font-medium underline">
                     sign up for a free trial
                   </button>
-                </div>
+                </p>
               </div>
-            </div>
-          </div>
-        </div>
+            </form>
+          </motion.div>
+        </motion.div>
       </div>
 
-      {/* Right side - Background Image */}
+      {/* Right side poster */}
       <div className="hidden lg:flex lg:flex-1">
-        <img 
-          src="/Poster.png" 
-          alt="TECH Competition Engine" 
+        <img
+          src="/Poster.png"
+          alt="TECH Competition Engine"
           className="w-full h-full object-cover"
         />
       </div>

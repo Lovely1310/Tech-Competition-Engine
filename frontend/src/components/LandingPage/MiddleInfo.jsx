@@ -125,7 +125,7 @@ const MiddleInfo = () => {
         }
       `}</style>
 
-      {/* 🌀 Animated Logo Background */}
+      {/* 🌀 Logos */}
       <div className="w-full animate-midlogo-gradient py-10 overflow-hidden">
         <div className="scrolling-logo-track gap-16 px-8">
           {[...companies, ...companies].map((company, index) => (
@@ -140,17 +140,17 @@ const MiddleInfo = () => {
         </div>
       </div>
 
-      {/* ✨ Animated Word Reveal Section */}
-      <div className="w-full relative animate-midinfo-gradient py-36 px-5 lg:px-[15rem] text-white min-h-[100vh]">
+      {/* ✨ Word Reveal */}
+      <div className="w-full relative animate-midinfo-gradient py-36 px-6 sm:px-12 lg:px-[15rem] text-white min-h-[100vh] flex items-center justify-center text-center">
         <div className="absolute inset-0 bg-black/60 z-0" />
         <motion.div
           ref={textRef}
-          className="relative z-10 space-y-20"
+          className="relative z-10 space-y-20 max-w-5xl mx-auto"
           initial="hidden"
           whileInView="show"
           viewport={{ once: false, amount: 0.15 }}
         >
-          <div className="space-y-6 text-[20px] md:text-[24px] lg:text-[30px] font-satoshi">
+          <div className="space-y-6 text-[20px] sm:text-[24px] lg:text-[30px] font-satoshi">
             <h1 className="text-green-400">
               {wrapWordsWithAnimation("The future is human plus AI.", 0, "text-green-400")}
             </h1>
@@ -161,7 +161,7 @@ const MiddleInfo = () => {
               )}
             </h1>
           </div>
-          <h1 className="text-[20px] md:text-[24px] lg:text-[30px] font-satoshi">
+          <h1 className="text-[20px] sm:text-[24px] lg:text-[30px] font-satoshi">
             {wrapWordsWithAnimation(
               "We're embracing these changes with you, and we've reinvented our products to meet the moment.",
               30

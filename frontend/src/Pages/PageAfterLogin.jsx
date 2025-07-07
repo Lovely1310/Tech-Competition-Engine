@@ -1,10 +1,10 @@
 import React from 'react'
-import Navbar from '../components/pageAfterlogin/Navbar'
+import Navigation from '../components/LandingPage/Navigation'
 
 const PageAfterLogin = () => {
   return (
     <div>
-    <Navbar />
+    <Navigation />
     </div>
   )
 }

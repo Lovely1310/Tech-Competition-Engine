@@ -1,8 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import Navigation from '../../components/LandingPage/Navigation'; // ✅ Adjust path as needed
+import { useNavigate } from 'react-router-dom';
+import Navigation from '../LandingPage/Navigation';
 
 function DeveloperLogin() {
+  const navigate = useNavigate();
+
   return (
     <div className="relative w-full">
       {/* 🔝 Top Navbar */}
@@ -91,7 +94,8 @@ function DeveloperLogin() {
                 transition={{ delay: 0.7 }}
               />
               <motion.button
-                type="submit"
+                type="button"
+                onClick={() => navigate('/DeveloperDashboard')}
                 className="w-full p-3 bg-black text-white rounded-lg hover:bg-gray-800 transition duration-300"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -114,32 +118,40 @@ function DeveloperLogin() {
               </motion.div>
             </form>
 
-            {/* 🌐 Social Auth */}
+            {/* 🌐 Social Auth Buttons */}
             <motion.div
               className="space-y-3"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.0 }}
             >
-              <button className="w-full flex items-center justify-center p-3 border border-gray-300 rounded-lg hover:bg-gray-100 transition">
+              <button
+                onClick={() => window.location.href = '/auth/google'}
+                className="w-full flex items-center justify-center p-3 border border-gray-300 rounded-lg hover:bg-gray-100 transition"
+              >
                 <img src="/Developerlogin_images/Google logo.png" alt="Google" className="w-5 h-5 mr-2" />
-                Continue with Google
+                <span className="hidden lg:inline">Continue with Google</span>
               </button>
               <div className="flex justify-between space-x-3">
                 {[
-                  { label: 'LinkedIn', icon: 'LinkedIn_logo.png' },
-                  { label: 'GitHub', icon: 'GitHub_Logo.png' },
-                  { label: 'Facebook', icon: 'Facebook_logo.png' },
-                ].map(({ label, icon }, i) => (
+                  { label: 'LinkedIn', icon: 'LinkedIn_logo.png', link: '/auth/linkedin' },
+                  { label: 'GitHub', icon: 'GitHub_Logo.png', link: '/auth/github' },
+                  { label: 'Facebook', icon: 'Facebook_logo.png', link: '/auth/facebook' },
+                ].map(({ label, icon, link }, i) => (
                   <motion.button
                     key={label}
+                    onClick={() => window.location.href = link}
                     className="w-1/3 p-2 border border-gray-300 rounded-lg flex items-center justify-center hover:bg-gray-100 transition text-sm"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.1 + i * 0.1 }}
                   >
-                    <img src={`/Developerlogin_images/${icon}`} alt={`${label} logo`} className="w-5 h-5 mr-2" />
-                    {label}
+                    <img
+                      src={`/Developerlogin_images/${icon}`}
+                      alt={`${label} logo`}
+                      className="w-5 h-5"
+                    />
+                    <span className="hidden lg:inline ml-2">{label}</span>
                   </motion.button>
                 ))}
               </div>
@@ -151,7 +163,7 @@ function DeveloperLogin() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.5 }}
             >
-              Don't have an account?{' '}
+              Don&apos;t have an account?{' '}
               <a href="#" className="text-indigo-600 hover:text-indigo-800 transition">Sign up</a>
             </motion.p>
           </motion.div>

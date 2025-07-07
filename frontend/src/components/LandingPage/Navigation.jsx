@@ -22,62 +22,26 @@ const Navigation = () => {
     <AnimatePresence>
       {showNavbar && (
         <motion.div
-          className="navbar bg-white/10 backdrop-blur-md shadow-md pl-6 pr-6 fixed top-0 left-0 right-0 z-50"
+          className="navbar bg-white/10 backdrop-blur-md shadow-md px-4 sm:px-6 fixed top-0 left-0 right-0 z-50"
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -30 }}
           transition={{ duration: 0.4, ease: 'easeInOut' }}
         >
-          {/* Navbar Start */}
+          {/* LEFT: Logo with link */}
           <div className="navbar-start">
-            {/* Mobile Dropdown */}
-            <div className="dropdown">
-              <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden text-white">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                    d="M4 6h16M4 12h8m-8 6h16" />
-                </svg>
-              </div>
-              <ul
-                tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white/90 backdrop-blur-md rounded-box w-52"
-              >
-                {['Products', 'Solutions', 'Resources', 'Pricing', 'For Developers'].map((item, i) => (
-                  <li key={i}>
-                    <a
-                      href="#"
-                      className="text-gray-800 hover:text-blue-600 hover:bg-white/40 px-3 py-2 text-sm font-medium rounded-md"
-                    >
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Logo + Brand */}
-            <div className="flex items-center gap-3">
-              <img src={logo} alt="TechCompetitionEngine Logo" className="h-12 hidden md:block" />
-<span className="text-white font-mono italic text-base tracking-widest hidden lg:inline">
-  TEN Tech Engine
-</span>
-
-
-
-
-            </div>
+            <Link to="/" className="flex items-center">
+              <img src={logo} alt="TechCompetitionEngine Logo" className="h-10 md:h-12" />
+              <span className="text-white font-mono italic text-base tracking-widest hidden lg:inline ml-2">
+                TEN Tech Engine
+              </span>
+            </Link>
           </div>
 
-          {/* Center Menu */}
+          {/* CENTER: Main Nav (Only for large screens) */}
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
-              {['Products', 'Solutions', 'Resources', 'Pricing', 'For Developers'].map((item, i) => (
+              {['Products', 'Solutions', 'Resources', 'Pricing'].map((item, i) => (
                 <li key={i}>
                   <a
                     href="#"
@@ -87,20 +51,74 @@ const Navigation = () => {
                   </a>
                 </li>
               ))}
+              <li>
+                <Link
+                  to="/DeveloperDashboard"
+                  className="text-white hover:text-blue-200 px-3 py-2 text-sm font-medium"
+                >
+                  For Developers
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Navbar End */}
-          <div className="navbar-end">
-            <button className="btn btn-primary text-white hover:brightness-110">
-              <a className="px-3 py-2 text-sm font-semibold">Create a free account</a>
-            </button>
-
-            <button className="btn btn-outline ml-3 border-white text-white hover:bg-white/10 hover:border-blue-300">
-              <Link to="/login" className="px-3 py-2 text-sm font-semibold">
-                Log In
+          {/* RIGHT: Desktop buttons + Mobile hamburger */}
+          <div className="navbar-end flex items-center gap-2">
+            {/* Buttons (Large screens only) */}
+            <div className="hidden lg:flex items-center gap-2">
+              <button className="btn btn-primary text-white hover:brightness-110">
+                <span className="px-3 py-2 text-sm font-semibold">Create a free account</span>
+              </button>
+              <Link to="/login">
+                <button className="btn btn-outline border-white text-white hover:bg-white/10 hover:border-blue-300">
+                  <span className="px-3 py-2 text-sm font-semibold">Log In</span>
+                </button>
               </Link>
-            </button>
+            </div>
+
+            {/* Hamburger (Small screens) */}
+            <div className="dropdown dropdown-end lg:hidden">
+              <label tabIndex={0} className="btn btn-ghost text-white">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </label>
+              <ul
+                tabIndex={0}
+                className="menu dropdown-content mt-3 z-[1] p-4 shadow bg-white/90 backdrop-blur-md rounded-box w-60 text-center items-center gap-2"
+              >
+                {['Products', 'Solutions', 'Resources', 'Pricing'].map((item, i) => (
+                  <li key={i}>
+                    <a className="text-gray-800 hover:text-blue-600 text-sm font-medium px-2 py-1">
+                      {item}
+                    </a>
+                  </li>
+                ))}
+                <li>
+                  <Link to="/DeveloperLogin" className="text-gray-800 hover:text-blue-600 text-sm font-medium px-2 py-1">
+                    For Developers
+                  </Link>
+                </li>
+                <hr className="my-2 w-full" />
+                <li>
+                  <Link to="/login" className="text-black text-sm font-semibold px-2 py-1">
+                    Log In
+                  </Link>
+                </li>
+                <li>
+                  <button className="text-sm font-semibold bg-blue-600 text-white px-3 py-1 rounded">
+                    Create a free account
+                  </button>
+                </li>
+              </ul>
+            </div>
           </div>
         </motion.div>
       )}

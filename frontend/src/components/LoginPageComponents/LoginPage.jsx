@@ -1,6 +1,6 @@
 import React from 'react'
 import Loginmiddle from './Loginmiddle'
-import Navigation from '../../components/LandingPage/Navigation'
+import Navigation from '../LandingPage/Navigation'
 
 const LoginPage = () => {
   return (
