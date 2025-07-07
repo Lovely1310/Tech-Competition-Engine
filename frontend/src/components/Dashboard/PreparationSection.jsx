@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 const PreparationSection = () => {
   return (
     <>
-      <section>
-        <h2 className="text-xl font-extrabold italic font-serif text-black mb-6 text-center">Your Preparation</h2>
+      <section className="pb-10">
+        <h2 style={{ fontFamily: '"Press Start 2P", cursive' }} className="text-2xl text-black mb-8 text-center">YOUR PREPARATION</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
           {/* Interview Preparation Kit */}
