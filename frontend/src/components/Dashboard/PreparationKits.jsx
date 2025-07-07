@@ -6,7 +6,7 @@ const PreparationKits = () => {
       <section className="sm:pl-12">
         
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-xl font-extrabold italic font-serif text-black text-left sm:text-left">Preparation Kits</h2>
+        <h2 style={{ fontFamily: '"Press Start 2P", cursive' }} className="text-2xl text-black mb-4 text-center">PREPARATION KITS</h2>
           <a href="#" className="text-white hover:text-green-500 text-sm font-medium transition-colors">
             View all kits
           </a>
