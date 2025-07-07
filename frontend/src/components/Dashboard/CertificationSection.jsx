@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 const CertificationSection = () => {
   return (
     <>
-      <section>
-        <h2 className="text-xl font-extrabold italic font-serif text-black mb-6 text-center">Certification</h2>
+      <section className="pb-10">
+        <h2 style={{ fontFamily: '"Press Start 2P", cursive' }} className="text-2xl text-black mb-8 text-center">CERTIFICATION</h2>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {/* Problem Solving Basic */}
