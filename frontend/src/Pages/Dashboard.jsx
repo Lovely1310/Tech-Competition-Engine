@@ -1,4 +1,3 @@
-import React from 'react';
 import DeveloperNavbar from '../components/DeveloperNavbar';
 import MainContent from '../components/Dashboard/MainContent';
 
