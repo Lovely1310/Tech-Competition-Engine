@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import DeveloperLogin from './components/LoginPageComponents/DeveloperLogin';
 import Apply from './Pages/Apply';
 import DeveloperDashboard from  './Pages/Dashboard'
+import JobBoard from './components/NavBarContents/JobBoard';
 
 
 function App() {
@@ -20,8 +21,9 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/login/developerlogin" element={<DeveloperLogin />} />
             <Route path='/apply' element={<Apply />}></Route>
-            <Route path="/skills-verification" element={<CertifySection />} />
             <Route path="/DeveloperDashboard" element={<DeveloperDashboard />} />
+            <Route path="*" element={<h1>404 Not Found</h1>} />
+            <Route path="/job-board" element={<JobBoard />} />
 
         </Routes>
         <Footer />
