@@ -1,13 +1,15 @@
+
 import React from 'react'
+import DeveloperNavbar from '../components/DeveloperNavbar'
+import ApplyPage from '../components/ApplyPage/ApplyPage'
+
 
 const Apply = () => {
   return (
-    <>
-    <Navbar />
     <div>
-        
+      <DeveloperNavbar />
+      <ApplyPage />
     </div>
-    </>
   )
 }
 

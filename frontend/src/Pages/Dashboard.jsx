@@ -17,6 +17,7 @@ const Dashboard = () => {
       <main className="flex-1">
         <MainContent />
       </main>
+      
     </div>
   );
 };

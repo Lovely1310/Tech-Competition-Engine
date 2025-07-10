@@ -19,9 +19,8 @@ function App() {
             <Route path="/work/login" element={<BusinessLogin />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/login/developerlogin" element={<DeveloperLogin />} />
-            <Route path='/apply' element={<Apply />}></Route>
+            <Route path='apply' element={<Apply />}></Route>
             <Route path="/DeveloperDashboard" element={<DeveloperDashboard />} />
-
         </Routes>
         <Footer />
     </BrowserRouter>

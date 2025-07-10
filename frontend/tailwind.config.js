@@ -28,10 +28,25 @@ export default {
         '8xl': ['6rem', { lineHeight: '0.9' }],
         '9xl': ['8rem', { lineHeight: '0.9' }],
       },
+      'gradient-shift': {
+          '0%': {
+            background: 'linear-gradient(135deg, #1B1A55, #1B1A55)',
+          },
+          '33%': {
+            background: 'linear-gradient(135deg, #1B1A55, #4C3575)',
+          },
+          '66%': {
+            background: 'linear-gradient(135deg, #4C3575, #522258)',
+          },
+          '100%': {
+            background: 'linear-gradient(135deg, #522258, #1B1A55)',
+          },
+        },
       animation: {
         float: 'float 60s ease-in-out infinite',
         blink: 'blink 1.25s ease-in-out infinite',
         scroll: 'scroll-right-to-left 20s linear infinite',
+      'bg-gradient-cycle': 'gradient-shift 10s ease-in-out infinite',
       },
       keyframes: {
         float: {
