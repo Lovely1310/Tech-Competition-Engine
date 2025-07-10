@@ -20,7 +20,6 @@ function App() {
             <Route path="/work/login" element={<BusinessLogin />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/login/developerlogin" element={<DeveloperLogin />} />
-<<<<<<< HEAD
             <Route path='apply' element={<Apply />}></Route>
             <Route path="/DeveloperDashboard" element={<DeveloperDashboard />} />
 =======
@@ -28,8 +27,6 @@ function App() {
             <Route path="/DeveloperDashboard" element={<DeveloperDashboard />} />
             <Route path="*" element={<h1>404 Not Found</h1>} />
             <Route path="/job-board" element={<JobBoard />} />
-
->>>>>>> c76675fc9a1f8bdcc62ebae74895cb47c9977b08
         </Routes>
         <Footer />
     </BrowserRouter>
