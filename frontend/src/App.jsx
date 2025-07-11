@@ -1,4 +1,3 @@
-import React from 'react';
 import './index.css';
 import { Routes,Route,BrowserRouter } from 'react-router-dom'
 import './App.css'
@@ -20,13 +19,12 @@ function App() {
             <Route path="/work/login" element={<BusinessLogin />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/login/developerlogin" element={<DeveloperLogin />} />
-            <Route path='/apply' element={<Apply />}></Route>
+            <Route path='apply' element={<Apply />}></Route>
             <Route path="/DeveloperDashboard" element={<DeveloperDashboard />} />
             <Route path="*" element={<h1>404 Not Found</h1>} />
             <Route path="/job-board" element={<JobBoard />} />
-
+            <Footer />
         </Routes>
-        <Footer />
     </BrowserRouter>
     
   )
