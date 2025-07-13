@@ -1,17 +1,21 @@
+import React from 'react';
+
 const PreparationKits = () => {
   return (
     <>
-      <section>
+      <section className="sm:pl-12">
+        
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-xl font-semibold text-black italic">Preparation Kits</h2>
-          <a href="#" className="text-primary-600 hover:text-primary-700 text-sm font-medium">
+        <h2 style={{ fontFamily: '"Press Start 2P", cursive' }} className="text-2xl text-black mb-4 text-center">PREPARATION KITS</h2>
+          <a href="#" className="text-white hover:text-green-500 text-sm font-medium transition-colors">
             View all kits
           </a>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
           {/* 1 Week Preparation Kit */}
-          <div className="animated-card-bg rounded-lg shadow-md p-6 border border-gray-200 hover:shadow-xl hover:border-primary-400 active:shadow-xl active:border-primary-400 focus:shadow-xl focus:border-primary-400 transition-shadow transition-colors">
+          <div className="bg-gradient-to-br from-pink-200 via-purple-200 to-blue-200 shadow-lg rounded-xl p-6 hover:scale-105 transition-transform duration-200">
             <h3 className="text-lg font-semibold text-gray-900 mb-2">
               1 Week Preparation Kit
             </h3>
@@ -19,7 +23,7 @@ const PreparationKits = () => {
             {/* Responsive stats for mobile/desktop with bullets */}
             <div className="text-gray-600 text-sm mb-4">
               <div className="flex items-start md:inline"><span className="mr-1">•</span>Challenges: 21</div>
-              <div className="flex items-start md:inline md:ml-2"><span className="mr-1">•</span>Attempts: 1096697</div>
+              <div className="flex items-start md:inline md:ml-2"><span className="mr-1">•</span>Attempts: 109697</div>
               <div className="flex items-start md:inline md:ml-2"><span className="mr-1">•</span>Mock Test: 0</div>
             </div>
             
@@ -41,7 +45,7 @@ const PreparationKits = () => {
           </div>
 
           {/* 1 Month Preparation Kit */}
-          <div className="animated-card-bg rounded-lg shadow-md p-6 border border-gray-200 hover:shadow-xl hover:border-primary-400 active:shadow-xl active:border-primary-400 focus:shadow-xl focus:border-primary-400 transition-shadow transition-colors">
+          <div className="bg-gradient-to-br from-pink-200 via-purple-200 to-blue-200 shadow-lg rounded-xl p-6 hover:scale-105 transition-transform duration-200">
             <h3 className="text-lg font-semibold text-gray-900 mb-2">
               1 Month Preparation Kit
             </h3>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { CgProfile } from "react-icons/cg";
 
 const DeveloperNavbar = () => {
   const [showNavbar, setShowNavbar] = useState(true);
@@ -33,7 +34,7 @@ const DeveloperNavbar = () => {
         >
           {/* LEFT SIDE */}
           <div className="navbar-start flex items-center gap-6">
-            <Link to="/DeveloperDashboard" className="flex items-center">
+            <Link to="/" className="flex items-center">
               <img src="/logo.svg" alt="Logo" className="h-10 md:h-12" />
               <span className="hidden lg:inline ml-2 text-white font-mono italic tracking-widest">
                 TEN Tech Engine
@@ -43,7 +44,7 @@ const DeveloperNavbar = () => {
               {['Prepare', 'Certify', 'Complete', 'Apply'].map(item => (
                 <li key={item}>
                   <Link
-                    to={`#${item.toLowerCase()}`}
+                    to={`/${item.toLowerCase()}`}
                     className="px-3 py-2 text-sm font-medium text-white hover:text-blue-200"
                   >
                     {item}
@@ -54,7 +55,7 @@ const DeveloperNavbar = () => {
           </div>
 
           {/* RIGHT SIDE */}
-          <div className="navbar-end flex items-center w-full lg:w-auto">
+          <div className="navbar-end flex items-center ml-auto">
             {/* Desktop Group: flush right */}
             <div className="hidden lg:flex items-center gap-4 ml-auto">
               {/* 1) Search Input */}
@@ -124,12 +125,7 @@ const DeveloperNavbar = () => {
 
                   {/* 6) Profile */}
                   <button className="btn btn-ghost text-white p-1" title="Profile" aria-label="Profile">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5"
-                      fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                        d="M5.121 17.804A9 9 0 1117.804 
-                           5.121 7 7 0 005.121 17.804z" />
-                    </svg>
+                    <CgProfile size={18}/>
                   </button>
                 </>
               ) : (

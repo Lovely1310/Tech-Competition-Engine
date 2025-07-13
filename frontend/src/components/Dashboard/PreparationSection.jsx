@@ -1,71 +1,67 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const PreparationSection = () => {
   return (
     <>
-      <section>
-        <h2 className="text-xl font-semibold text-black italic mb-6 text-center sm:text-left">Your Preparation</h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Interview Preparation Kit */}
-          <div className="animated-card-bg rounded-lg shadow-md p-6 border border-gray-200 hover:shadow-xl hover:border-primary-400 active:shadow-xl active:border-primary-400 focus:shadow-xl focus:border-primary-400 transition-shadow transition-colors">
-            <div className="mb-4">
-              <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
-                PREPARATION KITS
-              </span>
-            </div>
-            
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">
+      <section className="py-20 bg-[#1c2232] text-white">
+        <h2
+          style={{ fontFamily: '"Press Start 2P", cursive' }}
+          className="text-xl sm:text-2xl tracking-widest text-center mb-14 text-cyan-300"
+        >
+          YOUR PREPARATION
+        </h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto px-4">
+          {/* Interview Prep Kit */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="bg-[#2c3449] rounded-xl p-6 shadow-lg hover:shadow-2xl transition flex flex-col"
+          >
+            <span className="text-xs font-bold text-cyan-400 uppercase tracking-wider mb-2">
+              Preparation Kits
+            </span>
+            <h3 className="text-xl font-semibold mb-4 text-center text-white">
               Interview Preparation Kit
             </h3>
-            
-            <p className="text-gray-600 text-sm mb-4">
-              Get interview ready for top companies by solving an interview preparation kit.
+            <p className="text-sm text-slate-300 leading-relaxed">
+              Get interview ready for top companies with curated preparation kits crafted to sharpen your skills.
             </p>
-            
-            <div className="flex justify-center md:justify-start">
-              <button className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 py-2 rounded-lg font-medium shadow hover:from-blue-400 hover:to-purple-400 active:from-blue-300 active:to-purple-300 focus:from-blue-300 focus:to-purple-300 transition-colors">
-                View all kits
+            <div className="flex justify-center mt-auto pt-6">
+              <button className="bg-cyan-600 hover:bg-cyan-500 px-5 py-2 rounded-lg text-sm font-medium transition">
+                View Kits
               </button>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Add First Skill */}
-          <div className="animated-card-bg rounded-lg shadow-md p-6 border border-gray-200 hover:shadow-xl hover:border-primary-400 active:shadow-xl active:border-primary-400 focus:shadow-xl focus:border-primary-400 transition-shadow transition-colors">
-            <div className="mb-4">
-              <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
-                NEW SKILL
-              </span>
-            </div>
-            
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">
-              Add your first skill
+          {/* Add Skill Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.15 }}
+            className="bg-[#2c3449] rounded-xl p-6 shadow-lg hover:shadow-2xl transition flex flex-col"
+          >
+            <span className="text-xs font-bold text-purple-400 uppercase tracking-wider mb-2">
+              New Skill
+            </span>
+            <h3 className="text-xl font-semibold mb-4 text-center text-white">
+              Add Your First Skill
             </h3>
-            
-            <p className="text-gray-600 text-sm mb-4">
-              Explore and add your first skill to get started. HackerRank offers a variety of skills, tracks and tutorials for you to learn and improve.
+            <p className="text-sm text-slate-300 leading-relaxed">
+              Explore a variety of skills, tracks, and tutorials tailored to help you grow and start building your tech foundation.
             </p>
-            
-            <div className="flex justify-center md:justify-start">
-              <button className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 py-2 rounded-lg font-medium shadow hover:from-blue-400 hover:to-purple-400 active:from-blue-300 active:to-purple-300 focus:from-blue-300 focus:to-purple-300 transition-colors">
+            <div className="flex justify-center mt-auto pt-6">
+              <button className="bg-purple-600 hover:bg-purple-500 px-5 py-2 rounded-lg text-sm font-medium transition">
                 Explore Skills
               </button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
-      <style>{`
-        .animated-card-bg {
-          background: linear-gradient(120deg, #f3e7fa 0%, #e0eafc 50%, #f9f9f9 100%);
-          background-size: 200% 200%;
-          animation: cardGradientMove 8s ease-in-out infinite;
-        }
-        @keyframes cardGradientMove {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-      `}</style>
     </>
   );
 };
