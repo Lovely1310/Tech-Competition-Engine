@@ -12,7 +12,7 @@ const DeveloperNavbar = () => {
   const links = [
     { name: 'Prepare', path: '/dashboard' },
     { name: 'Certify', path: '/skills-verification' },
-    { name: 'Compete', path: '#' },
+    { name: 'Compete', path: '/Compete' },
     { name: 'Apply', path: '/apply' }
   ];
 

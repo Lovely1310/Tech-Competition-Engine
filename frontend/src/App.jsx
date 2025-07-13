@@ -10,8 +10,9 @@ import PageAfterLogin from './Pages/PageAfterLogin';
 import DeveloperLogin from './components/LoginPageComponents/DeveloperLogin';
 import Apply from './Pages/Apply';
 import CertifySection from './components/pageAfterlogin/CertifySection';
-import DeveloperDashboard from  './Pages/Dashboard'
-
+import DeveloperDashboard from  './Pages/Dashboard';
+import Compete from './components/Competepage/compete';
+import CreateContest from './components/Competepage/Create';
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
             <Route path="/skills-verification" element={<CertifySection />} />
             <Route path="/DeveloperLanding" element={<PageAfterLogin />} />
             <Route path="/DeveloperDashboard" element={<DeveloperDashboard />} />
+            <Route path="/Compete" element={<Compete />} />
+            <Route path="/Compete/create" element={<CreateContest />} />
 
         </Routes>
         <Footer />
