@@ -41,7 +41,7 @@ const DeveloperNavbar = () => {
               </span>
             </Link>
             <ul className="hidden lg:flex menu menu-horizontal px-1">
-              {['Prepare', 'Certify', 'Complete', 'Apply'].map(item => (
+              {['Prepare', 'Certify', 'Compete', 'Apply'].map(item => (
                 <li key={item}>
                   <Link
                     to={`/${item.toLowerCase()}`}
@@ -178,7 +178,7 @@ const DeveloperNavbar = () => {
                     transition={{ duration: 0.2 }}
                     className="absolute right-0 mt-2 w-60 p-4 bg-white/90 backdrop-blur-md rounded-box shadow-lg space-y-2 text-center"
                   >
-                    {['Prepare', 'Certify', 'Complete', 'Apply'].map(item => (
+                    {['Prepare', 'Certify', 'Compete', 'Apply'].map(item => (
                       <li key={item}>
                         <Link
                           to={`#${item.toLowerCase()}`}
