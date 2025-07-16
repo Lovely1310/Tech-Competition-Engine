@@ -1,10 +1,11 @@
 import './index.css';
-import { Routes,Route,BrowserRouter } from 'react-router-dom'
-import './App.css'
-import LandingPage from './Pages/LandingPage'
-import BusinessLogin from './Pages/BusinessLogin'
+import './App.css';
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import LandingPage from './Pages/LandingPage';
+import BusinessLogin from './Pages/BusinessLogin';
 import LoginPage from './components/LoginPageComponents/LoginPage';
-import Footer from './components/Footer';
 import DeveloperLogin from './components/LoginPageComponents/DeveloperLogin';
 import Apply from './Pages/Apply';
 import DeveloperDashboard from  './Pages/Dashboard';
@@ -12,8 +13,7 @@ import Compete from './components/Competepage/compete';
 import CreateContest from './components/Competepage/Create';
 import JobBoard from './components/NavBarContents/JobBoard';
 import Onboarding from './components/ApplyPage/Onboarding';
-
-
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -34,8 +34,7 @@ function App() {
         </Routes>
         <Footer />
     </BrowserRouter>
-    
-  )
+  );
 }
 
 export default App;

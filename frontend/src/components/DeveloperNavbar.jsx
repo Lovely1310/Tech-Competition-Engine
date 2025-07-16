@@ -3,21 +3,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
 import { IoMdApps } from "react-icons/io";
-import { FcReddit } from "react-icons/fc";
-import { FcBriefcase } from "react-icons/fc";
-import { FcRules } from "react-icons/fc";
-import { FcPrevious } from "react-icons/fc";
-import { FcAndroidOs } from "react-icons/fc";
+import { FcReddit, FcBriefcase, FcRules, FcAndroidOs } from "react-icons/fc";
 
 const DeveloperNavbar = () => {
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  // Toggle this to false to see the Sign Up / Log In buttons
-  const isLoggedIn = true;
+  const isLoggedIn = true; // Toggle to false to show Sign Up / Log In
 
-  // Hide/show navbar on scroll
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
@@ -41,13 +35,25 @@ const DeveloperNavbar = () => {
           {/* LEFT SIDE */}
           <div className="navbar-start flex items-center gap-6">
             <Link to="/" className="flex items-center">
-              <img src="/logo.svg" alt="Logo" className="h-10 md:h-12" />
-              <span className="hidden lg:inline ml-2 text-white font-mono italic tracking-widest">
+              <img
+                src="/logo.svg"
+                alt="Logo"
+                className="h-10 md:h-12"
+                style={{ filter: "invert(1) brightness(2)" }}
+              />
+              <span
+                className="ml-1 text-xl font-black text-white hidden lg:inline"
+                style={{
+                  letterSpacing: "0.01em",
+                  fontFamily: "'Montserrat', 'Segoe UI', 'Arial', sans-serif"
+                }}
+              >
                 TEN Tech Engine
               </span>
             </Link>
+
             <ul className="hidden lg:flex menu menu-horizontal px-1">
-              {["Prepare", "Certify", "Complete", "Apply"].map((item) => (
+              {["Prepare", "Certify", "Compete", "Apply"].map((item) => (
                 <li key={item}>
                   <Link
                     to={`/${item.toLowerCase()}`}
@@ -62,9 +68,8 @@ const DeveloperNavbar = () => {
 
           {/* RIGHT SIDE */}
           <div className="navbar-end flex items-center ml-auto">
-            {/* Desktop Group: flush right */}
-            <div className="hidden lg:flex items-center gap-4 ml-auto">
-              {/* 1) Search Input */}
+            <div className="hidden lg:flex items-center gap-4">
+              {/* Search Input */}
               <div className="relative" title="Search">
                 <input
                   type="text"
@@ -87,7 +92,6 @@ const DeveloperNavbar = () => {
                 </svg>
               </div>
 
-              {/* 2) Hiring Techs? */}
               <span
                 className="whitespace-nowrap text-sm font-semibold text-white underline"
                 title="Hiring Techs?"
@@ -97,66 +101,49 @@ const DeveloperNavbar = () => {
 
               {isLoggedIn ? (
                 <>
-                  {/* 3) Apps */}
-                  <button
-                    className="btn btn-ghost text-white p-1"
-                    title="Apps"
-                    aria-label="Apps"
-                  >
-                    <div className="dropdown dropdown-end">
-                      <div tabIndex={0}>
-                        <IoMdApps size={25} />
-                      </div>
-                      <ul
-                        tabIndex={0}
-                        className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
-                      >
-                        <li>
-                          <Link to="#" className="text-black p-4">
-                            {" "}
-                            <span className="bg-gray-200 p-2 rounded-3xl mr-2">
-                              <FcRules size={28} />
-                            </span>{" "}
-                            CV Creator
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to="#" className="text-black p-4">
-                            {" "}
-                            <span className="bg-gray-200 p-2 rounded-3xl mr-2">
-                              <FcAndroidOs size={28} />
-                            </span>{" "}
-                            Code Lab
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to="#" className="text-black p-4">
-                            {" "}
-                            <span className="bg-gray-200 p-2 rounded-3xl mr-2">
-                              <FcReddit size={28} />
-                            </span>
-                            Application Manager
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to="#" className="text-black p-4">
-                            {" "}
-                            <span className="bg-gray-200 p-2 rounded-3xl mr-2">
-                              <FcBriefcase size={28} />
-                            </span>{" "}
-                            Job Portal
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                  </button>
+                  {/* Apps Dropdown */}
+                  <div className="dropdown dropdown-end">
+                    <button className="btn btn-ghost text-white p-1" title="Apps">
+                      <IoMdApps size={25} />
+                    </button>
+                    <ul className="dropdown-content menu bg-base-100 rounded-box z-10 w-52 p-2 shadow-sm">
+                      <li>
+                        <Link to="#" className="text-black p-4 flex items-center">
+                          <span className="bg-gray-200 p-2 rounded-3xl mr-2">
+                            <FcRules size={28} />
+                          </span>{" "}
+                          CV Creator
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="#" className="text-black p-4 flex items-center">
+                          <span className="bg-gray-200 p-2 rounded-3xl mr-2">
+                            <FcAndroidOs size={28} />
+                          </span>{" "}
+                          Code Lab
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="#" className="text-black p-4 flex items-center">
+                          <span className="bg-gray-200 p-2 rounded-3xl mr-2">
+                            <FcReddit size={28} />
+                          </span>
+                          Application Manager
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="#" className="text-black p-4 flex items-center">
+                          <span className="bg-gray-200 p-2 rounded-3xl mr-2">
+                            <FcBriefcase size={28} />
+                          </span>{" "}
+                          Job Portal
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
 
-                  {/* 4) Notifications */}
-                  <button
-                    className="btn btn-ghost text-white p-1"
-                    title="Notifications"
-                    aria-label="Notifications"
-                  >
+                  {/* Notifications */}
+                  <button className="btn btn-ghost text-white p-1" title="Notifications">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-5 w-5"
@@ -168,20 +155,16 @@ const DeveloperNavbar = () => {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth={2}
-                        d="M15 17h5l-1.4-1.4A2 2 0 0118 14V11a6 6 0
-                           00-4-5.7V5a2 2 0 10-4 0v.3C7.7 6.2 6 8.4
-                           6 11v3c0 .5-.2 1-.6 1.4L4 17h5m6 0v1a3 3
-                           0 11-6 0v-1h6z"
+                        d="M15 17h5l-1.4-1.4A2 2 0 0118 14V11a6 6 0 
+                        00-4-5.7V5a2 2 0 10-4 0v.3C7.7 6.2 6 8.4 
+                        6 11v3c0 .5-.2 1-.6 1.4L4 17h5m6 0v1a3 3 
+                        0 11-6 0v-1h6z"
                       />
                     </svg>
                   </button>
 
-                  {/* 5) Messages */}
-                  <button
-                    className="btn btn-ghost text-white p-1"
-                    title="Messages"
-                    aria-label="Messages"
-                  >
+                  {/* Messages */}
+                  <button className="btn btn-ghost text-white p-1" title="Messages">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-5 w-5"
@@ -193,25 +176,20 @@ const DeveloperNavbar = () => {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth={2}
-                        d="M7 8h10M7 12h6m-6 4h8M21 12c0 4.4-4 8-9
-                           8-1.4 0-2.7-.3-3.8-.8L3 20l1.7-4.3A8 8 0
-                           013 12c0-4.4 4-8 9-8s9 3.6 9 8z"
+                        d="M7 8h10M7 12h6m-6 4h8M21 12c0 4.4-4 8-9 
+                        8-1.4 0-2.7-.3-3.8-.8L3 20l1.7-4.3A8 8 0 
+                        013 12c0-4.4 4-8 9-8s9 3.6 9 8z"
                       />
                     </svg>
                   </button>
 
-                  {/* 6) Profile */}
-                  <button
-                    className="btn btn-ghost text-white p-1"
-                    title="Profile"
-                    aria-label="Profile"
-                  >
-                    <CgProfile size={18} />
+                  {/* Profile */}
+                  <button className="btn btn-ghost text-white p-1" title="Profile">
+                    <CgProfile size={20} />
                   </button>
                 </>
               ) : (
                 <>
-                  {/* Pre-login: Sign Up & Log In */}
                   <Link to="/signup">
                     <button className="btn btn-primary text-white hover:brightness-110">
                       Sign Up
@@ -226,11 +204,8 @@ const DeveloperNavbar = () => {
               )}
             </div>
 
-            {/* MOBILE: Search icon */}
-            <button
-              className="lg:hidden btn btn-ghost text-white"
-              title="Search"
-            >
+            {/* MOBILE MENU & SEARCH */}
+            <button className="lg:hidden btn btn-ghost text-white" title="Search">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -242,19 +217,17 @@ const DeveloperNavbar = () => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M21 21l-4.35-4.35M16 10a6 6 
-                     0 11-12 0 6 6 0 0112 0z"
+                  d="M21 21l-4.35-4.35M16 10a6 6 0 11-12 0 6 6 0 0112 0z"
                 />
               </svg>
             </button>
 
-            {/* MOBILE: Hamburger + Animated Dropdown */}
+            {/* Mobile Dropdown */}
             <div className="relative lg:hidden">
               <button
                 className="btn btn-ghost text-white"
-                onClick={() => setIsDropdownOpen((o) => !o)}
+                onClick={() => setIsDropdownOpen((prev) => !prev)}
                 title="Menu"
-                aria-label="Menu"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -263,14 +236,10 @@ const DeveloperNavbar = () => {
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               </button>
+
               <AnimatePresence>
                 {isDropdownOpen && (
                   <motion.ul
@@ -280,37 +249,33 @@ const DeveloperNavbar = () => {
                     transition={{ duration: 0.2 }}
                     className="absolute right-0 mt-2 w-60 p-4 bg-white/90 backdrop-blur-md rounded-box shadow-lg space-y-2 text-center"
                   >
-                    {["Prepare", "Certify", "Complete", "Apply"].map((item) => (
+                    {['Prepare', 'Certify', 'Compete', 'Apply'].map(item => (
                       <li key={item}>
                         <Link
-                          to={`#${item.toLowerCase()}`}
+                          to={`/${item.toLowerCase()}`}
                           className="block text-gray-800 hover:text-blue-600 text-sm font-medium"
                         >
                           {item}
                         </Link>
                       </li>
                     ))}
+
                     <li>
                       <span className="block text-blue-700 underline text-sm font-semibold">
                         Hiring Techs?
                       </span>
                     </li>
-                    <hr className="border-gray-300" />
+
                     {!isLoggedIn && (
                       <>
+                        <hr className="border-gray-300" />
                         <li>
-                          <Link
-                            to="/login/developerlogin"
-                            className="block text-gray-800 hover:text-blue-600 text-sm font-semibold"
-                          >
+                          <Link to="/login/developerlogin" className="block text-gray-800 text-sm font-semibold">
                             Log In
                           </Link>
                         </li>
                         <li>
-                          <Link
-                            to="/signup"
-                            className="block bg-blue-600 text-white text-sm font-semibold px-3 py-1 rounded"
-                          >
+                          <Link to="/signup" className="block bg-blue-600 text-white text-sm font-semibold px-3 py-1 rounded">
                             Sign Up
                           </Link>
                         </li>
