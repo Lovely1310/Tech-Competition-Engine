@@ -15,6 +15,7 @@ import JobBoard from './components/NavBarContents/JobBoard';
 import Onboarding from './components/ApplyPage/Onboarding';
 import Footer from './components/Footer'
 
+
 function App() {
   return (
     <BrowserRouter>
