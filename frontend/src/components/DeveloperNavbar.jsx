@@ -8,10 +8,8 @@ const DeveloperNavbar = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  // Toggle this to false to see the Sign Up / Log In buttons
-  const isLoggedIn = true;
+  const isLoggedIn = true; // Toggle to false to show Sign Up / Log In
 
-  // Hide/show navbar on scroll
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
@@ -35,13 +33,25 @@ const DeveloperNavbar = () => {
           {/* LEFT SIDE */}
           <div className="navbar-start flex items-center gap-6">
             <Link to="/" className="flex items-center">
-              <img src="/logo.svg" alt="Logo" className="h-10 md:h-12" />
-              <span className="hidden lg:inline ml-2 text-white font-mono italic tracking-widest">
+              <img
+                src="/logo.svg"
+                alt="Logo"
+                className="h-10 md:h-12"
+                style={{ filter: "invert(1) brightness(2)" }} // <-- Makes logo white
+              />
+              <span
+                className="ml-1 text-xl font-black text-white tracking-tight select-none drop-shadow-sm hidden lg:inline"
+                style={{
+                  letterSpacing: "0.01em",
+                  fontFamily: "'Montserrat', 'Segoe UI', 'Arial', sans-serif"
+                }}
+              >
                 TEN Tech Engine
               </span>
             </Link>
+
             <ul className="hidden lg:flex menu menu-horizontal px-1">
-              {['Prepare', 'Certify', 'Complete', 'Apply'].map(item => (
+              {['Prepare', 'Certify', 'Compete', 'Apply'].map(item => (
                 <li key={item}>
                   <Link
                     to={`/${item.toLowerCase()}`}
@@ -56,9 +66,8 @@ const DeveloperNavbar = () => {
 
           {/* RIGHT SIDE */}
           <div className="navbar-end flex items-center ml-auto">
-            {/* Desktop Group: flush right */}
             <div className="hidden lg:flex items-center gap-4 ml-auto">
-              {/* 1) Search Input */}
+              {/* Search Input */}
               <div className="relative" title="Search">
                 <input
                   type="text"
@@ -72,12 +81,15 @@ const DeveloperNavbar = () => {
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                    d="M21 21l-4.35-4.35M16 10a6 6 0 11-12 0 6 6 0 0112 0z" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-4.35-4.35M16 10a6 6 0 11-12 0 6 6 0 0112 0z"
+                  />
                 </svg>
               </div>
 
-              {/* 2) Hiring Techs? */}
               <span
                 className="whitespace-nowrap text-sm font-semibold text-white underline"
                 title="Hiring Techs?"
@@ -87,50 +99,63 @@ const DeveloperNavbar = () => {
 
               {isLoggedIn ? (
                 <>
-                  {/* 3) Apps */}
-                  <button className="btn btn-ghost text-white p-1" title="Apps" aria-label="Apps">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5"
-                      fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                        d="M4 6h4M4 12h4M4 18h4M10 6h10M10 12h10M10 18h10" />
+                  <button className="btn btn-ghost text-white p-1" title="Apps">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M4 6h4M4 12h4M4 18h4M10 6h10M10 12h10M10 18h10"
+                      />
                     </svg>
                   </button>
 
-                  {/* 4) Notifications */}
-                  <button
-                    className="btn btn-ghost text-white p-1"
-                    title="Notifications"
-                    aria-label="Notifications"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5"
-                      fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                        d="M15 17h5l-1.4-1.4A2 2 0 0118 14V11a6 6 0
-                           00-4-5.7V5a2 2 0 10-4 0v.3C7.7 6.2 6 8.4
-                           6 11v3c0 .5-.2 1-.6 1.4L4 17h5m6 0v1a3 3
-                           0 11-6 0v-1h6z" />
+                  <button className="btn btn-ghost text-white p-1" title="Notifications">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M15 17h5l-1.4-1.4A2 2 0 0118 14V11a6 6 0 00-4-5.7V5a2 2 0 10-4 0v.3C7.7 6.2 6 8.4 6 11v3c0 .5-.2 1-.6 1.4L4 17h5m6 0v1a3 3 0 11-6 0v-1h6z"
+                      />
                     </svg>
                   </button>
 
-                  {/* 5) Messages */}
-                  <button className="btn btn-ghost text-white p-1" title="Messages" aria-label="Messages">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5"
-                      fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                        d="M7 8h10M7 12h6m-6 4h8M21 12c0 4.4-4 8-9
-                           8-1.4 0-2.7-.3-3.8-.8L3 20l1.7-4.3A8 8 0
-                           013 12c0-4.4 4-8 9-8s9 3.6 9 8z" />
+                  <button className="btn btn-ghost text-white p-1" title="Messages">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M7 8h10M7 12h6m-6 4h8M21 12c0 4.4-4 8-9 8-1.4 0-2.7-.3-3.8-.8L3 20l1.7-4.3A8 8 0 013 12c0-4.4 4-8 9-8s9 3.6 9 8z"
+                      />
                     </svg>
                   </button>
 
-                  {/* 6) Profile */}
-                  <button className="btn btn-ghost text-white p-1" title="Profile" aria-label="Profile">
-                    <CgProfile size={18}/>
+                  <button className="btn btn-ghost text-white p-1" title="Profile">
+                    <CgProfile size={18} />
                   </button>
                 </>
               ) : (
                 <>
-                  {/* Pre-login: Sign Up & Log In */}
                   <Link to="/signup">
                     <button className="btn btn-primary text-white hover:brightness-110">
                       Sign Up
@@ -145,30 +170,47 @@ const DeveloperNavbar = () => {
               )}
             </div>
 
-            {/* MOBILE: Search icon */}
+            {/* Mobile Search Icon */}
             <button className="lg:hidden btn btn-ghost text-white" title="Search">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6"
-                fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                  d="M21 21l-4.35-4.35M16 10a6 6 
-                     0 11-12 0 6 6 0 0112 0z" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-4.35-4.35M16 10a6 6 0 11-12 0 6 6 0 0112 0z"
+                />
               </svg>
             </button>
 
-            {/* MOBILE: Hamburger + Animated Dropdown */}
+            {/* Mobile Hamburger Menu */}
             <div className="relative lg:hidden">
               <button
                 className="btn btn-ghost text-white"
                 onClick={() => setIsDropdownOpen(o => !o)}
                 title="Menu"
-                aria-label="Menu"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6"
-                  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
                 </svg>
               </button>
+
               <AnimatePresence>
                 {isDropdownOpen && (
                   <motion.ul
@@ -178,31 +220,40 @@ const DeveloperNavbar = () => {
                     transition={{ duration: 0.2 }}
                     className="absolute right-0 mt-2 w-60 p-4 bg-white/90 backdrop-blur-md rounded-box shadow-lg space-y-2 text-center"
                   >
-                    {['Prepare', 'Certify', 'Complete', 'Apply'].map(item => (
+                    {['Prepare', 'Certify', 'Compete', 'Apply'].map(item => (
                       <li key={item}>
                         <Link
-                          to={`#${item.toLowerCase()}`}
+                          to={`/${item.toLowerCase()}`}
                           className="block text-gray-800 hover:text-blue-600 text-sm font-medium"
                         >
                           {item}
                         </Link>
                       </li>
                     ))}
+
                     <li>
                       <span className="block text-blue-700 underline text-sm font-semibold">
                         Hiring Techs?
                       </span>
                     </li>
+
                     <hr className="border-gray-300" />
+
                     {!isLoggedIn && (
                       <>
                         <li>
-                          <Link to="/login/developerlogin" className="block text-gray-800 hover:text-blue-600 text-sm font-semibold">
+                          <Link
+                            to="/login/developerlogin"
+                            className="block text-gray-800 hover:text-blue-600 text-sm font-semibold"
+                          >
                             Log In
                           </Link>
                         </li>
                         <li>
-                          <Link to="/signup" className="block bg-blue-600 text-white text-sm font-semibold px-3 py-1 rounded">
+                          <Link
+                            to="/signup"
+                            className="block bg-blue-600 text-white text-sm font-semibold px-3 py-1 rounded"
+                          >
                             Sign Up
                           </Link>
                         </li>
