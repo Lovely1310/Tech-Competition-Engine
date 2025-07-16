@@ -14,7 +14,6 @@ import CreateContest from './components/Competepage/Create';
 import JobBoard from './components/NavBarContents/JobBoard';
 import Footer from './components/Footer';
 import Onboarding from './components/ApplyPage/Onboarding';
-
 function App() {
   return (
     <BrowserRouter>
