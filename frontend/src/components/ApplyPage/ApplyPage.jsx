@@ -1,4 +1,4 @@
-import React from 'react'
+
 import ApplyNav from './ApplyNav'
 import ApplyContent from './ApplyContent'
 

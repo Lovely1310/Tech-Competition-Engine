@@ -5,14 +5,23 @@ import { FaRegHeart } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { IoIosArrowDropleftCircle } from "react-icons/io";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 const ApplyContent = () => {
-  const [data,setData] = useState(Data);
+  const [data, setData] = useState(Data);
   const [page, setPage] = useState(1);
-  const [company, setCompany] = useState([...new Set(Data.map((item) => item.companyName))]);
-  const [experience, setExprience] = useState([...new Set(Data.map((item) => item.experience))]);
-  const [location, setLocation] = useState([...new Set(Data.map((item) => item.location))]);
-  const [role, setRole] = useState([...new Set(Data.map((item) => item.jobRole))]);
+  const [company, setCompany] = useState([
+    ...new Set(Data.map((item) => item.companyName)),
+  ]);
+  const [experience, setExprience] = useState([
+    ...new Set(Data.map((item) => item.experience)),
+  ]);
+  const [location, setLocation] = useState([
+    ...new Set(Data.map((item) => item.location)),
+  ]);
+  const [role, setRole] = useState([
+    ...new Set(Data.map((item) => item.jobRole)),
+  ]);
   const [value, setValue] = useState([]);
   const [card, setCard] = useState([]);
 
@@ -24,28 +33,25 @@ const ApplyContent = () => {
     }
   }
 
-  function handelGetItem(key,value){
-    setValue([key,value]);
+  function handelGetItem(key, value) {
+    setValue([key, value]);
   }
 
-  
+  useEffect(() => {
+    if (value.length == 0) return;
 
-  useEffect(()=>{
-    if(value.length == 0) return;
-
-    const[key , val] = value;
+    const [key, val] = value;
 
     let copy = [...data];
-    copy = copy.filter(item => item[key] == val);
+    copy = copy.filter((item) => item[key] == val);
     setCard(copy);
 
     let id = setTimeout(() => {
       setValue([]);
     }, 500);
 
-    return ()=> clearTimeout(id);
-
-  },[value]);
+    return () => clearTimeout(id);
+  }, [value]);
 
   console.log(card);
 
@@ -62,24 +68,29 @@ const ApplyContent = () => {
           </p>
         </div>
         <div>
-          <button className="btn btn-neutral">See how it </button>
+          <Link to="/apply/onboarding">
+            <button className="btn btn-neutral">See how it works</button>
+          </Link>
         </div>
       </div>
 
       <div>
         <div className="dropdown dropdown-start">
-          <div tabIndex={0} role="button" className="btn m-1  bg-black text-white">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn m-1  bg-black text-white"
+          >
             Role <IoIosArrowDown />
           </div>
           <ul
-          
             tabIndex={0}
             className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
           >
             {role.map((item, idx) => {
               return (
                 <li key={idx} className="text-[13px]">
-                  <a onClick={()=>handelGetItem("jobRole",item)}>{item}</a>
+                  <a onClick={() => handelGetItem("jobRole", item)}>{item}</a>
                 </li>
               );
             })}
@@ -87,7 +98,11 @@ const ApplyContent = () => {
         </div>
 
         <div className="dropdown dropdown-start">
-          <div tabIndex={0} role="button" className="btn m-1 bg-black text-white">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn m-1 bg-black text-white"
+          >
             Experience <IoIosArrowDown />
           </div>
           <ul
@@ -97,7 +112,9 @@ const ApplyContent = () => {
             {experience.map((item, idx) => {
               return (
                 <li key={idx} className="text-[13px]">
-                  <a onClick={()=>handelGetItem("experience",item)}>{item}</a>
+                  <a onClick={() => handelGetItem("experience", item)}>
+                    {item}
+                  </a>
                 </li>
               );
             })}
@@ -105,17 +122,21 @@ const ApplyContent = () => {
         </div>
 
         <div className="dropdown dropdown-start">
-          <div tabIndex={0} role="button" className="btn m-1 bg-black text-white">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn m-1 bg-black text-white"
+          >
             Location <IoIosArrowDown />
           </div>
           <ul
             tabIndex={0}
             className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
           >
-             {location.map((item, idx) => {
+            {location.map((item, idx) => {
               return (
                 <li key={idx} className="text-[13px]">
-                  <a onClick={()=>handelGetItem("location",item)}>{item}</a>
+                  <a onClick={() => handelGetItem("location", item)}>{item}</a>
                 </li>
               );
             })}
@@ -134,10 +155,12 @@ const ApplyContent = () => {
             tabIndex={0}
             className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
           >
-             {company.map((item, idx) => {
+            {company.map((item, idx) => {
               return (
                 <li key={idx} className="text-[13px]">
-                  <a onClick={()=>handelGetItem("companyName",item)}>{item}</a>
+                  <a onClick={() => handelGetItem("companyName", item)}>
+                    {item}
+                  </a>
                 </li>
               );
             })}
@@ -146,36 +169,38 @@ const ApplyContent = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7 text-white">
-        {(card.length > 0 ? card : data).slice(page * 12 - 12, page * 12).map((item, idx) => {
-          return (
-            <div
-              key={idx}
-              className="bg-[linear-gradient(90deg,rgba(173,216,230,0.3),rgba(221,160,221,0.5))] p-6 rounded-2xl flex flex-col gap-3 transform transition duration-300 hover:scale-105"
-            >
-              <div className="w-full flex justify-between">
-                <div className="flex align-center gap-3">
-                  <img src={item.companyLogo} className="h-5" />
-                  <p className="text-[11px]">{item.companyName}</p>
+        {(card.length > 0 ? card : data)
+          .slice(page * 12 - 12, page * 12)
+          .map((item, idx) => {
+            return (
+              <div
+                key={idx}
+                className="bg-[linear-gradient(90deg,rgba(173,216,230,0.3),rgba(221,160,221,0.5))] p-6 rounded-2xl flex flex-col gap-3 transform transition duration-300 hover:scale-105"
+              >
+                <div className="w-full flex justify-between">
+                  <div className="flex align-center gap-3">
+                    <img src={item.companyLogo} className="h-5" />
+                    <p className="text-[11px]">{item.companyName}</p>
+                  </div>
+
+                  <div>
+                    <FaRegHeart size={20} />
+                  </div>
                 </div>
 
                 <div>
-                  <FaRegHeart size={20} />
+                  <h2 className="text-[16px]">{item.jobRole}</h2>
+                  <p className="text-[10px]">{item.techStack.join(" • ")}</p>
+                </div>
+
+                <div className="text-[10px] ">
+                  <button className="bg-[linear-gradient(90deg,rgba(255,216,230,.5),rgba(221,160,221,0.4))] p-1 pl-2 pr-2 rounded-2xl text-white font-semibold">
+                    {item.location}
+                  </button>
                 </div>
               </div>
-
-              <div>
-                <h2 className="text-[16px]">{item.jobRole}</h2>
-                <p className="text-[10px]">{item.techStack.join(" • ")}</p>
-              </div>
-
-              <div className="text-[10px] ">
-                <button className="bg-[linear-gradient(90deg,rgba(255,216,230,.5),rgba(221,160,221,0.4))] p-1 pl-2 pr-2 rounded-2xl text-white font-semibold">
-                  {item.location}
-                </button>
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
       </div>
 
       <div>

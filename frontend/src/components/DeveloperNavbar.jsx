@@ -1,7 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
+import { IoMdApps } from "react-icons/io";
+import { FcReddit } from "react-icons/fc";
+import { FcBriefcase } from "react-icons/fc";
+import { FcRules } from "react-icons/fc";
+import { FcPrevious } from "react-icons/fc";
+import { FcAndroidOs } from "react-icons/fc";
 
 const DeveloperNavbar = () => {
   const [showNavbar, setShowNavbar] = useState(true);
@@ -18,8 +24,8 @@ const DeveloperNavbar = () => {
       setShowNavbar(scrollY < lastScrollY || scrollY <= 0);
       setLastScrollY(scrollY);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
   return (
@@ -30,7 +36,7 @@ const DeveloperNavbar = () => {
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -30 }}
-          transition={{ duration: 0.3, ease: 'easeInOut' }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
         >
           {/* LEFT SIDE */}
           <div className="navbar-start flex items-center gap-6">
@@ -41,7 +47,7 @@ const DeveloperNavbar = () => {
               </span>
             </Link>
             <ul className="hidden lg:flex menu menu-horizontal px-1">
-              {['Prepare', 'Certify', 'Complete', 'Apply'].map(item => (
+              {["Prepare", "Certify", "Complete", "Apply"].map((item) => (
                 <li key={item}>
                   <Link
                     to={`/${item.toLowerCase()}`}
@@ -72,8 +78,12 @@ const DeveloperNavbar = () => {
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                    d="M21 21l-4.35-4.35M16 10a6 6 0 11-12 0 6 6 0 0112 0z" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-4.35-4.35M16 10a6 6 0 11-12 0 6 6 0 0112 0z"
+                  />
                 </svg>
               </div>
 
@@ -88,12 +98,57 @@ const DeveloperNavbar = () => {
               {isLoggedIn ? (
                 <>
                   {/* 3) Apps */}
-                  <button className="btn btn-ghost text-white p-1" title="Apps" aria-label="Apps">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5"
-                      fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                        d="M4 6h4M4 12h4M4 18h4M10 6h10M10 12h10M10 18h10" />
-                    </svg>
+                  <button
+                    className="btn btn-ghost text-white p-1"
+                    title="Apps"
+                    aria-label="Apps"
+                  >
+                    <div className="dropdown dropdown-end">
+                      <div tabIndex={0}>
+                        <IoMdApps size={25} />
+                      </div>
+                      <ul
+                        tabIndex={0}
+                        className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+                      >
+                        <li>
+                          <Link to="#" className="text-black p-4">
+                            {" "}
+                            <span className="bg-gray-200 p-2 rounded-3xl mr-2">
+                              <FcRules size={28} />
+                            </span>{" "}
+                            CV Creator
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="#" className="text-black p-4">
+                            {" "}
+                            <span className="bg-gray-200 p-2 rounded-3xl mr-2">
+                              <FcAndroidOs size={28} />
+                            </span>{" "}
+                            Code Lab
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="#" className="text-black p-4">
+                            {" "}
+                            <span className="bg-gray-200 p-2 rounded-3xl mr-2">
+                              <FcReddit size={28} />
+                            </span>
+                            Application Manager
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="#" className="text-black p-4">
+                            {" "}
+                            <span className="bg-gray-200 p-2 rounded-3xl mr-2">
+                              <FcBriefcase size={28} />
+                            </span>{" "}
+                            Job Portal
+                          </Link>
+                        </li>
+                      </ul>
+                    </div>
                   </button>
 
                   {/* 4) Notifications */}
@@ -102,30 +157,56 @@ const DeveloperNavbar = () => {
                     title="Notifications"
                     aria-label="Notifications"
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5"
-                      fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
                         d="M15 17h5l-1.4-1.4A2 2 0 0118 14V11a6 6 0
                            00-4-5.7V5a2 2 0 10-4 0v.3C7.7 6.2 6 8.4
                            6 11v3c0 .5-.2 1-.6 1.4L4 17h5m6 0v1a3 3
-                           0 11-6 0v-1h6z" />
+                           0 11-6 0v-1h6z"
+                      />
                     </svg>
                   </button>
 
                   {/* 5) Messages */}
-                  <button className="btn btn-ghost text-white p-1" title="Messages" aria-label="Messages">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5"
-                      fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                  <button
+                    className="btn btn-ghost text-white p-1"
+                    title="Messages"
+                    aria-label="Messages"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
                         d="M7 8h10M7 12h6m-6 4h8M21 12c0 4.4-4 8-9
                            8-1.4 0-2.7-.3-3.8-.8L3 20l1.7-4.3A8 8 0
-                           013 12c0-4.4 4-8 9-8s9 3.6 9 8z" />
+                           013 12c0-4.4 4-8 9-8s9 3.6 9 8z"
+                      />
                     </svg>
                   </button>
 
                   {/* 6) Profile */}
-                  <button className="btn btn-ghost text-white p-1" title="Profile" aria-label="Profile">
-                    <CgProfile size={18}/>
+                  <button
+                    className="btn btn-ghost text-white p-1"
+                    title="Profile"
+                    aria-label="Profile"
+                  >
+                    <CgProfile size={18} />
                   </button>
                 </>
               ) : (
@@ -146,12 +227,24 @@ const DeveloperNavbar = () => {
             </div>
 
             {/* MOBILE: Search icon */}
-            <button className="lg:hidden btn btn-ghost text-white" title="Search">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6"
-                fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+            <button
+              className="lg:hidden btn btn-ghost text-white"
+              title="Search"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
                   d="M21 21l-4.35-4.35M16 10a6 6 
-                     0 11-12 0 6 6 0 0112 0z" />
+                     0 11-12 0 6 6 0 0112 0z"
+                />
               </svg>
             </button>
 
@@ -159,14 +252,23 @@ const DeveloperNavbar = () => {
             <div className="relative lg:hidden">
               <button
                 className="btn btn-ghost text-white"
-                onClick={() => setIsDropdownOpen(o => !o)}
+                onClick={() => setIsDropdownOpen((o) => !o)}
                 title="Menu"
                 aria-label="Menu"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6"
-                  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
                 </svg>
               </button>
               <AnimatePresence>
@@ -178,7 +280,7 @@ const DeveloperNavbar = () => {
                     transition={{ duration: 0.2 }}
                     className="absolute right-0 mt-2 w-60 p-4 bg-white/90 backdrop-blur-md rounded-box shadow-lg space-y-2 text-center"
                   >
-                    {['Prepare', 'Certify', 'Complete', 'Apply'].map(item => (
+                    {["Prepare", "Certify", "Complete", "Apply"].map((item) => (
                       <li key={item}>
                         <Link
                           to={`#${item.toLowerCase()}`}
@@ -197,12 +299,18 @@ const DeveloperNavbar = () => {
                     {!isLoggedIn && (
                       <>
                         <li>
-                          <Link to="/login/developerlogin" className="block text-gray-800 hover:text-blue-600 text-sm font-semibold">
+                          <Link
+                            to="/login/developerlogin"
+                            className="block text-gray-800 hover:text-blue-600 text-sm font-semibold"
+                          >
                             Log In
                           </Link>
                         </li>
                         <li>
-                          <Link to="/signup" className="block bg-blue-600 text-white text-sm font-semibold px-3 py-1 rounded">
+                          <Link
+                            to="/signup"
+                            className="block bg-blue-600 text-white text-sm font-semibold px-3 py-1 rounded"
+                          >
                             Sign Up
                           </Link>
                         </li>
