@@ -185,7 +185,20 @@ const DeveloperNavbar = () => {
 
                   {/* Profile */}
                   <button className="btn btn-ghost text-white p-1" title="Profile">
-                    <CgProfile size={20} />
+                    
+                    <div className="dropdown dropdown-end">
+  <div tabIndex={0} className=""><CgProfile size={20} /></div>
+  <ul tabIndex={0} className="dropdown-content bg-gray-100 menu rounded-box z-1 w-52 p-4 shadow-sm ">
+    <li className="text-gray-600 border-b border-b-gray-300"><Link to="#">Profile</Link></li>
+    <li className="text-gray-600 border-b border-b-gray-300"><Link to="#">Leaderboard</Link></li>
+    <li className="text-gray-600 border-b border-b-gray-300"><Link to="#">Settings</Link></li>
+    <li className="text-gray-600 border-b border-b-gray-300"><Link to="#">Bookmarks</Link></li>
+    <li className="text-gray-600 border-b border-b-gray-300"><Link to="#">Network</Link></li>
+    <li className="text-gray-600 border-b border-b-gray-300"><Link to="#">Submissions</Link></li>
+    <li className="text-gray-600 border-b border-b-gray-300"><Link to="#">Administration</Link></li>
+    <li className="text-gray-600"><a>Logout</a></li>
+  </ul>
+</div>
                   </button>
                 </>
               ) : (
