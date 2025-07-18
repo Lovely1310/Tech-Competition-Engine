@@ -14,6 +14,7 @@ import CreateContest from './components/Competepage/Create';
 import JobBoard from './components/NavBarContents/JobBoard';
 import Onboarding from './components/ApplyPage/Onboarding';
 import Footer from './components/Footer'
+import Bookmarks from './Pages/Bookmarks';
 
 
 function App() {
@@ -32,6 +33,8 @@ function App() {
             <Route path="/apply/onboarding" element={<Onboarding />} />
             <Route path="*" element={<h1>404 Not Found</h1>} />
             <Route path="/job-board" element={<JobBoard />} />
+            <Route path="/bookmarks" element={<Bookmarks />} />
+
         </Routes>
         <Footer />
     </BrowserRouter>
