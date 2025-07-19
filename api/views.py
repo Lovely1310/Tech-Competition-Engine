@@ -4,8 +4,9 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
-from .serializers import ProblemSerializer
+from .serializers import ProblemSerializer,RegisterSerializer
 from .models import Problem
+from rest_framework.views import APIView
 
 # Company Login
 @api_view(['POST'])
@@ -76,3 +77,19 @@ def delete_problem(request, pk):
     problem.delete()
     return Response({'message': 'Problem deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
 
+############################
+@api_view(['POST'])
+def register_user(request):
+    serializer = RegisterSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({'message': 'User created successfully'}, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+#######################
+from django.contrib.auth import logout
+
+class LogoutView(APIView):
+    def post(self, request):
+        logout(request)
+        return Response({"message": "Logged out successfully"})

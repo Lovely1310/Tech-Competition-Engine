@@ -1,10 +1,11 @@
 import './index.css';
-import { Routes,Route,BrowserRouter } from 'react-router-dom'
-import './App.css'
-import LandingPage from './Pages/LandingPage'
-import BusinessLogin from './Pages/BusinessLogin'
+import './App.css';
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import LandingPage from './Pages/LandingPage';
+import BusinessLogin from './Pages/BusinessLogin';
 import LoginPage from './components/LoginPageComponents/LoginPage';
-import Footer from './components/Footer';
 import DeveloperLogin from './components/LoginPageComponents/DeveloperLogin';
 import Apply from './Pages/Apply';
 import DeveloperDashboard from  './Pages/Dashboard';
@@ -12,6 +13,9 @@ import Compete from './components/Competepage/compete';
 import CreateContest from './components/Competepage/Create';
 import JobBoard from './components/NavBarContents/JobBoard';
 import CertificationPage from './components/Certifypage/Certify';
+import Onboarding from './components/ApplyPage/Onboarding';
+import Footer from './components/Footer'
+import Bookmarks from './Pages/Bookmarks';
 
 
 function App() {
@@ -30,11 +34,16 @@ function App() {
             <Route path="*" element={<h1>404 Not Found</h1>} />
             <Route path="/job-board" element={<JobBoard />} />
             <Route path="/Certify" element={<CertificationPage />} />
+            <Route path='/apply' element={<Apply />}></Route>
+            <Route path="/apply/onboarding" element={<Onboarding />} />
+            <Route path="*" element={<h1>404 Not Found</h1>} />
+            <Route path="/job-board" element={<JobBoard />} />
+            <Route path="/bookmarks" element={<Bookmarks />} />
+
         </Routes>
         <Footer />
     </BrowserRouter>
-    
-  )
+  );
 }
 
 export default App;

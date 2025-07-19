@@ -1,4 +1,3 @@
-import React from 'react'
 import MiddleInfo from '../components/LandingPage/MiddleInfo'
 import Navigation from '../components/LandingPage/Navigation'
 import HeroSection from '../components/LandingPage/HeroSection'

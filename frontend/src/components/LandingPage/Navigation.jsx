@@ -22,7 +22,7 @@ const Navigation = () => {
     <AnimatePresence>
       {showNavbar && (
         <motion.div
-          className="navbar bg-white/10 backdrop-blur-md shadow-md px-4 sm:px-6 fixed top-0 left-0 right-0 z-50"
+          className="navbar bg-black/30 backdrop-blur-md shadow-md px-4 sm:px-6 fixed top-0 left-0 right-0 z-50 flex justify-between items-center"
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -30 }}
@@ -31,8 +31,19 @@ const Navigation = () => {
           {/* LEFT: Logo with link */}
           <div className="navbar-start">
             <Link to="/" className="flex items-center">
-              <img src={logo} alt="TechCompetitionEngine Logo" className="h-10 md:h-12" />
-              <span className="text-white font-mono italic text-base tracking-widest hidden lg:inline ml-2">
+              <img
+                src={logo}
+                alt="TEN TECH ENGINE Logo"
+                className="h-10 md:h-12"
+                style={{ filter: "invert(1) brightness(2)" }} // <-- Makes logo white
+              />
+              <span
+                className="ml-2 text-xl font-black text-white tracking-tight select-none drop-shadow-sm hidden lg:inline"
+                style={{
+                  letterSpacing: "0.01em",
+                  fontFamily: "'Montserrat', 'Segoe UI', 'Arial', sans-serif"
+                }}
+              >
                 TEN Tech Engine
               </span>
             </Link>
