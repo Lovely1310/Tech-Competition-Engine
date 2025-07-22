@@ -12,7 +12,7 @@ import DeveloperDashboard from  './Pages/Dashboard';
 import Compete from './components/Competepage/compete';
 import CreateContest from './components/Competepage/Create';
 import JobBoard from './components/NavBarContents/JobBoard';
-import CertificationPage from './components/Certifypage/Certify';
+import Certify from './components/Dashboard/Certifications/Certify';
 import Onboarding from './components/ApplyPage/Onboarding';
 import Footer from './components/Footer'
 import Bookmarks from './Pages/Bookmarks';
@@ -36,7 +36,7 @@ function App() {
 
             <Route path="*" element={<h1>404 Not Found</h1>} />
             <Route path="/job-board" element={<JobBoard />} />
-            <Route path="/Certify" element={<CertificationPage />} />
+           <Route path="/certify" element={<Certify />} />
             <Route path='/apply' element={<Apply />}></Route>
             <Route path="/apply/onboarding" element={<Onboarding />} />
             <Route path="*" element={<h1>404 Not Found</h1>} />
