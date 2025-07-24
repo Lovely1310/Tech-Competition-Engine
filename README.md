@@ -13,6 +13,7 @@ To ensure smooth integration with the front-end, follow the data structures and 
   "username": "@ajaykhan6433",
   "headline": "Nothing to show here"
 }
+```
 
 📧 Personal Info
 ```bash
