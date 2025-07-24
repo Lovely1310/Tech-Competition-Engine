@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaRobot, FaCode, FaBrain, FaTrophy } from 'react-icons/fa';
 import PreparationSection from './PreparationSection';
-import CertificationSection from './CertificationSection';
+
 import TopicsSection from './TopicsSection';
 import PreparationKits from './PreparationKits';
 
@@ -60,12 +60,6 @@ const MainContent = () => {
               </div>
             </div>
 
-            {/* 🟣 Certification Section */}
-            <div className="w-full bg-gradient-to-b from-[#1c2232] to-[#2b1f37]">
-              <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 py-20">
-                <CertificationSection />
-              </div>
-            </div>
 
             {/* 🟢 Topics Section */}
             <div className="w-full bg-gradient-to-b from-[#2b1f37] to-[#172830]">
