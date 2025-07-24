@@ -29,7 +29,7 @@ function App() {
             <Route path="/login/developerlogin" element={<DeveloperLogin />} />
             <Route path='apply' element={<Apply />}></Route>
             <Route path="/DeveloperDashboard" element={<DeveloperDashboard />} />
-            <Route path="/Compete" element={<Compete />} />
+            <Route path="/" element={<Compete />} />
             <Route path="/Compete/create" element={<CreateContest />} />
             <Route path="/profile" element={<Profile />} />
 

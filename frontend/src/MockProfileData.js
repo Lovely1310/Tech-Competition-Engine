@@ -1,5 +1,6 @@
 export const mockProfileData = {
-  name: 'Ajay',
+  firstName: 'Ajay',
+  lastName: 'Khan',
   username: '@ajaykhan6433',
   email: 'ajaykhan6433@gmail.com',
   phone: '+91-9717965986',
