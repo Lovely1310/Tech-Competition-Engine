@@ -24,6 +24,7 @@ To ensure smooth integration with the front-end, follow the data structures and 
   "location": "Gurugram",
   "visibility": "private" // Options: 'private' or 'public'
 }
+```
 
 📄 Resume
 ```bash
@@ -32,6 +33,7 @@ To ensure smooth integration with the front-end, follow the data structures and 
   "url": "https://yourcdn.com/uploads/resume/Ajay_Resume.pdf",
   "visibility": "private"
 }
+```
 
  Badges
 ```bash
@@ -45,3 +47,4 @@ To ensure smooth integration with the front-end, follow the data structures and 
     "icon": "https://cdn-icons-png.flaticon.com/512/1828/1828884.png"
   }
 ]
+```
