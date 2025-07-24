@@ -52,16 +52,25 @@ const Navigation = () => {
           {/* CENTER: Main Nav (Only for large screens) */}
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
-              {['Products', 'Solutions', 'Resources', 'Pricing'].map((item, i) => (
-                <li key={i}>
-                  <a
-                    href="#"
-                    className="text-white hover:text-blue-200 px-3 py-2 text-sm font-medium"
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
+              {['Products', 'Solutions', 'Resources'].map((item, i) => (
+  <li key={i}>
+    <a
+      href="#"
+      className="text-white hover:text-blue-200 px-3 py-2 text-sm font-medium"
+    >
+      {item}
+    </a>
+  </li>
+))}
+<li>
+  <Link
+    to="/pricing"
+    className="text-white hover:text-blue-200 px-3 py-2 text-sm font-medium"
+  >
+    Pricing
+  </Link>
+</li>
+
               <li>
                 <Link
                   to="/DeveloperDashboard"
@@ -105,13 +114,22 @@ const Navigation = () => {
                 tabIndex={0}
                 className="menu dropdown-content mt-3 z-[1] p-4 shadow bg-white/90 backdrop-blur-md rounded-box w-60 text-center items-center gap-2"
               >
-                {['Products', 'Solutions', 'Resources', 'Pricing'].map((item, i) => (
-                  <li key={i}>
-                    <a className="text-gray-800 hover:text-blue-600 text-sm font-medium px-2 py-1">
-                      {item}
-                    </a>
-                  </li>
-                ))}
+                {['Products', 'Solutions', 'Resources'].map((item, i) => (
+  <li key={i}>
+    <a className="text-gray-800 hover:text-blue-600 text-sm font-medium px-2 py-1">
+      {item}
+    </a>
+  </li>
+))}
+<li>
+  <Link
+    to="/pricing"
+    className="text-gray-800 hover:text-blue-600 text-sm font-medium px-2 py-1"
+  >
+    Pricing
+  </Link>
+</li>
+
                 <li>
                   <Link to="/DeveloperLogin" className="text-gray-800 hover:text-blue-600 text-sm font-medium px-2 py-1">
                     For Developers

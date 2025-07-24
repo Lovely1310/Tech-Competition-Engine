@@ -17,6 +17,7 @@ import Onboarding from './components/ApplyPage/Onboarding';
 import Footer from './components/Footer'
 import Bookmarks from './Pages/Bookmarks';
 import Profile from './Pages/Profile';
+import Pricing from './Pages/Pricing';
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
             <Route path="*" element={<h1>404 Not Found</h1>} />
             <Route path="/job-board" element={<JobBoard />} />
             <Route path="/bookmarks" element={<Bookmarks />} />
+            <Route path="/pricing" element={<Pricing />} />
 
         </Routes>
         <Footer />
