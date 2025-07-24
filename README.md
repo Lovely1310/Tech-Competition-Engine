@@ -15,7 +15,7 @@ To ensure smooth integration with the front-end, follow the data structures and 
 }
 
 📧 Personal Info
-```json
+```bash
 {
   "email": "ajaykhan6433@gmail.com",
   "country": "India",
@@ -26,7 +26,7 @@ To ensure smooth integration with the front-end, follow the data structures and 
 }
 
 📄 Resume
-```json
+```bash
 {
   "fileName": "Ajay_Resume.pdf",
   "url": "https://yourcdn.com/uploads/resume/Ajay_Resume.pdf",
@@ -34,7 +34,7 @@ To ensure smooth integration with the front-end, follow the data structures and 
 }
 
  Badges
-```json
+```bash
 [
   {
     "name": "React Expert",
