@@ -1,5 +1,5 @@
 
-import React from 'react'
+
 import DeveloperNavbar from '../components/DeveloperNavbar'
 import ApplyPage from '../components/ApplyPage/ApplyPage'
 

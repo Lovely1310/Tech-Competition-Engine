@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 from .serializers import ProblemSerializer,RegisterSerializer
 from .models import Problem
+from rest_framework.views import APIView
 
 # Company Login
 @api_view(['POST'])
@@ -84,3 +85,11 @@ def register_user(request):
         serializer.save()
         return Response({'message': 'User created successfully'}, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+#######################
+from django.contrib.auth import logout
+
+class LogoutView(APIView):
+    def post(self, request):
+        logout(request)
+        return Response({"message": "Logged out successfully"})

@@ -12,8 +12,12 @@ import DeveloperDashboard from  './Pages/Dashboard';
 import Compete from './components/Competepage/compete';
 import CreateContest from './components/Competepage/Create';
 import JobBoard from './components/NavBarContents/JobBoard';
+import Certify from './components/Dashboard/Certifications/Certify';
 import Onboarding from './components/ApplyPage/Onboarding';
 import Footer from './components/Footer'
+import Bookmarks from './Pages/Bookmarks';
+import Profile from './Pages/Profile';
+import Pricing from './Pages/Pricing';
 
 
 function App() {
@@ -26,12 +30,21 @@ function App() {
             <Route path="/login/developerlogin" element={<DeveloperLogin />} />
             <Route path='apply' element={<Apply />}></Route>
             <Route path="/DeveloperDashboard" element={<DeveloperDashboard />} />
-            <Route path="/Compete" element={<Compete />} />
+            <Route path="/" element={<Compete />} />
             <Route path="/Compete/create" element={<CreateContest />} />
+            <Route path="/profile" element={<Profile />} />
+
+
+            <Route path="*" element={<h1>404 Not Found</h1>} />
+            <Route path="/job-board" element={<JobBoard />} />
+           <Route path="/certify" element={<Certify />} />
             <Route path='/apply' element={<Apply />}></Route>
             <Route path="/apply/onboarding" element={<Onboarding />} />
             <Route path="*" element={<h1>404 Not Found</h1>} />
             <Route path="/job-board" element={<JobBoard />} />
+            <Route path="/bookmarks" element={<Bookmarks />} />
+            <Route path="/pricing" element={<Pricing />} />
+
         </Routes>
         <Footer />
     </BrowserRouter>

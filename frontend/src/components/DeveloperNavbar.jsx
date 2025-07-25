@@ -192,7 +192,7 @@ const DeveloperNavbar = () => {
     <li className="text-gray-600 border-b border-b-gray-300"><Link to="#">Profile</Link></li>
     <li className="text-gray-600 border-b border-b-gray-300"><Link to="#">Leaderboard</Link></li>
     <li className="text-gray-600 border-b border-b-gray-300"><Link to="#">Settings</Link></li>
-    <li className="text-gray-600 border-b border-b-gray-300"><Link to="#">Bookmarks</Link></li>
+    <li className="text-gray-600 border-b border-b-gray-300"><Link to="/bookmarks">Bookmarks</Link></li>
     <li className="text-gray-600 border-b border-b-gray-300"><Link to="#">Network</Link></li>
     <li className="text-gray-600 border-b border-b-gray-300"><Link to="#">Submissions</Link></li>
     <li className="text-gray-600 border-b border-b-gray-300"><Link to="#">Administration</Link></li>
