@@ -56,7 +56,7 @@ const DeveloperNavbar = () => {
               {["Prepare", "Certify", "Compete", "Apply"].map((item) => (
                 <li key={item}>
                   <Link
-                    to={`/${item.toLowerCase()}`}
+                    to={`/${item.toLowerCase() === 'prepare' ? 'dashboard' : item.toLowerCase() === 'compete' ? 'compete' : item.toLowerCase()}`}
                     className="px-3 py-2 text-sm font-medium text-white hover:text-blue-200"
                   >
                     {item}
@@ -189,7 +189,7 @@ const DeveloperNavbar = () => {
                     <div className="dropdown dropdown-end">
   <div tabIndex={0} className=""><CgProfile size={20} /></div>
   <ul tabIndex={0} className="dropdown-content bg-gray-100 menu rounded-box z-1 w-52 p-4 shadow-sm ">
-    <li className="text-gray-600 border-b border-b-gray-300"><Link to="#">Profile</Link></li>
+    <li className="text-gray-600 border-b border-b-gray-300"><Link to="/profile">Profile</Link></li>
     <li className="text-gray-600 border-b border-b-gray-300"><Link to="#">Leaderboard</Link></li>
     <li className="text-gray-600 border-b border-b-gray-300"><Link to="#">Settings</Link></li>
     <li className="text-gray-600 border-b border-b-gray-300"><Link to="/bookmarks">Bookmarks</Link></li>
@@ -265,7 +265,7 @@ const DeveloperNavbar = () => {
                     {['Prepare', 'Certify', 'Compete', 'Apply'].map(item => (
                       <li key={item}>
                         <Link
-                          to={`/${item.toLowerCase()}`}
+                          to={`/${item.toLowerCase() === 'prepare' ? 'dashboard' : item.toLowerCase() === 'compete' ? 'compete' : item.toLowerCase()}`}
                           className="block text-gray-800 hover:text-blue-600 text-sm font-medium"
                         >
                           {item}

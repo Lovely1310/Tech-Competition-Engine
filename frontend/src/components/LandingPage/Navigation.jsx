@@ -57,7 +57,14 @@ const Navigation = () => {
               {["Products", "Solutions", "Resources", "Pricing"].map(
                 (item, i) => (
                   <li key={i}>
-                    {item !== "Pricing" ? (
+                    {item === "Pricing" ? (
+                      <Link
+                        to="/pricing"
+                        className="text-white hover:text-blue-200 px-3 py-2 text-sm font-medium"
+                      >
+                        Pricing
+                      </Link>
+                    ) : (
                       <div className="dropdown dropdown-hover">
                         <div tabIndex={0} className="text-white mr-2">
                           {item}
@@ -249,13 +256,6 @@ const Navigation = () => {
                           </div>
                         )}
                       </div>
-                    ) : (
-                      <a
-                        href="#"
-                        className="text-white hover:text-blue-200 px-3 py-2 text-sm font-medium"
-                      >
-                        {item}
-                      </a>
                     )}
                   </li>
                 )

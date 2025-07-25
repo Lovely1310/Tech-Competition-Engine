@@ -70,25 +70,6 @@ const AuroraBackground = () => (
         transition={{ duration: 7 + i, repeat: Infinity, repeatType: 'mirror', delay: i * 0.5 }}
       />
     ))}
-    {/* Twinkling stars */}
-    {[...Array(30)].map((_, i) => (
-      <motion.div
-        key={100 + i}
-        className="absolute rounded-full pointer-events-none"
-        style={{
-          width: 2.5 + Math.random() * 1.5,
-          height: 2.5 + Math.random() * 1.5,
-          left: `${Math.random() * 100}%`,
-          top: `${Math.random() * 100}%`,
-          background: '#fff',
-          filter: 'blur(0.5px)',
-          zIndex: 1,
-        }}
-        initial={{ opacity: 0.5 }}
-        animate={{ opacity: [0.5, 1, 0.5] }}
-        transition={{ duration: 2.5 + i * 0.1, repeat: Infinity, repeatType: 'mirror', delay: i * 0.2 }}
-      />
-    ))}
   </div>
 );
 

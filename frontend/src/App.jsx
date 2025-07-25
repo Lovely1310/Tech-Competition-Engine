@@ -20,6 +20,7 @@ import Profile from './Pages/Profile';
 import Pricing from './Pages/Pricing';
 import ResumeBuilder from './Pages/ResumeBuilder';
 import AdministrationPage from './Pages/Administration';
+import Interview from './Pages/Interview';
 
 
 function App() {
@@ -32,11 +33,13 @@ function App() {
             <Route path="/login/developerlogin" element={<DeveloperLogin />} />
             <Route path='apply' element={<Apply />}></Route>
             <Route path="/DeveloperDashboard" element={<DeveloperDashboard />} />
-            <Route path="/" element={<Compete />} />
+            <Route path="/dashboard" element={<DeveloperDashboard />} />
+            <Route path="/compete" element={<Compete />} />
             <Route path="/Compete/create" element={<CreateContest />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/resumebuilder" element={<ResumeBuilder />} />
             <Route path="/administration" element={<AdministrationPage />} />
+            <Route path="/interview" element={<Interview />} />
 
 
             <Route path="*" element={<h1>404 Not Found</h1>} />

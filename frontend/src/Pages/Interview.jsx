@@ -1,10 +1,9 @@
 import React from 'react';
-import HeroSection from './components/HeroSection';
-import CompanyLogos from './components/CompanyLogos';
-import FeaturesSection from './components/FeaturesSection';
-import ProductDetails from './components/ProductDetails';
-import ResourcesAndContact from './components/ResourcesAndContact';
-import Footer from './components/Footer';
+import HeroSection from '../components/Interview/HeroSection';
+import CompanyLogos from '../components/Interview/CompanyLogos';
+import FeaturesSection from '../components/Interview/FeaturesSection';
+import ProductDetails from '../components/Interview/ProductDetails';
+import ResourcesAndContact from '../components/Interview/ResourcesAndContact';
 
 function Interview() {
   return (
@@ -14,7 +13,6 @@ function Interview() {
       <FeaturesSection />
       <ProductDetails />
       <ResourcesAndContact />
-      <Footer />
     </>
   );
 }
