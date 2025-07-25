@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const MagicalBackground = () => (
   <div className="absolute inset-0 w-full h-full z-0 pointer-events-none overflow-hidden">
@@ -42,6 +43,15 @@ const MagicalBackground = () => (
 );
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+
+  const handleBookDemo = () => {
+    const el = document.getElementById('contact-section');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative text-white overflow-hidden" style={{ minHeight: '100vh' }}>
       <MagicalBackground />
@@ -85,11 +95,13 @@ const HeroSection = () => {
         >
           <button
             className="px-8 py-3 rounded-lg font-semibold shadow-lg transition-all duration-300 bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 hover:scale-105"
+            onClick={() => navigate('/signup')}
           >
             Try for Free
           </button>
           <button
             className="px-8 py-3 rounded-lg font-semibold shadow-lg transition-all duration-300 bg-transparent border-2 border-white text-white hover:bg-white hover:text-black hover:scale-105"
+            onClick={handleBookDemo}
           >
             Book a Demo
           </button>

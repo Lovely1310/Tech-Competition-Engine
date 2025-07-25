@@ -19,6 +19,7 @@ const ResourcesAndContact = () => {
 
   return (
     <section
+      id="contact-section"
       className="py-20 text-white"
       style={{
         minHeight: '100vh',

@@ -21,6 +21,7 @@ import Pricing from './Pages/Pricing';
 import ResumeBuilder from './Pages/ResumeBuilder';
 import AdministrationPage from './Pages/Administration';
 import Interview from './Pages/Interview';
+import SignUp from './Pages/SignUp';
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
             <Route path="/resumebuilder" element={<ResumeBuilder />} />
             <Route path="/administration" element={<AdministrationPage />} />
             <Route path="/interview" element={<Interview />} />
+            <Route path="/signup" element={<SignUp />} />
 
 
             <Route path="*" element={<h1>404 Not Found</h1>} />
