@@ -18,6 +18,8 @@ import Footer from './components/Footer'
 import Bookmarks from './Pages/Bookmarks';
 import Profile from './Pages/Profile';
 import Pricing from './Pages/Pricing';
+import ResumeBuilder from './Pages/ResumeBuilder';
+import AdministrationPage from './Pages/Administration';
 
 
 function App() {
@@ -33,6 +35,8 @@ function App() {
             <Route path="/" element={<Compete />} />
             <Route path="/Compete/create" element={<CreateContest />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/resumebuilder" element={<ResumeBuilder />} />
+            <Route path="/administration" element={<AdministrationPage />} />
 
 
             <Route path="*" element={<h1>404 Not Found</h1>} />

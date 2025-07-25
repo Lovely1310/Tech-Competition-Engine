@@ -108,7 +108,7 @@ const DeveloperNavbar = () => {
                     </button>
                     <ul className="dropdown-content menu bg-base-100 rounded-box z-10 w-52 p-2 shadow-sm">
                       <li>
-                        <Link to="#" className="text-black p-4 flex items-center">
+                        <Link to="/resumebuilder" className="text-black p-4 flex items-center">
                           <span className="bg-gray-200 p-2 rounded-3xl mr-2">
                             <FcRules size={28} />
                           </span>{" "}
@@ -195,7 +195,7 @@ const DeveloperNavbar = () => {
     <li className="text-gray-600 border-b border-b-gray-300"><Link to="/bookmarks">Bookmarks</Link></li>
     <li className="text-gray-600 border-b border-b-gray-300"><Link to="#">Network</Link></li>
     <li className="text-gray-600 border-b border-b-gray-300"><Link to="#">Submissions</Link></li>
-    <li className="text-gray-600 border-b border-b-gray-300"><Link to="#">Administration</Link></li>
+    <li className="text-gray-600 border-b border-b-gray-300"><Link to="/administration">Administration</Link></li>
     <li className="text-gray-600"><a>Logout</a></li>
   </ul>
 </div>

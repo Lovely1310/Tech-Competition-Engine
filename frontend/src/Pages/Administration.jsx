@@ -1,4 +1,4 @@
-import Administration from './components/Administration';
+import Administration from '../components/Administration/Administration';
 
 function AdministrationPage() {
   return (

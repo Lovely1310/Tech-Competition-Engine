@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import WelcomePage from './components/WelcomePage';
-import ImportPage from './components/ImportPage';
-import TemplateSelection from './components/TemplateSelection';
+import WelcomePage from "../components/ResumeBuilder/WelcomePage";
+import ImportPage from "../components/ResumeBuilder/ImportPage";
+import TemplateSelection from "../components/ResumeBuilder/TemplateSelection";
 
 
 function ResumeBuilder() {
