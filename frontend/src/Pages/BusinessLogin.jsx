@@ -5,9 +5,32 @@ const BusinessLogin = () => {
   const [email, setEmail] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('Form submitted', { email, rememberMe });
+
+    try {
+      const response = await fetch('http://localhost:8000/api/company/login/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          remember_me: rememberMe,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Login successful:', data);
+        // Optionally store token or redirect
+      } else {
+        console.error('Login failed');
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+    }
   };
 
   return (
@@ -160,3 +183,4 @@ const BusinessLogin = () => {
 };
 
 export default BusinessLogin;
+
