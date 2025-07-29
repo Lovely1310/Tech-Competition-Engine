@@ -37,7 +37,7 @@ const Navigation = () => {
                 src={logo}
                 alt="TEN TECH ENGINE Logo"
                 className="h-10 md:h-12"
-                style={{ filter: "invert(1) brightness(2)" }} // <-- Makes logo white
+                style={{ filter: "invert(1) brightness(2)" }}
               />
               <span
                 className="ml-2 text-xl font-black text-white tracking-tight select-none drop-shadow-sm hidden lg:inline"
@@ -54,223 +54,148 @@ const Navigation = () => {
           {/* CENTER: Main Nav (Only for large screens) */}
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
-              {["Products", "Solutions", "Resources", "Pricing"].map(
-                (item, i) => (
-                  <li key={i}>
-                    {item === "Pricing" ? (
-                      <Link
-                        to="/pricing"
-                        className="text-white hover:text-blue-200 px-3 py-2 text-sm font-medium"
-                      >
-                        Pricing
-                      </Link>
-                    ) : (
-                      <div className="dropdown dropdown-hover">
-                        <div tabIndex={0} className="text-white mr-2">
-                          {item}
-                        </div>
-
-                        {item == "Products" && (
-                          <div
-                            tabIndex={0}
-                            className="dropdown-content gap-6 bg-base-100 rounded-box z-1 shadow-sm flex flex-row justify-between"
-                          >
-                            {/* Products Column */}
-
-                            <div className="flex flex-col p-3 gap-3 ">
-                              <h3 className="font-semibold text-gray-700 mb-2">
-                                Products
-                              </h3>
-                              {["Screen", "Interview", "Engage", "SkillUp"].map(
-                                (item, idx) => (
-                                  <Link
-                                    to={`/${item.toLowerCase()}`}
-                                    key={idx}
-                                    onMouseEnter={() => setHoveredItem(item)}
-                                    onMouseLeave={() => setHoveredItem(null)}
-                                    className="flex p-2 items-center gap-2 rounded-1xl text-gray-600 hover:bg-gray-200 px-2 py-1 transition-all duration-300 ease-in-out cursor-pointer"
-                                  >
-                                    {hoveredItem === item && (
-                                      <FaArrowRightLong />
-                                    )}{" "}
-                                    {item}
-                                  </Link>
-                                )
-                              )}
-                            </div>
-
-                            {/* Features Column */}
-
-                            <div className="flex flex-col p-3 gap-3 min-w-[230px]">
-                              <h3 className="font-semibold text-gray-700 mb-2">
-                                Features
-                              </h3>
-                              {[
-                                "Certified Assessments",
-                                "Plagiarism Detection",
-                                "Real-World Question",
-                                "Integration",
-                              ].map((item, idx) => (
-                                <Link
-                                  to={`/${item
-                                    .toLowerCase()
-                                    .split(" ")
-                                    .join("-")}`}
-                                  key={idx}
-                                  onMouseEnter={() => setHoveredItem(item)}
-                                  onMouseLeave={() => setHoveredItem("")}
-                                  className="flex items-center p-2 gap-2 rounded-1xl text-gray-600 hover:bg-gray-200 px-2 py-1 transition-all duration-300 ease-in-out cursor-pointer"
-                                >
-                                  {hoveredItem === item && <FaArrowRightLong />}{" "}
-                                  {item}
-                                </Link>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-
-                        {item == "Solutions" && (
-                          <div
-                            tabIndex={0}
-                            className="dropdown-content gap-2 bg-base-100 rounded-box z-1 shadow-sm flex flex-row justify-between"
-                          >
-                            {/* Products Column */}
-
-                            <div className="flex flex-col p-3 gap-3 min-w-[260px]">
-                              <h3 className="font-semibold text-gray-700 mb-2">
-                                What We Do
-                              </h3>
-                              {[
-                                "Set Up Your Skills Strategy",
-                                "Showcase Your Tech Brand",
-                                "Optimize Your Hirirng Process",
-                                "Mobilize your internal talent",
-                                "AI data services",
-                              ].map((item, idx) => (
-                                <Link
-                                  to={`/${item
-                                    .toLowerCase()
-                                    .split(" ")
-                                    .slice(-2)
-                                    .join("-")}`}
-                                  key={idx}
-                                  onMouseEnter={() => setHoveredItem(item)}
-                                  onMouseLeave={() => setHoveredItem(null)}
-                                  className="flex p-2 items-center gap-2 rounded-1xl text-gray-600 hover:bg-gray-200 px-2 py-1 transition-all duration-300 ease-in-out cursor-pointer"
-                                >
-                                  {hoveredItem === item && <FaArrowRightLong />}{" "}
-                                  {item}
-                                </Link>
-                              ))}
-                            </div>
-
-                            {/* Features Column */}
-
-                            <div className="flex flex-col p-3 gap-3 min-w-[250px]">
-                              <h3 className="font-semibold text-gray-700 mb-2">
-                                Use Cases
-                              </h3>
-                              {["Remote Hiring", "University Hiring"].map(
-                                (item, idx) => (
-                                  <Link
-                                    to={`/${item
-                                      .toLowerCase()
-                                      .split(" ")
-                                      .join("-")}`}
-                                    key={idx}
-                                    onMouseEnter={() => setHoveredItem(item)}
-                                    onMouseLeave={() => setHoveredItem("")}
-                                    className="flex items-center p-2 gap-2 rounded-1xl text-gray-600 hover:bg-gray-200 px-2 py-1 transition-all duration-300 ease-in-out cursor-pointer"
-                                  >
-                                    {hoveredItem === item && (
-                                      <FaArrowRightLong />
-                                    )}{" "}
-                                    {item}
-                                  </Link>
-                                )
-                              )}
-                            </div>
-                          </div>
-                        )}
-
-                        {item == "Resources" && (
-                          <div
-                            tabIndex={0}
-                            className="dropdown-content gap-6 bg-base-100 rounded-box z-1 shadow-sm flex flex-row justify-between"
-                          >
-                            {/* Products Column */}
-
-                            <div className="flex flex-col p-3 gap-3 min-w-[190px]">
-                              <h3 className="font-semibold text-gray-700 mb-2">
-                                Learn
-                              </h3>
-                              {[
-                                "Blog",
-                                "Roles Directory",
-                                "Resource Library",
-                                "Customer Stories",
-                                "Devloper Skills Report",
-                              ].map((item, idx) => (
-                                <Link
-                                  to={`/${item
-                                    .toLowerCase()
-                                    .split(" ")
-                                    .join("-")}`}
-                                  key={idx}
-                                  onMouseEnter={() => setHoveredItem(item)}
-                                  onMouseLeave={() => setHoveredItem(null)}
-                                  className="flex p-2 items-center gap-2 rounded-1xl text-gray-600 hover:bg-gray-200 px-2 py-1 transition-all duration-300 ease-in-out cursor-pointer"
-                                >
-                                  {hoveredItem === item && <FaArrowRightLong />}{" "}
-                                  {item}
-                                </Link>
-                              ))}
-                            </div>
-
-                            {/* Features Column */}
-
-                            <div className="flex flex-col p-3 gap-3 min-w-[230px]">
-                              <h3 className="font-semibold text-gray-700 mb-2">
-                                Product Help
-                              </h3>
-                              {["What is new", "Partners", "Support"].map(
-                                (item, idx) => (
-                                  <Link
-                                    to={`/${item
-                                      .toLowerCase()
-                                      .split(" ")
-                                      .join("-")}`}
-                                    key={idx}
-                                    onMouseEnter={() => setHoveredItem(item)}
-                                    onMouseLeave={() => setHoveredItem("")}
-                                    className="flex items-center p-2 gap-2 rounded-1xl text-gray-600 hover:bg-gray-200 px-2 py-1 transition-all duration-300 ease-in-out cursor-pointer"
-                                  >
-                                    {hoveredItem === item && (
-                                      <FaArrowRightLong />
-                                    )}{" "}
-                                    {item}
-                                  </Link>
-                                )
-                              )}
-                            </div>
-                          </div>
+              {"Products" && (
+                <li>
+                  <div className="dropdown dropdown-hover">
+                    <div tabIndex={0} className="text-white mr-2">
+                      Products
+                    </div>
+                    <div
+                      tabIndex={0}
+                      className="dropdown-content gap-6 bg-white  rounded-box z-1 shadow-sm flex flex-row justify-between"
+                    >
+                      <div className="flex flex-col p-3 gap-3 ">
+                        <h3 className="font-semibold text-gray-700 mb-2">
+                          Products
+                        </h3>
+                        {["Screen", "Interview", "Engage", "SkillUp"].map(
+                          (item, idx) => (
+                            <Link
+                              to={`/${item.toLowerCase()}`}
+                              key={idx}
+                              onMouseEnter={() => setHoveredItem(item)}
+                              onMouseLeave={() => setHoveredItem(null)}
+                              className="flex p-2 items-center gap-2 rounded-1xl text-gray-600 hover:bg-gray-200 px-2 py-1 transition-all duration-300 ease-in-out cursor-pointer"
+                            >
+                              {hoveredItem === item && <FaArrowRightLong />} {item}
+                            </Link>
+                          )
                         )}
                       </div>
-                    )}
-                  </li>
-                )
+                      <div className="flex flex-col p-3 gap-3 min-w-[230px]">
+                        <h3 className="font-semibold text-gray-700 mb-2">
+                          Features
+                        </h3>
+                        {["Certified Assessments", "Plagiarism Detection", "Real-World Question", "Integration"].map((item, idx) => (
+                          <Link
+                            to={`/${item.toLowerCase().split(" ").join("-")}`}
+                            key={idx}
+                            onMouseEnter={() => setHoveredItem(item)}
+                            onMouseLeave={() => setHoveredItem("")}
+                            className="flex items-center p-2 gap-2 rounded-1xl text-gray-600 hover:bg-gray-200 px-2 py-1 transition-all duration-300 ease-in-out cursor-pointer"
+                          >
+                            {hoveredItem === item && <FaArrowRightLong />} {item}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </li>
               )}
 
-              {["Products", "Solutions", "Resources"].map((item, i) => (
-                <li key={i}>
-                  <a
-                    href="#"
-                    className="text-white hover:text-blue-200 px-3 py-2 text-sm font-medium"
-                  >
-                    {item}
-                  </a>
+              {"Solutions" && (
+                <li>
+                  <div className="dropdown dropdown-hover">
+                    <div tabIndex={0} className="text-white mr-2">
+                      Solutions
+                    </div>
+                    <div
+                      tabIndex={0}
+                      className="dropdown-content gap-2 bg-white rounded-box z-1 shadow-sm flex flex-row justify-between"
+                    >
+                      <div className="flex flex-col p-3 gap-3 min-w-[260px]">
+                        <h3 className="font-semibold text-gray-700 mb-2">
+                          What We Do
+                        </h3>
+                        {["Set Up Your Skills Strategy", "Showcase Your Tech Brand", "Optimize Your Hirirng Process", "Mobilize your internal talent", "AI data services"].map((item, idx) => (
+                          <Link
+                            to={`/${item.toLowerCase().split(" ").slice(-2).join("-")}`}
+                            key={idx}
+                            onMouseEnter={() => setHoveredItem(item)}
+                            onMouseLeave={() => setHoveredItem(null)}
+                            className="flex p-2 items-center gap-2 rounded-1xl text-gray-600 hover:bg-gray-200 px-2 py-1 transition-all duration-300 ease-in-out cursor-pointer"
+                          >
+                            {hoveredItem === item && <FaArrowRightLong />} {item}
+                          </Link>
+                        ))}
+                      </div>
+                      <div className="flex flex-col p-3 gap-3 min-w-[250px]">
+                        <h3 className="font-semibold text-gray-700 mb-2">
+                          Use Cases
+                        </h3>
+                        {["Remote Hiring", "University Hiring"].map((item, idx) => (
+                          <Link
+                            to={`/${item.toLowerCase().split(" ").join("-")}`}
+                            key={idx}
+                            onMouseEnter={() => setHoveredItem(item)}
+                            onMouseLeave={() => setHoveredItem("")}
+                            className="flex items-center p-2 gap-2 rounded-1xl text-gray-600 hover:bg-gray-200 px-2 py-1 transition-all duration-300 ease-in-out cursor-pointer"
+                          >
+                            {hoveredItem === item && <FaArrowRightLong />} {item}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </li>
-              ))}
+              )}
+
+              {"Resources" && (
+                <li>
+                  <div className="dropdown dropdown-hover">
+                    <div tabIndex={0} className="text-white mr-2">
+                      Resources
+                    </div>
+                    <div
+                      tabIndex={0}
+                      className="dropdown-content gap-6 bg-white rounded-box z-1 shadow-sm flex flex-row justify-between"
+                    >
+                      <div className="flex flex-col p-3 gap-3 min-w-[190px]">
+                        <h3 className="font-semibold text-gray-700 mb-2">
+                          Learn
+                        </h3>
+                        {["Blog", "Roles Directory", "Resource Library", "Customer Stories", "Devloper Skills Report"].map((item, idx) => (
+                          <Link
+                            to={`/${item.toLowerCase().split(" ").join("-")}`}
+                            key={idx}
+                            onMouseEnter={() => setHoveredItem(item)}
+                            onMouseLeave={() => setHoveredItem(null)}
+                            className="flex p-2 items-center gap-2 rounded-1xl text-gray-600 hover:bg-gray-200 px-2 py-1 transition-all duration-300 ease-in-out cursor-pointer"
+                          >
+                            {hoveredItem === item && <FaArrowRightLong />} {item}
+                          </Link>
+                        ))}
+                      </div>
+                      <div className="flex flex-col p-3 gap-3 min-w-[230px]">
+                        <h3 className="font-semibold text-gray-700 mb-2">
+                          Product Help
+                        </h3>
+                        {["What is new", "Partners", "Support"].map((item, idx) => (
+                          <Link
+                            to={`/${item.toLowerCase().split(" ").join("-")}`}
+                            key={idx}
+                            onMouseEnter={() => setHoveredItem(item)}
+                            onMouseLeave={() => setHoveredItem("")}
+                            className="flex items-center p-2 gap-2 rounded-1xl text-gray-600 hover:bg-gray-200 px-2 py-1 transition-all duration-300 ease-in-out cursor-pointer"
+                          >
+                            {hoveredItem === item && <FaArrowRightLong />} {item}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              )}
               <li>
                 <Link
                   to="/pricing"
@@ -279,7 +204,6 @@ const Navigation = () => {
                   Pricing
                 </Link>
               </li>
-
               <li>
                 <Link
                   to="/DeveloperDashboard"
@@ -293,7 +217,6 @@ const Navigation = () => {
 
           {/* RIGHT: Desktop buttons + Mobile hamburger */}
           <div className="navbar-end flex items-center gap-2">
-            {/* Buttons (Large screens only) */}
             <div className="hidden lg:flex items-center gap-2">
               <button className="btn btn-primary text-white hover:brightness-110">
                 <span className="px-3 py-2 text-sm font-semibold">
@@ -346,7 +269,6 @@ const Navigation = () => {
                     Pricing
                   </Link>
                 </li>
-
                 <li>
                   <Link
                     to="/DeveloperLogin"

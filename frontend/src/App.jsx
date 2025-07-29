@@ -23,7 +23,7 @@ import AdministrationPage from './Pages/Administration';
 import Interview from './Pages/Interview';
 import SignUp from './Pages/SignUp';
 import Submission from './Pages/Submission';
-
+import EngagePage from './Pages/Engage/EngagePage';
 
 function App() {
   return (
@@ -55,6 +55,7 @@ function App() {
             <Route path="/job-board" element={<JobBoard />} />
             <Route path="/bookmarks" element={<Bookmarks />} />
             <Route path="/pricing" element={<Pricing />} />
+             <Route path="/engage" element={<EngagePage />} />
 
         </Routes>
         <Footer />
