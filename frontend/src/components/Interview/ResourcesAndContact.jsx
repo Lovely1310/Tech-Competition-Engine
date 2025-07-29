@@ -19,6 +19,10 @@ const ResourcesAndContact = () => {
 
   return (
     <section
+<<<<<<< HEAD
+=======
+      id="contact-section"
+>>>>>>> 97fc10cf43b43364d9911fffdbd4a246a43ee2aa
       className="py-20 text-white"
       style={{
         minHeight: '100vh',

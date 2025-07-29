@@ -6,8 +6,6 @@
 // Databases icon from user provided image
 // Data Structures icon from user provided image
 // Algorithms icon from user provided image
-import React from 'react';
-
 const topics = [
   {
     name: 'Algorithms',

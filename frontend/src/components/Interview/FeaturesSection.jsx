@@ -70,6 +70,7 @@ const AuroraBackground = () => (
         transition={{ duration: 7 + i, repeat: Infinity, repeatType: 'mirror', delay: i * 0.5 }}
       />
     ))}
+<<<<<<< HEAD
     {/* Twinkling stars */}
     {[...Array(30)].map((_, i) => (
       <motion.div
@@ -89,6 +90,8 @@ const AuroraBackground = () => (
         transition={{ duration: 2.5 + i * 0.1, repeat: Infinity, repeatType: 'mirror', delay: i * 0.2 }}
       />
     ))}
+=======
+>>>>>>> 97fc10cf43b43364d9911fffdbd4a246a43ee2aa
   </div>
 );
 

@@ -1,5 +1,10 @@
 export const mockProfileData = {
+<<<<<<< HEAD
   name: 'Ajay',
+=======
+  firstName: 'Ajay',
+  lastName: 'Khan',
+>>>>>>> 97fc10cf43b43364d9911fffdbd4a246a43ee2aa
   username: '@ajaykhan6433',
   email: 'ajaykhan6433@gmail.com',
   phone: '+91-9717965986',

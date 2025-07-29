@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import WelcomePage from './components/WelcomePage';
-import ImportPage from './components/ImportPage';
-import TemplateSelection from './components/TemplateSelection';
-
+import WelcomePage from "../components/ResumeBuilder/WelcomePage";
+import ImportPage from "../components/ResumeBuilder/ImportPage";
+import TemplateSelection from "../components/ResumeBuilder/TemplateSelection";
+import DeveloperNavbar from '../components/DeveloperNavbar';
 
 function ResumeBuilder() {
   const [currentPage, setCurrentPage] = useState('welcome');
@@ -50,6 +50,7 @@ function ResumeBuilder() {
 
   return (
     <div className="app">
+      <DeveloperNavbar />
       <AnimatePresence mode="wait">
         <motion.div
           key={currentPage}

@@ -22,7 +22,11 @@ const Administration = () => {
       overflowX: 'hidden'
     },
     header: {
+<<<<<<< HEAD
       padding: '32px 48px 0',
+=======
+      padding: '120px 48px 0',
+>>>>>>> 97fc10cf43b43364d9911fffdbd4a246a43ee2aa
       // borderBottom: '1px solid #334155' // Removed border to eliminate side outline
     },
     title: {

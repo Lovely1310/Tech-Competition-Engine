@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import logo from '../../../public/logo.svg';
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import logo from "../../../public/logo.svg";
 import { Link } from "react-router-dom";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 const Navigation = () => {
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [hoveredItem, setHoveredItem] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,8 +16,8 @@ const Navigation = () => {
       setLastScrollY(currentScroll);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
   return (
@@ -26,7 +28,7 @@ const Navigation = () => {
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -30 }}
-          transition={{ duration: 0.4, ease: 'easeInOut' }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
         >
           {/* LEFT: Logo with link */}
           <div className="navbar-start">
@@ -35,13 +37,13 @@ const Navigation = () => {
                 src={logo}
                 alt="TEN TECH ENGINE Logo"
                 className="h-10 md:h-12"
-                style={{ filter: "invert(1) brightness(2)" }} // <-- Makes logo white
+                style={{ filter: "invert(1) brightness(2)" }}
               />
               <span
                 className="ml-2 text-xl font-black text-white tracking-tight select-none drop-shadow-sm hidden lg:inline"
                 style={{
                   letterSpacing: "0.01em",
-                  fontFamily: "'Montserrat', 'Segoe UI', 'Arial', sans-serif"
+                  fontFamily: "'Montserrat', 'Segoe UI', 'Arial', sans-serif",
                 }}
               >
                 TEN Tech Engine
@@ -52,16 +54,156 @@ const Navigation = () => {
           {/* CENTER: Main Nav (Only for large screens) */}
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
-              {['Products', 'Solutions', 'Resources', 'Pricing'].map((item, i) => (
-                <li key={i}>
-                  <a
-                    href="#"
-                    className="text-white hover:text-blue-200 px-3 py-2 text-sm font-medium"
-                  >
-                    {item}
-                  </a>
+              {"Products" && (
+                <li>
+                  <div className="dropdown dropdown-hover">
+                    <div tabIndex={0} className="text-white mr-2">
+                      Products
+                    </div>
+                    <div
+                      tabIndex={0}
+                      className="dropdown-content gap-6 bg-white  rounded-box z-1 shadow-sm flex flex-row justify-between"
+                    >
+                      <div className="flex flex-col p-3 gap-3 ">
+                        <h3 className="font-semibold text-gray-700 mb-2">
+                          Products
+                        </h3>
+                        {["Screen", "Interview", "Engage", "SkillUp"].map(
+                          (item, idx) => (
+                            <Link
+                              to={`/${item.toLowerCase()}`}
+                              key={idx}
+                              onMouseEnter={() => setHoveredItem(item)}
+                              onMouseLeave={() => setHoveredItem(null)}
+                              className="flex p-2 items-center gap-2 rounded-1xl text-gray-600 hover:bg-gray-200 px-2 py-1 transition-all duration-300 ease-in-out cursor-pointer"
+                            >
+                              {hoveredItem === item && <FaArrowRightLong />} {item}
+                            </Link>
+                          )
+                        )}
+                      </div>
+                      <div className="flex flex-col p-3 gap-3 min-w-[230px]">
+                        <h3 className="font-semibold text-gray-700 mb-2">
+                          Features
+                        </h3>
+                        {["Certified Assessments", "Plagiarism Detection", "Real-World Question", "Integration"].map((item, idx) => (
+                          <Link
+                            to={`/${item.toLowerCase().split(" ").join("-")}`}
+                            key={idx}
+                            onMouseEnter={() => setHoveredItem(item)}
+                            onMouseLeave={() => setHoveredItem("")}
+                            className="flex items-center p-2 gap-2 rounded-1xl text-gray-600 hover:bg-gray-200 px-2 py-1 transition-all duration-300 ease-in-out cursor-pointer"
+                          >
+                            {hoveredItem === item && <FaArrowRightLong />} {item}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </li>
-              ))}
+              )}
+
+              {"Solutions" && (
+                <li>
+                  <div className="dropdown dropdown-hover">
+                    <div tabIndex={0} className="text-white mr-2">
+                      Solutions
+                    </div>
+                    <div
+                      tabIndex={0}
+                      className="dropdown-content gap-2 bg-white rounded-box z-1 shadow-sm flex flex-row justify-between"
+                    >
+                      <div className="flex flex-col p-3 gap-3 min-w-[260px]">
+                        <h3 className="font-semibold text-gray-700 mb-2">
+                          What We Do
+                        </h3>
+                        {["Set Up Your Skills Strategy", "Showcase Your Tech Brand", "Optimize Your Hirirng Process", "Mobilize your internal talent", "AI data services"].map((item, idx) => (
+                          <Link
+                            to={`/${item.toLowerCase().split(" ").slice(-2).join("-")}`}
+                            key={idx}
+                            onMouseEnter={() => setHoveredItem(item)}
+                            onMouseLeave={() => setHoveredItem(null)}
+                            className="flex p-2 items-center gap-2 rounded-1xl text-gray-600 hover:bg-gray-200 px-2 py-1 transition-all duration-300 ease-in-out cursor-pointer"
+                          >
+                            {hoveredItem === item && <FaArrowRightLong />} {item}
+                          </Link>
+                        ))}
+                      </div>
+                      <div className="flex flex-col p-3 gap-3 min-w-[250px]">
+                        <h3 className="font-semibold text-gray-700 mb-2">
+                          Use Cases
+                        </h3>
+                        {["Remote Hiring", "University Hiring"].map((item, idx) => (
+                          <Link
+                            to={`/${item.toLowerCase().split(" ").join("-")}`}
+                            key={idx}
+                            onMouseEnter={() => setHoveredItem(item)}
+                            onMouseLeave={() => setHoveredItem("")}
+                            className="flex items-center p-2 gap-2 rounded-1xl text-gray-600 hover:bg-gray-200 px-2 py-1 transition-all duration-300 ease-in-out cursor-pointer"
+                          >
+                            {hoveredItem === item && <FaArrowRightLong />} {item}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              )}
+
+              {"Resources" && (
+                <li>
+                  <div className="dropdown dropdown-hover">
+                    <div tabIndex={0} className="text-white mr-2">
+                      Resources
+                    </div>
+                    <div
+                      tabIndex={0}
+                      className="dropdown-content gap-6 bg-white rounded-box z-1 shadow-sm flex flex-row justify-between"
+                    >
+                      <div className="flex flex-col p-3 gap-3 min-w-[190px]">
+                        <h3 className="font-semibold text-gray-700 mb-2">
+                          Learn
+                        </h3>
+                        {["Blog", "Roles Directory", "Resource Library", "Customer Stories", "Devloper Skills Report"].map((item, idx) => (
+                          <Link
+                            to={`/${item.toLowerCase().split(" ").join("-")}`}
+                            key={idx}
+                            onMouseEnter={() => setHoveredItem(item)}
+                            onMouseLeave={() => setHoveredItem(null)}
+                            className="flex p-2 items-center gap-2 rounded-1xl text-gray-600 hover:bg-gray-200 px-2 py-1 transition-all duration-300 ease-in-out cursor-pointer"
+                          >
+                            {hoveredItem === item && <FaArrowRightLong />} {item}
+                          </Link>
+                        ))}
+                      </div>
+                      <div className="flex flex-col p-3 gap-3 min-w-[230px]">
+                        <h3 className="font-semibold text-gray-700 mb-2">
+                          Product Help
+                        </h3>
+                        {["What is new", "Partners", "Support"].map((item, idx) => (
+                          <Link
+                            to={`/${item.toLowerCase().split(" ").join("-")}`}
+                            key={idx}
+                            onMouseEnter={() => setHoveredItem(item)}
+                            onMouseLeave={() => setHoveredItem("")}
+                            className="flex items-center p-2 gap-2 rounded-1xl text-gray-600 hover:bg-gray-200 px-2 py-1 transition-all duration-300 ease-in-out cursor-pointer"
+                          >
+                            {hoveredItem === item && <FaArrowRightLong />} {item}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              )}
+              <li>
+                <Link
+                  to="/pricing"
+                  className="text-white hover:text-blue-200 px-3 py-2 text-sm font-medium"
+                >
+                  Pricing
+                </Link>
+              </li>
               <li>
                 <Link
                   to="/DeveloperDashboard"
@@ -75,14 +217,17 @@ const Navigation = () => {
 
           {/* RIGHT: Desktop buttons + Mobile hamburger */}
           <div className="navbar-end flex items-center gap-2">
-            {/* Buttons (Large screens only) */}
             <div className="hidden lg:flex items-center gap-2">
               <button className="btn btn-primary text-white hover:brightness-110">
-                <span className="px-3 py-2 text-sm font-semibold">Create a free account</span>
+                <span className="px-3 py-2 text-sm font-semibold">
+                  Create a free account
+                </span>
               </button>
               <Link to="/login">
                 <button className="btn btn-outline border-white text-white hover:bg-white/10 hover:border-blue-300">
-                  <span className="px-3 py-2 text-sm font-semibold">Log In</span>
+                  <span className="px-3 py-2 text-sm font-semibold">
+                    Log In
+                  </span>
                 </button>
               </Link>
             </div>
@@ -97,15 +242,19 @@ const Navigation = () => {
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
                 </svg>
               </label>
               <ul
                 tabIndex={0}
                 className="menu dropdown-content mt-3 z-[1] p-4 shadow bg-white/90 backdrop-blur-md rounded-box w-60 text-center items-center gap-2"
               >
-                {['Products', 'Solutions', 'Resources', 'Pricing'].map((item, i) => (
+                {["Products", "Solutions", "Resources"].map((item, i) => (
                   <li key={i}>
                     <a className="text-gray-800 hover:text-blue-600 text-sm font-medium px-2 py-1">
                       {item}
@@ -113,13 +262,27 @@ const Navigation = () => {
                   </li>
                 ))}
                 <li>
-                  <Link to="/DeveloperLogin" className="text-gray-800 hover:text-blue-600 text-sm font-medium px-2 py-1">
+                  <Link
+                    to="/pricing"
+                    className="text-gray-800 hover:text-blue-600 text-sm font-medium px-2 py-1"
+                  >
+                    Pricing
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/DeveloperLogin"
+                    className="text-gray-800 hover:text-blue-600 text-sm font-medium px-2 py-1"
+                  >
                     For Developers
                   </Link>
                 </li>
                 <hr className="my-2 w-full" />
                 <li>
-                  <Link to="/login" className="text-black text-sm font-semibold px-2 py-1">
+                  <Link
+                    to="/login"
+                    className="text-black text-sm font-semibold px-2 py-1"
+                  >
                     Log In
                   </Link>
                 </li>
